@@ -64,7 +64,9 @@ key: "aa4094ad81"
 
 
 `@script`
-There exists a table called `df2`. A `SparkSession` is also already available via the `spark` variable.  Write a query that inspects the first 20 rows of this table and run it using the `spark.sql` operation.
+There exists a table called `df2`. A `SparkSession` is also already available via the `spark` variable.  Write a query that inspects the first 20 rows of this table and run it using the `spark.sql` operation.  
+
+What is the schema of the `df2` table?
 
 
 ---

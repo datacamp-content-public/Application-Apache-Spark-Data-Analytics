@@ -60,17 +60,19 @@ key: "aa4094ad81"
 ```
 
 `@part1`
-`print(spark.sql("describe df2 "))`
+# Here are two ways you can inspect the structure of a Spark table named `df2` : 
 
-`spark.sql("describe df2").show()
+- `spark.sql("describe df2 ").show()`
 
-`print(spark.sql("select * from df2 limit 0"))`
+- `print(spark.sql("select
+
+ * from df2 limit 0"))`
 
 
 `@script`
 There exists a table called `df2`. A `SparkSession` is also already available via the `spark` variable.  
 
-Here are three ways to examine the schema of the `df2` table.
+Here are two ways to examine the schema of the `df2` table.  Can you think of any other ways?
 
 
 ---

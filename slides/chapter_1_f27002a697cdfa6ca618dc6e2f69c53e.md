@@ -118,11 +118,7 @@ What is the schema of the `df2` table?
 
 
 `@part2`
-1. `word`
-2. `word`, `id`
-3. `word`: `text`, `id`: `int`
-4. `word`: `string`, `id`: `bigint`
-5. `string`, `bigint`
+xxx
 
 
 `@script`

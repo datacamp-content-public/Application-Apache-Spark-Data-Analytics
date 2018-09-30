@@ -61,3 +61,35 @@ xp: 50
 
 `@projector_key`
 f27002a697cdfa6ca618dc6e2f69c53e
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: MultipleChoiceExercise
+key: 7b7f66d7ac
+xp: 50
+```
+
+xxx
+
+`@possible_answers`
+1. `word`
+2. `word`, `id`
+3. `word`: `text`, `id`: `int`
+4. `word`: `string`, `id`: `bigint`
+5. `string`, `bigint`
+
+`@hint`
+The schema
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sct`
+```{python}
+
+```

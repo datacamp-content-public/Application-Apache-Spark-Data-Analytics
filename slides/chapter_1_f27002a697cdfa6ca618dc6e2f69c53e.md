@@ -88,7 +88,7 @@ What is the schema of the `df2` table?
 
 
 `@part2`
-
+`spark.sql("select * from df2 limit 20").show()`
 
 
 `@script`

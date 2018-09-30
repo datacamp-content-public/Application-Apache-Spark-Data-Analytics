@@ -52,7 +52,7 @@ This looks quite similar to a regular sql query -- except for the two lines cont
 
 
 ---
-## Inspect the table
+## Inspect the table schema.
 
 ```yaml
 type: "FullCodeSlide"
@@ -60,43 +60,21 @@ key: "aa4094ad81"
 ```
 
 `@part1`
-`spark.sql("select * from df2 limit 20").show()`
+`print(spark.sql("describe df2 "))`
+
+`spark.sql("describe df2").show()
+
+`print(spark.sql("select * from df2 limit 0"))`
 
 
 `@script`
-There exists a table called `df2`. A `SparkSession` is also already available via the `spark` variable.  Write a query that inspects the first 20 rows of this table and run it using the `spark.sql` operation.  
+There exists a table called `df2`. A `SparkSession` is also already available via the `spark` variable.  
 
-What is the schema of the `df2` table?
-
-
----
-## Inspect the table
-
-```yaml
-type: "TwoColumns"
-key: "f3d51616b9"
-```
-
-`@part1`
-There exists a table called `df2`. 
-
-A `SparkSession` is also already available via the `spark` variable.  
-
-Write a query that inspects the first 20 rows of this table and run it using the `spark.sql` operation.  
-
-What is the schema of the `df2` table?
-
-
-`@part2`
-`spark.sql("select * from df2 limit 20").show()`
-
-
-`@script`
-
+Here are three ways to examine the schema of the `df2` table.
 
 
 ---
-## Two ways to inspect the table
+## Inspect the table data
 
 ```yaml
 type: "TwoRowsTwoColumns"
@@ -104,23 +82,27 @@ key: "89f9c88279"
 ```
 
 `@part1`
-There is a table called `df2`. Run a SQL query on this table that fetches the first 20 rows by using a limit operation in the SQL query. Show the result using the `show` operation.
+Following is a way to inspect the top 20 rows of a table called `df2`.
+
+This way runs a SQL query on this table that fetches all of the rows from the `df2` table, shows the result using the `show` operation, limiting the output to 20 rows by using dataframe dot notation.
+
+Following is a way to fetch the first 20 rows by using a limit operation in the SQL query, then showing the result using the `show` operation.
 
 
 `@part2`
-`spark.sql("select * from df2 limit 20").show()`
-
-
-`@part3`
-Run a SQL query on this table that fetches all of the rows from the `df2` table.  Limit the output to 20 rows by using dataframe dot notation, via the dataframe operation `limit`.  Show the result using the `show` operation.
-
-
-`@part4`
 `spark.sql("select * from df2").limit(20).show()`
 
 
-`@script`
+`@part3`
+The following achieves the same result, having the limit operation performed within the SQL query.
 
+
+`@part4`
+`spark.sql("select * from df2 limit 20").show()`
+
+
+`@script`
+Here are two ways to inspect the data in a table called `df2`.  The first way uses the dataframe dot notation to perform part of the query, and the second way performs the entire query in SQL.
 
 
 ---

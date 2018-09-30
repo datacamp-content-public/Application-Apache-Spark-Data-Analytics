@@ -96,6 +96,34 @@ What is the schema of the `df2` table?
 
 
 ---
+## Two ways to inspect the table
+
+```yaml
+type: "TwoRowsTwoColumns"
+key: "89f9c88279"
+```
+
+`@part1`
+There is a table called `df2`. Run a SQL query on this table that fetches the first 20 rows by using a limit operation in the SQL query. Show the result using the `show` operation.
+
+
+`@part2`
+`spark.sql("select * from df2 limit 20").show()`
+
+
+`@part3`
+Run a SQL query on this table that fetches all of the rows from the `df2` table.  Limit the output to 20 rows by using dataframe dot notation, via the dataframe operation `limit`.  Show the result using the `show` operation.
+
+
+`@part4`
+`spark.sql("select * from df2").limit(20).show()`
+
+
+`@script`
+
+
+
+---
 ## Final Slide
 
 ```yaml

@@ -106,7 +106,7 @@ Here are two ways to inspect the data in a table called `df2`.  The first way us
 
 
 ---
-## Quiz
+## Quiz (test)
 
 ```yaml
 type: "TwoRows"
@@ -126,7 +126,7 @@ What is the schema of the `df2` table?
 
 
 `@script`
-
+< Instructor's note : Hmmm... I don't think I understand how to create a quiz slide. I don't think this is the way.>
 
 
 ---

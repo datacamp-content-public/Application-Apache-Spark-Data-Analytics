@@ -6,7 +6,7 @@ video_link:
   mp4: https://github.com/pluteski/datacamp/blob/master/video/DC_Sample.mp4
 
 ---
-
+## Apache Spark Window Function SQL
 
 ```yaml
 type: "TitleSlide"

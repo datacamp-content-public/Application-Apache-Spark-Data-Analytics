@@ -106,26 +106,6 @@ Here are two ways to inspect the data in a table called `df2`.  The first way us
 
 
 ---
-## Quiz (test)
-
-```yaml
-type: "TwoRows"
-key: "f3164800d5"
-```
-
-`@part1`
-What is the schema of the `df2` table?
-
-
-`@part2`
-xxx
-
-
-`@script`
-< Instructor's note : Hmmm... I don't think I understand how to create a quiz slide. I don't think this is the way.>
-
-
----
 ## 2-tuple query
 
 ```yaml

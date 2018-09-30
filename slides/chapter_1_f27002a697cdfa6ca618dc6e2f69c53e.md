@@ -142,5 +142,5 @@ key: "4c422c3019"
 ```
 
 `@script`
-Let’s go to the command line and try this out.
+Now let’s try out what we just learned.
 

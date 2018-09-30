@@ -3,7 +3,7 @@ title: Test
 description: Test
 ---
 
-## An exercise title written in sentence case
+## Inspect the `df2` table
 
 ```yaml
 type: NormalExercise
@@ -13,19 +13,15 @@ xp: 100
 skills: 2
 ```
 
-This is the assignment text. It should help provide students with the background information needed.
-The instructions that follow should be in bullet point form with clear guidance for what is expected.
+There is a table called `df2`, and a variable called `spark` giving an instance of the `SparkSession` object.
 
 `@instructions`
-- Instruction 1
-- Instruction 2
-- Instruction 3
+- Create a SQL query that returns the rows of the `df2` table.
+- Run this query by running the `sql` command with the `spark` session variable
+- Display the result
 
 `@hint`
-- Here is the hint for this setup problem. 
-- It should get students 50% of the way to the correct answer.
-- So don't provide the answer, but don't just reiterate the instructions.
-- Typically one hint per instruction is a sensible amount.
+- The table contains two columns, called `word` and `id`.
 
 `@pre_exercise_code`
 ```{python}
@@ -34,29 +30,23 @@ The instructions that follow should be in bullet point form with clear guidance 
 
 `@sample_code`
 ```{python}
-# Your
-# sample
-# code
-# should
-# be
-# ideally
-# 10 lines or less,
-# with a max
-# of 16 lines.
+# Show first 20 rows from table df2.
+# Replace QUERY with your sql query.
+`spark.sql(" QUERY ").show(20)`
+
 ```
 
 `@solution`
 ```{python}
-# Answer goes here
-# Make sure to match the comments with your sample code
-# to help students see the differences from solution
-# to given.
+# Show first 20 rows from table df2
+`spark.sql("select * from df2").show(20)`
+
 ```
 
 `@sct`
 ```{python}
 # Update this to something more informative.
-success_msg("Some praise! Then reinforce a learning objective from the exercise.")
+success_msg("Good - we now have an idea of what is in this table. Now let's run a window function query on it.")
 ```
 
 ---

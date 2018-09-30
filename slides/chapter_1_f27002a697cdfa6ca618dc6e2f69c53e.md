@@ -86,9 +86,11 @@ key: "89f9c88279"
 `@part1`
 Following is a way to inspect the top 20 rows of a table called `df2`.
 
-This way runs a SQL query on this table that fetches all of the rows from the `df2` table, shows the result using the `show` operation, limiting the output to 20 rows by using dataframe dot notation.
+This approaches the following:
 
-Following is a way to fetch the first 20 rows by using a limit operation in the SQL query, then showing the result using the `show` operation.
+1. Runs a SQL query on the table that fetches all of its rows, returning it as a dataframe.
+2. Selects the top 20 rows of the dataframe using dataframe dot notation.
+3. Displays the result of step 2 to the console.
 
 
 `@part2`

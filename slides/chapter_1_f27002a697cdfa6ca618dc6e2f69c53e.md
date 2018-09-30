@@ -52,6 +52,22 @@ This looks quite similar to a regular sql query -- except for the two lines cont
 
 
 ---
+## Inspect the table
+
+```yaml
+type: "FullCodeSlide"
+key: "aa4094ad81"
+```
+
+`@part1`
+`spark.sql("select * from df2 limit 20").show()`
+
+
+`@script`
+There exists a table called `df2`. A `SparkSession` is also already available via the `spark` variable.  Write a query that inspects the first 20 rows of this table and run it using the `spark.sql` operation.
+
+
+---
 ## Final Slide
 
 ```yaml

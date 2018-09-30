@@ -64,7 +64,7 @@ f27002a697cdfa6ca618dc6e2f69c53e
 
 ---
 
-## Insert exercise title here
+## Quiz : inspecting the table structure
 
 ```yaml
 type: MultipleChoiceExercise
@@ -72,7 +72,7 @@ key: 7b7f66d7ac
 xp: 50
 ```
 
-xxx
+What is the structure of the `df2` table? 
 
 `@possible_answers`
 1. `word`
@@ -80,9 +80,10 @@ xxx
 3. `word`: `text`, `id`: `int`
 4. `word`: `string`, `id`: `bigint`
 5. `string`, `bigint`
+6. two columns
 
 `@hint`
-The schema
+The table structure tells us the name and type of each column
 
 `@pre_exercise_code`
 ```{python}

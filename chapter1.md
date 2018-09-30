@@ -7,7 +7,7 @@ description: Test
 
 ```yaml
 type: NormalExercise
-key: c0b15997b1
+key: 0fc705b773
 lang: python
 xp: 100
 skills: 2
@@ -58,3 +58,16 @@ The instructions that follow should be in bullet point form with clear guidance 
 # Update this to something more informative.
 success_msg("Some praise! Then reinforce a learning objective from the exercise.")
 ```
+
+---
+
+## Spark Window Functions
+
+```yaml
+type: VideoExercise
+key: 3e04599626
+xp: 50
+```
+
+`@projector_key`
+f27002a697cdfa6ca618dc6e2f69c53e

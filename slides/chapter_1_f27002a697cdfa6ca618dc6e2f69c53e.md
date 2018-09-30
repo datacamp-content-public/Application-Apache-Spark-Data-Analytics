@@ -168,7 +168,7 @@ spark.sql(sql2)\
 
 
 `@script`
-Create a variable of type `str` containing a SQL query that gives the word sequences of length two from the `df2` table. Each row of the result should contain the word of a corresponding row in the `df2` in a column called `w1`, and the word from the following row in a column called `w2`. 
+Create a variable of type `str` containing a window function SQL query that gives the word sequences of length two from the `df2` table. Each row of the result should contain the word of a corresponding row in the `df2` in a column called `w1`, and the word from the following row in a column called `w2`. Get the value of the `w2` field using the `lead` operation, and an `over` clause ordered by the `id` field.
 
 Run this query using the SparkSession object `spark` and display its result.
 

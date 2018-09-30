@@ -124,6 +124,32 @@ Run a SQL query on this table that fetches all of the rows from the `df2` table.
 
 
 ---
+## 2-tuple query
+
+```yaml
+type: "FullCodeSlide"
+key: "619d020a03"
+```
+
+`@part1`
+sql2 = """
+    select
+    id,
+    word as w1,
+    lead(word,1) over(order by id ) as w2
+    from df2
+"""
+spark.sql(sql2)\
+     .show()
+
+
+`@script`
+Create a variable of type `str` containing a SQL query that gives the word sequences of length two from the `df2` table. Each row of the result should contain the word of a corresponding row in the `df2` in a column called `w1`, and the word from the following row in a column called `w2`. 
+
+Run this query using the SparkSession object `spark` and display its result.
+
+
+---
 ## Final Slide
 
 ```yaml

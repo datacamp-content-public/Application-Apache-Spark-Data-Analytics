@@ -3,6 +3,19 @@ title: Test
 description: Test
 ---
 
+## Spark Window Functions
+
+```yaml
+type: VideoExercise
+key: 3e04599626
+xp: 50
+```
+
+`@projector_key`
+f27002a697cdfa6ca618dc6e2f69c53e
+
+---
+
 ## Inspect the `df2` table
 
 ```yaml
@@ -51,19 +64,6 @@ success_msg("Good - we now have an idea of what is in this table. Now let's run 
 
 ---
 
-## Spark Window Functions
-
-```yaml
-type: VideoExercise
-key: 3e04599626
-xp: 50
-```
-
-`@projector_key`
-f27002a697cdfa6ca618dc6e2f69c53e
-
----
-
 ## Quiz : inspecting the table structure
 
 ```yaml
@@ -87,10 +87,27 @@ The table structure tells us the name and type of each column
 
 `@pre_exercise_code`
 ```{python}
-
+# 
 ```
 
 `@sct`
+```{python}
+
+```
+
+---
+
+## Sequential challenge round : building our window sql
+
+```yaml
+type: TabExercise
+key: d01ba44a66
+xp: 100
+```
+
+
+
+`@pre_exercise_code`
 ```{python}
 
 ```

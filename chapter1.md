@@ -111,3 +111,48 @@ xp: 100
 ```{python}
 
 ```
+
+---
+
+## Boss round : find the top 3 tuples.
+
+```yaml
+type: NormalExercise
+key: 91d83e8800
+xp: 100
+```
+
+TBD -- this will challenge the users to combine what they have learned previously, which involves regular SQL, with what they just learned, which involves window function sql. 
+
+
+
+`@instructions`
+
+
+`@hint`
+# It would be nice if the hint could use a state variable whose value is set in the SCT.
+
+`@pre_exercise_code`
+```{python}
+# Creates dataset
+# Creates and runs a correct answer on the dataset, caching the result.
+# Creates aggregates
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+# Compares structure of the student's result with the structure of the correct result.
+# Compares aggregates of the student's result with the correct result.
+# Exhaustively compares the student's result with the correct result. 
+
+```

@@ -72,7 +72,7 @@ key: 7b7f66d7ac
 xp: 50
 ```
 
-What is the structure of the `df2` table? 
+What is the structure of the `df2` table?
 
 `@possible_answers`
 1. `word`
@@ -122,9 +122,7 @@ key: 91d83e8800
 xp: 100
 ```
 
-TBD -- this will challenge the users to combine what they have learned previously, which involves regular SQL, with what they just learned, which involves window function sql. 
-
-
+TBD -- this will challenge the users to combine what they have learned previously, which involves regular SQL, with what they just learned, which involves window function sql.
 
 `@instructions`
 

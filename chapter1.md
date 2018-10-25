@@ -1,6 +1,6 @@
 ---
-title: Test
-description: Test
+title: 'Chapter 1: Pyspark SQL'
+description: 'Lesson 1.1: Creating and querying a SQL table in Spark'
 ---
 
 ## Pyspark SQL

@@ -105,7 +105,7 @@ assert [x for x in spark.catalog.listTables() if x.name=='table'][0].tableType==
 
 ---
 
-## Insert exercise title here
+## Determine the column names of a table.
 
 ```yaml
 type: NormalExercise
@@ -145,5 +145,50 @@ print(columns)
 assert type(columns) is list, "Expected type(columns) to be a list"
 assert len(columns)==3, "There should be three columns"
 assert 'station' in columns and 'time' in columns and 'train_id' in columns, "A column is missing from your list"
+
+```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 938a563d45
+xp: 100
+```
+
+There is a table called 'df' having three columns : train_id, station, time.
+
+`@instructions`
+Using an sql query, find the station occurring in more than one row.
+Set the value of the variable 'station' to the corresponding station value.
+
+`@hint`
+Try an aggregate -- grouping on station column, and finding the station having more than one
+
+`@pre_exercise_code`
+```{python}
+df=spark.read.csv("lesson1.txt",header=True)
+df.createOrReplaceTempView("df")
+
+```
+
+`@sample_code`
+```{python}
+result = spark.sql("select station from df _____________ _____________ ")
+station = result.collect()[0].station
+```
+
+`@solution`
+```{python}
+result = spark.sql("select station from df group by station having count(*) > 1")
+station = result.collect()[0].station
+
+```
+
+`@sct`
+```{python}
+assert station=='San Jose', "Wrong value for station"
 
 ```

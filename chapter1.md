@@ -102,3 +102,48 @@ assert [x for x in spark.catalog.listTables() if x.name=='table'][0].isTemporary
 assert [x for x in spark.catalog.listTables() if x.name=='table'][0].tableType=='TEMPORARY',"Expected table type to be TEMPORARY, but it is not."
 
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 47be04c489
+xp: 100
+```
+
+A table called 'df' exists. There is more than one way to determine the columns of this table.
+
+`@instructions`
+Store a list in a variable called 'columns' that is a list of strings, 
+giving the names of the columns in the table 'df', sorted in ascending order.
+Print the value of the columns variable.
+
+`@hint`
+There should be three columns.
+
+`@pre_exercise_code`
+```{python}
+df=spark.read.csv("lesson1.txt",header=True)
+df.createOrReplaceTempView("df")
+```
+
+`@sample_code`
+```{python}
+columns = ____________
+print(columns)
+```
+
+`@solution`
+```{python}
+['station', 'time', 'train_id']
+```
+
+`@sct`
+```{python}
+assert type(columns) is list, "Expected type(columns) to be a list"
+assert len(columns)==3, "There should be three columns"
+assert 'station' in columns and 'time' in columns and 'train_id' in columns, "A column is missing from your list"
+
+```

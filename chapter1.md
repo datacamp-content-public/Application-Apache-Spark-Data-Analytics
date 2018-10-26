@@ -57,3 +57,48 @@ assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()
 assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()])[1]=='324',"Missing train 324"
 
 ```
+
+---
+
+## Create a SQL table from a dataframe.
+
+```yaml
+type: NormalExercise
+key: f1a04a3154
+xp: 100
+```
+
+A dataframe can be used to create a temporary table. 
+A temporary table is one that will not exist after the session ends. 
+
+
+`@instructions`
+A variable called 'df' contains a dataframe.
+Create a temporary table from dataframe df. 
+Call the table 'table'.
+
+`@hint`
+In the documentation this is referred to as to "Register the DataFrame as a SQL temporary view".
+
+`@pre_exercise_code`
+```{python}
+df=spark.read.csv("lesson1.txt",header=True)
+```
+
+`@sample_code`
+```{python}
+df.____________________(_____)
+```
+
+`@solution`
+```{python}
+df.createOrReplaceTempView("table")
+```
+
+`@sct`
+```{python}
+assert len([x for x in spark.catalog.listTables() if x.name=='table'])==1,"Table does not exist"
+assert [x for x in spark.catalog.listTables() if x.name=='table'][0].isTemporary,"Expected table to be temporary, but it is not."
+assert [x for x in spark.catalog.listTables() if x.name=='table'][0].tableType=='TEMPORARY',"Expected table type to be TEMPORARY, but it is not."
+
+```

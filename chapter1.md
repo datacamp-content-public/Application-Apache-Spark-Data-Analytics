@@ -34,7 +34,7 @@ A synonym for "load" is "read".  Don't forget to specify the format.
 
 `@pre_exercise_code`
 ```{python}
-
+spark = SparkSession.builder.getOrCreate()
 ```
 
 `@sample_code`

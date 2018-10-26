@@ -150,7 +150,7 @@ assert 'station' in columns and 'time' in columns and 'train_id' in columns, "A 
 
 ---
 
-## Insert exercise title here
+## Run an aggregate query on a table.
 
 ```yaml
 type: NormalExercise

@@ -3,7 +3,7 @@ title: 'Chapter 1: Pyspark SQL'
 description: ""
 ---
 
-## Creating and querying a SQL table in Spark
+## Lesson 1.1 : Creating and querying a SQL table in Spark
 
 ```yaml
 type: VideoExercise
@@ -290,7 +290,7 @@ assert station=='San Jose', "Wrong value for station"
 
 ---
 
-## Lesson 1.2 
+## Lesson 1.2
 
 ```yaml
 type: VideoExercise

@@ -1,3 +1,3 @@
 ---
-title: 'Using Spark SQL queries vs dataframe dot notation'
+title: 'Using window function sql for natural language processing'
 description: ""

@@ -16,7 +16,7 @@ xp: 50
 
 ---
 
-## Load dataframe with csv (comma separated value) data
+## Exercise: Load dataframe with csv data
 
 ```yaml
 type: NormalExercise
@@ -66,7 +66,7 @@ assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()
 
 ---
 
-## Create a SQL table from a dataframe.
+## Exercise: create a SQL table from a dataframe.
 
 ```yaml
 type: NormalExercise
@@ -116,7 +116,7 @@ assert [x for x in spark.catalog.listTables() if x.name=='table'][0].tableType==
 
 ---
 
-## Determine the column names of a table.
+## Exercise: determine the column names of a table.
 
 ```yaml
 type: NormalExercise
@@ -237,7 +237,7 @@ assert 'station' in columns and 'time' in columns and 'train_id' in columns, "A 
 
 ---
 
-## Run an aggregate query on a table.
+## Exercise: run an aggregate query on a table.
 
 ```yaml
 type: NormalExercise
@@ -290,7 +290,7 @@ assert station=='San Jose', "Wrong value for station"
 
 ---
 
-## Lesson 1.2
+## Lesson 1.4 : Window function SQL
 
 ```yaml
 type: VideoExercise

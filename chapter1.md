@@ -124,31 +124,86 @@ key: 47be04c489
 xp: 100
 ```
 
-If a table exists you can inspect its schema in a few ways. There are several ways to determine the columns of this table using an sql query. 
+Spark commonly provides several ways to achieve a result. 
+If a table exists you can inspect its schema in several ways. 
+There are several ways to determine the columns of this table using an sql query. 
 
-Suppose there exists a table named 'table'. 
+Suppose there exists a table named 'table' having two columns, 'column1' and 'column2', each column containing string values. 
 If all you need is to _see_ the names of its columns, you can do the following: 
 
-`spark.sql("show columns from table").show()`
+```
+spark.sql("show columns from table").show()
++--------+
+|col_name|
++--------+
+| column1|
+| column2|
++--------+
+```
 
 Another:
 
-`spark.sql("select * from table limit 0").show()`
+```
+spark.sql("select * from table limit 0").show()
++-------+-------+
+|column1|column2|
++-------+-------+
++-------+-------+
+```
 
-Suppose you don't want to just visually inspect the column names, 
-but instead you want to put the names of the columns into a variable that you can work with programmatically. 
+Suppose you don't want to just _visually_ inspect the column names, 
+but instead you want to put the names of the columns into a variable that you can work with _programmatically_. 
 You could do the following:
 
-`columns = spark.sql("show columns from table").collect()`
+```
+>>> columns = spark.sql("show columns from table").collect()
+>>> print(columns)
+[Row(col_name='column1'), Row(col_name='column2')]
+```
 
-Note that the result of a query is a dataframe, so you can inspect its columns like so:
+The columns variable contains a list of _Row_ objects, from which 
+you can get a list of column names like so:
 
-`columns = spark.sql("select * from table limit 0").columns`
+```
+>>> [x.col_name for x in columns]
+['column1', 'columns']
+```
 
-`spark.sql("show columns from table").collect()`
+
+The result returned by a query on a table is a dataframe, so you can inspect its columns like so:
+
+```
+>>> spark.sql("select * from table limit 0").columns
+['column1','column2']
+```
+
+Suppose you want to see the names of each column and the type of each column. 
 
 
-One way is to run a "select *" query, store the results in a dataframe, and then inspect the columns of the dataframe. 
+```
+>>> spark.sql("describe table").show()
++--------+---------+-------+
+|col_name|data_type|comment|
++--------+---------+-------+
+| column1|   string|   null|
+| column2|   string|   null|
++--------+---------+-------+
+```
+
+You can also do:
+
+```
+>>> spark.sql("select * from table limit 0")
+DataFrame[train_id: string, station: string, time: string]
+```
+
+or, if you are not in a shell, 
+
+```
+>>> print(spark.sql("select * from table limit 0"))
+DataFrame[train_id: string, station: string, time: string]
+```
+
 
 
 `@instructions`

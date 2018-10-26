@@ -74,17 +74,20 @@ key: f1a04a3154
 xp: 100
 ```
 
-A dataframe can be used to create a temporary table. 
-A temporary table is one that will not exist after the session ends. 
-
+A dataframe can be used to create a **temporary table**. 
+A _temporary_ table is one that will not exist after the session ends. 
+Spark documentation also refers to this type of table as a _SQL temporary view_. 
+In the documentation this is referred to as to _register the dataFrame as a SQL temporary view_.
+This command is called on the dataframe itself, and creates a table if it does not already exist,
+replacing it with the current data from the dataframe if it does already exist. 
 
 `@instructions`
-A variable called 'df' contains a dataframe.
-Create a temporary table from dataframe df. 
+A variable called '_df_' contains a dataframe.
+Create a temporary table from _df_. 
 Call the table 'table'.
 
 `@hint`
-In the documentation this is referred to as to "Register the DataFrame as a SQL temporary view".
+Use the command _createOrReplaceTempView_.  Remember to provide it with the table name.
 
 `@pre_exercise_code`
 ```{python}

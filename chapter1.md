@@ -3,7 +3,7 @@ title: 'Chapter 1: Pyspark SQL'
 description: ""
 ---
 
-## Pyspark SQL
+## Creating and querying a SQL table in Spark
 
 ```yaml
 type: VideoExercise

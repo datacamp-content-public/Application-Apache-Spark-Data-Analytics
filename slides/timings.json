@@ -34,6 +34,13 @@
       "timing": 0,
       "state": {
         "indexh": 0,
+        "indexf": 0
+      }
+    },
+    {
+      "timing": 0,
+      "state": {
+        "indexh": 0,
         "indexf": -1
       }
     }

@@ -29,7 +29,7 @@ One of its options is to have it use the first row to define the names of the co
 It automatically splits each row into columns using the delimiter, which by default is 
 a comma "," but which can be changed. It is called using an instance of a SparkSession object.
 Some implementations of Spark, such as Pyspark Shell, and some Spark Notebook, automatically provide 
-an instance of a SparkSession, which by convention is stored in a variable named 'spark'. 
+an instance of a SparkSession, which by convention is stored in a variable named 'spark'.
 
 `@instructions`
 Load csv data from the file "trainsched.txt" into a dataframe stored in a variable named 'df'.
@@ -79,7 +79,7 @@ A _temporary_ table is one that will not exist after the session ends.
 Spark documentation also refers to this type of table as a _SQL temporary view_. 
 In the documentation this is referred to as to _register the dataFrame as a SQL temporary view_.
 This command is called on the dataframe itself, and creates a table if it does not already exist,
-replacing it with the current data from the dataframe if it does already exist. 
+replacing it with the current data from the dataframe if it does already exist.
 
 `@instructions`
 A variable called '_df_' contains a dataframe.
@@ -202,8 +202,6 @@ or, if you are not in a shell, print the result, like so:
 DataFrame[train_id: string, station: string, time: string]
 ```
 
-
-
 `@instructions`
 A table called 'df' exists.  Create a variable called 'columns' that contains a list of strings giving the names of the columns in the table 'df', sorted in ascending order. Print the value of the columns variable.
 
@@ -252,7 +250,7 @@ This meant that a query you ran on one system might not run the same on a differ
 The American National Standards Institute (ANSI) created specific standards for SQL to mitigate this problem.
 
 Spark SQL is a ANSI compliant SQL that allows you to run the types of SQL queries that you may have learned elsewhere, 
-including the full range of sql statements, such as the HAVING clause, which can be a bit trickier to implement using dataframe dot notation. 
+including the full range of sql statements, such as the HAVING clause, which can be a bit trickier to implement using dataframe dot notation.
 
 `@instructions`
 There is a table called 'df' with three columns : train_id, station, time.

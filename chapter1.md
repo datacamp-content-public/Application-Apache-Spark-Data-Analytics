@@ -287,3 +287,16 @@ station = result.collect()[0].station
 assert station=='San Jose', "Wrong value for station"
 
 ```
+
+---
+
+## Lesson 1.2 
+
+```yaml
+type: VideoExercise
+key: 240f6a6a10
+xp: 50
+```
+
+`@projector_key`
+457f3f91ff790f8250c2acdbc3a84559

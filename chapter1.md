@@ -135,13 +135,15 @@ Another:
 
 `spark.sql("select * from table limit 0").show()`
 
-If you want to fetch the names of the columns in a variable that you can work with programmatically. 
+Suppose you don't want to just visually inspect the column names, 
+but instead you want to put the names of the columns into a variable that you can work with programmatically. 
+You could do the following:
 
-`spark.sql("show columns from table").collect()`
+`columns = spark.sql("show columns from table").collect()`
 
 Note that the result of a query is a dataframe, so you can inspect its columns like so:
 
-```columns = spark.sql("select * from table limit 0").columns```
+`columns = spark.sql("select * from table limit 0").columns`
 
 `spark.sql("show columns from table").collect()`
 

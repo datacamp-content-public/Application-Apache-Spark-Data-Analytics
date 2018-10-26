@@ -124,10 +124,33 @@ key: 47be04c489
 xp: 100
 ```
 
-A table called 'df' exists. There is more than one way to determine the columns of this table.
+If a table exists you can inspect its schema in a few ways. There are several ways to determine the columns of this table using an sql query. 
+
+Suppose there exists a table named 'table'. 
+If all you need is to _see_ the names of its columns, you can do the following: 
+
+`spark.sql("show columns from table").show()`
+
+Another:
+
+`spark.sql("select * from table limit 0").show()`
+
+If you want to fetch the names of the columns in a variable that you can work with programmatically. 
+
+`spark.sql("show columns from table").collect()`
+
+Note that the result of a query is a dataframe, so you can inspect its columns like so:
+
+```columns = spark.sql("select * from table limit 0").columns```
+
+`spark.sql("show columns from table").collect()`
+
+
+One way is to run a "select *" query, store the results in a dataframe, and then inspect the columns of the dataframe. 
+
 
 `@instructions`
-Store a list in a variable called 'columns' that is a list of strings, 
+A table called 'df' exists.  Store a list in a variable called 'columns' that is a list of strings, 
 giving the names of the columns in the table 'df', sorted in ascending order.
 Print the value of the columns variable.
 

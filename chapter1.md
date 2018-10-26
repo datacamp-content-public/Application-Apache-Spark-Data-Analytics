@@ -151,9 +151,7 @@ spark.sql("select * from table limit 0").show()
 +-------+-------+
 ```
 
-Suppose you don't want to just _visually_ inspect the column names, 
-but instead you want to put the names of the columns into a variable that you can work with _programmatically_. 
-You could do the following:
+Suppose you don't want to just _visually_ inspect the column names, but want to put the names of the columns into a variable that you can work with _programmatically_ :
 
 ```
 >>> columns = spark.sql("show columns from table").collect()
@@ -197,7 +195,7 @@ You can also do:
 DataFrame[train_id: string, station: string, time: string]
 ```
 
-or, if you are not in a shell, 
+or, if you are not in a shell, print the result, like so:
 
 ```
 >>> print(spark.sql("select * from table limit 0"))
@@ -207,9 +205,7 @@ DataFrame[train_id: string, station: string, time: string]
 
 
 `@instructions`
-A table called 'df' exists.  Store a list in a variable called 'columns' that is a list of strings, 
-giving the names of the columns in the table 'df', sorted in ascending order.
-Print the value of the columns variable.
+A table called 'df' exists.  Create a variable called 'columns' that contains a list of strings giving the names of the columns in the table 'df', sorted in ascending order. Print the value of the columns variable.
 
 `@hint`
 There should be three columns.

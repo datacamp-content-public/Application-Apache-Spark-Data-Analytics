@@ -247,14 +247,20 @@ key: 938a563d45
 xp: 100
 ```
 
-There is a table called 'df' having three columns : train_id, station, time.
+SQL evolved over many years, and many versions emerged. 
+This meant that a query you ran on one system might not run the same on a different system. 
+The American National Standards Institute (ANSI) created specific standards for SQL to mitigate this problem.
+
+Spark SQL is a ANSI compliant SQL that allows you to run the types of SQL queries that you may have learned elsewhere, 
+including the full range of sql statements, such as the HAVING clause, which can be a bit trickier to implement using dataframe dot notation. 
 
 `@instructions`
+There is a table called 'df' with three columns : train_id, station, time.
 Using an sql query, find the station occurring in more than one row.
 Set the value of the variable 'station' to the corresponding station value.
 
 `@hint`
-Try an aggregate -- grouping on station column, and finding the station having more than one
+Try an aggregate -- grouping on station column, and finding the station having more than one row using the HAVING clause.
 
 `@pre_exercise_code`
 ```{python}

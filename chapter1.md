@@ -83,6 +83,8 @@ In the documentation this is referred to as to "Register the DataFrame as a SQL 
 
 `@pre_exercise_code`
 ```{python}
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
 df=spark.read.csv("lesson1.txt",header=True)
 ```
 
@@ -126,6 +128,8 @@ There should be three columns.
 
 `@pre_exercise_code`
 ```{python}
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
 df=spark.read.csv("lesson1.txt",header=True)
 df.createOrReplaceTempView("df")
 ```
@@ -170,6 +174,8 @@ Try an aggregate -- grouping on station column, and finding the station having m
 
 `@pre_exercise_code`
 ```{python}
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
 df=spark.read.csv("lesson1.txt",header=True)
 df.createOrReplaceTempView("df")
 

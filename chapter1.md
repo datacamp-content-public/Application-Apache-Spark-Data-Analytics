@@ -518,7 +518,7 @@ It turns out that you can use aggregation functions along with window functions.
 
 
 `@instructions`
-There is a table called 'schedule', having columns *train_id*, *station*, *time*, and *diff_min*.
+There is a table called 'schedule', having columns _train_id_, _station_, _time_, and _diff_min_.
 The 'diff_min' column gives the elapsed time between the current station and the next station on the line.
 
 Run a query that adds an additional column to the records in this dataset called 'running_total'.

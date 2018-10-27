@@ -300,3 +300,60 @@ xp: 50
 
 `@projector_key`
 457f3f91ff790f8250c2acdbc3a84559
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: TabExercise
+key: c94919f4fa
+xp: 100
+```
+
+Our dataset has the times in a nonstandard format.  Fortunately Spark has the means to convert this data into a format it can manipulate.  The to_timestamp function takes two arguments: the first is the name of the column, ‘time’, and the second is a format string telling it how to extract the hours and minutes from the time column.
+
+`@pre_exercise_code`
+```{python}
+df=spark.read.csv("lesson1.txt",header=True)
+df.createOrReplaceTempView("sched")
+```
+
+***
+
+```yaml
+type: NormalExercise
+key: ac466797a8
+xp: 100
+```
+
+`@instructions`
+Let's make sure that we can extract the time properly from the time column. 
+Apply the to_timestamp function to the time field to convert the time into a proper timestamp. 
+Call the new column 'ts'.
+
+`@hint`
+
+
+`@sample_code`
+```{python}
+query="""
+select train_id,station,time,_____________(time, 'H:m') as ts 
+from sched
+"""
+spark.sql(query).show()
+```
+
+`@solution`
+```{python}
+query="""
+select train_id,station,time,to_timestamp(time,'H:m') as ts 
+from sched
+"""
+spark.sql(query).show()
+```
+
+`@sct`
+```{python}
+
+```

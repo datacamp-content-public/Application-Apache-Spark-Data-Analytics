@@ -414,18 +414,34 @@ xp: 30
 ```
 
 `@instructions`
-
+In the lesson intro we learned how to get the value of the next row,
+by using the _'lead'_ function over a window partitioned by train_id. 
+Replace the blank with the expression that gives the value of the 'time' column for the next row.
 
 `@hint`
-
+Replace the blank with the same expression used to
 
 `@sample_code`
 ```{python}
+query="""
+select train_id, station, time, 
+unix_timestamp(time,'H:m') as unixtime1,
+unix_timestamp(____________________________,'H:m') as unixtime2
+from sched
+"""
+spark.sql(query).show()
 
 ```
 
 `@solution`
 ```{python}
+query="""
+select train_id, station, time, 
+unix_timestamp(time,'H:m') as unixtime1,
+unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') as unixtime2
+from sched
+"""
+spark.sql(query).show()
 
 ```
 

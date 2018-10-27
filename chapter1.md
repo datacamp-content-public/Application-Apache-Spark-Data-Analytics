@@ -320,7 +320,7 @@ The **to_timestamp** function takes two arguments:
 
 "**Unix time**" is the number of seconds (minus leap seconds) that have elapsed since 00:00:00 Coordinated Universal Time (UTC), which corresponds to Thursday, 1 January 1970. 
 
-The "unix_timestamp" function converts the time data into unix time, in seconds. It is called in a manner similar to the to_timestamp function, with the first argument giving the column name, and the second argument giving the format string.
+The "unix_timestamp" function converts the time data into unix time. This is given in seconds. It is called in a manner similar to the to_timestamp function, with the first argument giving the column name, and the second argument giving the format string.
 
 Once we have the time column converted to seconds, it will be straightforward to calculate the difference between two different timestamps.
 
@@ -503,7 +503,7 @@ spark.sql(query).show()
 
 ---
 
-## Insert exercise title here
+## Running sums using window function SQL
 
 ```yaml
 type: NormalExercise
@@ -518,7 +518,7 @@ It turns out that you can use aggregation functions along with window functions.
 
 
 `@instructions`
-There is a table called 'schedule', having columns 'train_id', 'station', 'time', and 'diff_min'.
+There is a table called 'schedule', having columns *train_id*, *station*, *time*, and *diff_min*.
 The 'diff_min' column gives the elapsed time between the current station and the next station on the line.
 
 Run a query that adds an additional column to the records in this dataset called 'running_total'.

@@ -332,7 +332,7 @@ df.createOrReplaceTempView("sched")
 ```yaml
 type: NormalExercise
 key: ac466797a8
-xp: 50
+xp: 35
 ```
 
 `@instructions`
@@ -371,12 +371,13 @@ spark.sql(query).show()
 ```yaml
 type: NormalExercise
 key: 8eed5099a2
-xp: 50
+xp: 35
 ```
 
 `@instructions`
 The previous step confirmed that we can properly extract a timestamp from the time column. 
-Let's convert the time column into a unix timestamp.
+Let's convert the time column into a unix timestamp. We won't worry about the time zone, 
+because the train lines in this dataset are all within the same time zone.
 
 `@hint`
 Use the unix_timestamp function, and the same format string used by the to_timestamp function.
@@ -397,6 +398,35 @@ select train_id,station,time,to_timestamp(time,'H:m') as ts, unix_timestamp(time
 from sched
 """
 spark.sql(query).show()
+```
+
+`@sct`
+```{python}
+
+```
+
+***
+
+```yaml
+type: NormalExercise
+key: ae40725d3e
+xp: 30
+```
+
+`@instructions`
+
+
+`@hint`
+
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
 ```
 
 `@sct`

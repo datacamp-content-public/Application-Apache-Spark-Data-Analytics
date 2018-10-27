@@ -311,7 +311,15 @@ key: c94919f4fa
 xp: 100
 ```
 
-Our dataset has the times in a nonstandard format.  Fortunately Spark has the means to convert this data into a format it can manipulate.  The to_timestamp function takes two arguments: the first is the name of the column, ‘time’, and the second is a format string telling it how to extract the hours and minutes from the time column.
+Our dataset has the times in a nonstandard format.  Fortunately Spark has the means to convert this data into a format it can manipulate.  
+
+The to_timestamp function takes two arguments: the first is the name of the column, ‘time’, and the second is a format string telling it how to extract the hours and minutes from the time column.
+
+Unix time is the number of seconds (minus leap seconds) that have elapsed since 00:00:00 Coordinated Universal Time (UTC), which corresponds to Thursday, 1 January 1970. 
+
+The unix_timestamp function is similar to the to_timestamp function, and converts the time data into unix time, in seconds.
+
+Once we have the time column converted to seconds, it will be straightforward to calculate the difference between two times.
 
 `@pre_exercise_code`
 ```{python}
@@ -324,7 +332,7 @@ df.createOrReplaceTempView("sched")
 ```yaml
 type: NormalExercise
 key: ac466797a8
-xp: 100
+xp: 50
 ```
 
 `@instructions`
@@ -333,7 +341,7 @@ Apply the to_timestamp function to the time field to convert the time into a pro
 Call the new column 'ts'.
 
 `@hint`
-
+Fill the blank with the first function mentioned in the previous slide.
 
 `@sample_code`
 ```{python}
@@ -348,6 +356,44 @@ spark.sql(query).show()
 ```{python}
 query="""
 select train_id,station,time,to_timestamp(time,'H:m') as ts 
+from sched
+"""
+spark.sql(query).show()
+```
+
+`@sct`
+```{python}
+
+```
+
+***
+
+```yaml
+type: NormalExercise
+key: 8eed5099a2
+xp: 50
+```
+
+`@instructions`
+The previous step confirmed that we can properly extract a timestamp from the time column. 
+Let's convert the time column into a unix timestamp.
+
+`@hint`
+Use the unix_timestamp function, and the same format string used by the to_timestamp function.
+
+`@sample_code`
+```{python}
+query="""
+select train_id,station,time,to_timestamp(time,'H:m') as ts, ______________(time, ______) 
+from sched
+"""
+spark.sql(query).show()
+```
+
+`@solution`
+```{python}
+query="""
+select train_id,station,time,to_timestamp(time,'H:m') as ts, unix_timestamp(time,'H:m') as unixtime
 from sched
 """
 spark.sql(query).show()

@@ -303,7 +303,7 @@ xp: 50
 
 ---
 
-## Insert exercise title here
+## Calculating the difference between values in adjacent rows.
 
 ```yaml
 type: TabExercise
@@ -419,7 +419,7 @@ by using the _'lead'_ function over a window partitioned by train_id.
 Replace the blank with the expression that gives the value of the 'time' column for the next row.
 
 `@hint`
-Replace the blank with the same expression used to
+Replace the blank with the same expression used for _'time_next'_ demonstrated in the intro.
 
 `@sample_code`
 ```{python}

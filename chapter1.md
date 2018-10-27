@@ -320,7 +320,7 @@ The **to_timestamp** function takes two arguments:
 
 "**Unix time**" is the number of seconds (minus leap seconds) that have elapsed since 00:00:00 Coordinated Universal Time (UTC), which corresponds to Thursday, 1 January 1970. 
 
-The **unix_timestamp** function converts the time data into unix time, in seconds. It is called in a manner similar to the to_timestamp function, with the first argument giving the column name, and the second argument giving the format string.
+The **unix**_**timestamp** function converts the time data into unix time, in seconds. It is called in a manner similar to the to_timestamp function, with the first argument giving the column name, and the second argument giving the format string.
 
 Once we have the time column converted to seconds, it will be straightforward to calculate the difference between two different timestamps.
 

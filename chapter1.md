@@ -497,3 +497,68 @@ spark.sql(query).show()
 ```{python}
 
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 20b6379019
+xp: 100
+```
+
+A window function performs a calculation across a set of table rows that are related to the current row. 
+This is analogous to the calculation done by an aggregate function.  However, whereas a regular aggregate function causes rows to become grouped into a single output row, a window function gives an output for every row. 
+
+It turns out that you can use aggregation functions along with window functions. For example, you can easily do a running sum using a window function ("over clause"), using a sql query that is much simpler than what is required using joins. The query duration can also be much faster.  
+
+
+`@instructions`
+There is a table called 'schedule', having columns 'train_id', 'station', 'time', and 'diff_min'.
+The 'diff_min' column gives the elapsed time between the current station and the next station on the line.
+
+Run a query that adds an additional column to the records in this dataset called 'running_total'.
+The column 'running_total' sums the difference between station time given by the 'diff_min' column.
+
+`@hint`
+Three hints for this one:  (a) This is an aggregate query, (b) we want the running total to sum the diff_min field within each train line, and (c) the window used here is the same as what was used in previous exercises.
+
+`@pre_exercise_code`
+```{python}
+df=spark.read.csv("lesson1.txt",header=True)
+df.createOrReplaceTempView("sched")
+query="""select train_id,station, time,
+(unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') - unix_timestamp(time,'H:m'))/60 as diff_min
+from sched
+"""
+schedule = spark.sql(query)
+schedule.createOrReplaceTempView("schedule")
+
+```
+
+`@sample_code`
+```{python}
+query2="""
+SELECT train_id, station, time, diff_min,
+___(__________) over (________________________) AS running_total
+from schedule
+"""
+spark.sql(query2).show()
+```
+
+`@solution`
+```{python}
+query2="""
+SELECT train_id, station, time, diff_min,
+sum(diff_min) over (partition by train_id order by time) AS running_total
+from schedule
+"""
+spark.sql(query2).show()
+
+```
+
+`@sct`
+```{python}
+
+```

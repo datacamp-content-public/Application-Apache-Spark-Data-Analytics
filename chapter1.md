@@ -313,7 +313,7 @@ xp: 100
 
 In our dataset the 'time' column is easy to read, but in a nonstandard format that is not the best for performing operations such as subtraction.  Fortunately Spark has the means to convert this data into a format it can more easily manipulate. 
 
-The to_timestamp function takes two arguments: the first is the name of the column, ‘time’, and the second is a format string telling it how to extract the hours and minutes from the time column.
+The *to_timestamp* function takes two arguments: the first is the name of the column, ‘time’, and the second is a format string telling it how to extract the hours and minutes from the time column.
 
 Unix time is the number of seconds (minus leap seconds) that have elapsed since 00:00:00 Coordinated Universal Time (UTC), which corresponds to Thursday, 1 January 1970. 
 

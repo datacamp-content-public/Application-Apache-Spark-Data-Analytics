@@ -514,8 +514,7 @@ xp: 100
 A window function performs a calculation across a set of table rows that are related to the current row. 
 This is analogous to the calculation done by an aggregate function.  However, whereas a regular aggregate function causes rows to become grouped into a single output row, a window function gives an output for every row. 
 
-It turns out that you can use aggregation functions along with window functions. For example, you can easily do a running sum using a window function ("over clause"), using a sql query that is much simpler than what is required using joins. The query duration can also be much faster.  
-
+It turns out that you can use aggregation functions along with window functions. For example, you can easily do a running sum using a window function ("over clause"), using a sql query that is much simpler than what is required using joins. The query duration can also be much faster.
 
 `@instructions`
 There is a table called 'schedule', having columns 

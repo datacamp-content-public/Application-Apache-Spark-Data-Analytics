@@ -527,7 +527,7 @@ There is a table called 'schedule', having columns
 The 'diff_min' column gives the elapsed time between the current station and the next station on the line.
 
 Run a query that adds an additional column to the records in this dataset called running_total.
-The column running__total' sums the difference between station time given by the diff_min column.
+The column running__total sums the difference between station time given by the diff_min column.
 
 `@hint`
 The first blank is an aggregation function over the diff_min field.  We want the running sum to tally within each train line, so the window used here is the same as what was used in previous exercises.

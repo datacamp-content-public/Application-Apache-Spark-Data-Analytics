@@ -518,14 +518,19 @@ It turns out that you can use aggregation functions along with window functions.
 
 
 `@instructions`
-There is a table called 'schedule', having columns _train_id_, _station_, _time_, and _diff_min_.
+There is a table called 'schedule', having columns 
+* train_id
+* station, 
+* time, and 
+* diff_min
+
 The 'diff_min' column gives the elapsed time between the current station and the next station on the line.
 
-Run a query that adds an additional column to the records in this dataset called 'running_total'.
-The column 'running_total' sums the difference between station time given by the 'diff_min' column.
+Run a query that adds an additional column to the records in this dataset called running_total.
+The column running_total' sums the difference between station time given by the diff_min column.
 
 `@hint`
-Three hints for this one:  (a) This is an aggregate query, (b) we want the running total to sum the diff_min field within each train line, and (c) the window used here is the same as what was used in previous exercises.
+The first blank is an aggregation function over the diff_min field.  We want the running sum to tally within each train line, so the window used here is the same as what was used in previous exercises.
 
 `@pre_exercise_code`
 ```{python}

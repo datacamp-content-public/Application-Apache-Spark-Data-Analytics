@@ -332,7 +332,7 @@ df.createOrReplaceTempView("sched")
 ```yaml
 type: NormalExercise
 key: ac466797a8
-xp: 35
+xp: 25
 ```
 
 `@instructions`
@@ -371,7 +371,7 @@ spark.sql(query).show()
 ```yaml
 type: NormalExercise
 key: 8eed5099a2
-xp: 35
+xp: 25
 ```
 
 `@instructions`
@@ -410,7 +410,7 @@ spark.sql(query).show()
 ```yaml
 type: NormalExercise
 key: ae40725d3e
-xp: 30
+xp: 25
 ```
 
 `@instructions`
@@ -439,6 +439,54 @@ query="""
 select train_id, station, time, 
 unix_timestamp(time,'H:m') as unixtime1,
 unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') as unixtime2
+from sched
+"""
+spark.sql(query).show()
+
+```
+
+`@sct`
+```{python}
+
+```
+
+***
+
+```yaml
+type: NormalExercise
+key: dba755cba7
+xp: 25
+```
+
+`@instructions`
+Combine what we've done thus far -- subtract the unix time of the next row from the unix time of the current row,
+and divide it by 60 to convert it from seconds into minutes.
+
+`@hint`
+Replace the first blank with the unix time for the next row obtained over the window function we saw previously.
+
+`@sample_code`
+```{python}
+query="""
+select 
+train_id,
+station,
+time,
+(_______________________  - ______________________)/60 as diff_min
+from sched
+"""
+spark.sql(query).show()
+
+```
+
+`@solution`
+```{python}
+query="""
+select 
+train_id,
+station,
+time,
+(unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') - unix_timestamp(time,'H:m'))/60 as diff_min
 from sched
 """
 spark.sql(query).show()

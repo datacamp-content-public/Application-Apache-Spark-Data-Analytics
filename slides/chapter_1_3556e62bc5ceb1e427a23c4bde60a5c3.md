@@ -21,6 +21,44 @@ Hello and welcome to this lesson about Spark SQL. In this lesson you will see ho
 
 
 ---
+## Insert title here...
+
+```yaml
+type: "FullCodeSlide"
+key: "26bdf4d6ce"
+```
+
+`@part1`
+```
+>>> df
+DataFrame[train_id: string, station: string, time: string]
+```
+
+```
+>>> df.columns
+['train_id', 'station', 'time']
+```
+
+
+```
+>>> df.show(5)
++--------+-------------+-----+
+|train_id|      station| time|
++--------+-------------+-----+
+|     324|San Francisco|7:59a|
+|     324|  22nd Street|8:03a|
+|     324|     Millbrae|8:16a|
+|     324|    Hillsdale|8:24a|
+|     324| Redwood City|8:31a|
++--------+-------------+-----+
+```
+
+
+`@script`
+For example, suppose you have a dataframe containing three columns. and you want to select two columns...
+
+
+---
 ## Final Slide
 
 ```yaml

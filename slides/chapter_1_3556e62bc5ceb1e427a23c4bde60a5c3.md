@@ -103,11 +103,7 @@ key: "f7546cbde8"
 
 
 `@script`
-See that the column ‘train_id’ is a string given in quotes. 
-
-You can also do this {{1}}, using dot notation.  This time the column is given in dot notation, as df.train_id.
-
-You can also import this function {{2}}, which allows you to do this {{3}}.  This time, the name of the column is given as an argument to this new operator called col. Seems may seem more verbose in this case -- however, it is useful in other cases.
+Here's the way we selected the first two columns in the previous slide. See that the column ‘train_id’ is a string given in quotes. ... You can also do this {{1}}, using dot notation.  This time the column is given as df.train_id. ...  You can also import this function {{2}}, which allows you to do the following {{3}}.  This time, the name of the column is given as an argument to this new operator called col. Seems that it may seem more verbose in this case -- however, it is useful in other cases. One of which I'll show you now.
 
 
 ---
@@ -140,10 +136,11 @@ df.select('train_id','station')
 ```
 df.select(col('train_id').alias('train'), 'station')
 ```
+{{1}}
 
 
 `@script`
-For example, to rename a column you can use the withColumnRenamed function.  But you could also use the col operator, like so {{1}}.  This is often handy.
+For example, to rename a column you can use the withColumnRenamed function.  But you could also use the col operator, like so {{1}}.  This is often handy in other cases.
 
 
 ---
@@ -160,7 +157,7 @@ df.select('**train_id**',  **df.**station,  **col**('time'))**
 
 
 `@script`
-Try not to use all three conventions at the same time.
+Just Try not to use all three conventions at the same time.
 
 
 ---
@@ -240,7 +237,7 @@ spark.sql(query)
 
 
 `@script`
-Same goes for window functions.   This query adds a number to each stop on a train line in a new column called id. Note how the id column starts over for train_id 324.
+Same goes for window functions.   This query adds a number to each stop on a train line ... in a new column called id. Note how the id column starts over for train_id 324.
 
 
 ---
@@ -266,16 +263,18 @@ df.withColumn("id", row_number()
 
 - ROW_NUMBER in SQL :  pyspark.sql.functions.row_number {{1}} 
 - The inside of the OVER clause : pyspark.sql.Window {{2}}
-- PARTITION BY : partitionBy {{3}}
-- ORDER BY : orderBy {{4}}
+- PARTITION BY : pyspark.sql.Window.partitionBy {{3}}
+- ORDER BY : pyspark.sql.Window.orderBy {{4}}
 
 
 `@script`
-Here’s the same result using dot notation. There is typically a dot notation equivalent of every sql clause including window functions. {{1}} the row_number sql clause has an equivalent dot notation sql function. {{2}} the inside of an OVER clause is handled by a Window object. {{3}} a Window object provides methods for it to be partitioned {{4}} and ordered. Some people prefer the SQL version, other people prefer the dot notation.
+Here’s the same result using dot notation. There is typically a dot notation equivalent of every sql clause including window functions. {{1}} the row_number sql clause has an equivalent dot notation sql function. ... {{2}} the inside of an OVER clause is handled by a Window object. ... {{3}} a Window object provides methods for it to be partitioned {{4}} ... and ordered. ... Some people prefer the SQL version, other people prefer the dot notation. 
+
+(4:21)
 
 
 ---
-## Final Slide
+## Let's practice
 
 ```yaml
 type: "FinalSlide"
@@ -283,5 +282,7 @@ key: "57db0d72de"
 ```
 
 `@script`
+Let's try out what we've just learned. 
 
+(4:21)
 

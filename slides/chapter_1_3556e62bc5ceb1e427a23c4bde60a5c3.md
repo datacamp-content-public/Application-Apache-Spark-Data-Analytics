@@ -202,6 +202,52 @@ Most Spark sql queries can be done in dot notation or sql notation.  Here’s an
 
 
 ---
+## Window function SQL using dot notation
+
+```yaml
+type: "FullCodeSlide"
+key: "89001687d4"
+```
+
+`@part1`
+```
+query = 
+"""
+select *, 
+row_number() over(partition by train_id order by time) as id 
+from df'
+"""
+
+spark.sql(query)
+     .show()
+```
+
+
+`@script`
+Same goes for window functions.   This query adds a number to each stop on a train line.
+
+
+---
+## Insert title here...
+
+```yaml
+type: "FullSlide"
+key: "7aec9a66f7"
+```
+
+`@part1`
+```
+spark.sql('select *, 
+           row_number() over(partition by train_id order by time) as id from df')
+     .show()
+```
+
+
+`@script`
+
+
+
+---
 ## Final Slide
 
 ```yaml

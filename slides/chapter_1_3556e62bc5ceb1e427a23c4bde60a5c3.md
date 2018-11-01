@@ -111,6 +111,23 @@ You can also import this function {{2}}, which allows you to do this {{3}}.  Thi
 
 
 ---
+## Don’t do this!
+
+```yaml
+type: "FullSlide"
+key: "99484fa722"
+center_content: true
+```
+
+`@part1`
+df.select('**train_id**',  **df.**station,  **col**('time'))**
+
+
+`@script`
+Try not to use all three conventions at the same time.
+
+
+---
 ## 2 ways to rename a column
 
 ```yaml

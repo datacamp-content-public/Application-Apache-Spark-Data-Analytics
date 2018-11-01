@@ -211,20 +211,36 @@ key: "89001687d4"
 
 `@part1`
 ```
-query = 
-"""
+query = """
 select *, 
 row_number() over(partition by train_id order by time) as id 
-from df'
+from df
 """
+```
 
+```
 spark.sql(query)
-     .show()
+     .show(11)
++--------+-------------+-----+---+
+|train_id|      station| time| id|
++--------+-------------+-----+---+
+|     217|       Gilroy|6:06a|  1|
+|     217|   San Martin|6:15a|  2|
+|     217|  Morgan Hill|6:21a|  3|
+|     217| Blossom Hill|6:36a|  4|
+|     217|      Capitol|6:42a|  5|
+|     217|       Tamien|6:50a|  6|
+|     217|     San Jose|6:59a|  7|
+|     324|San Francisco|7:59a|  1|
+|     324|  22nd Street|8:03a|  2|
+|     324|     Millbrae|8:16a|  3|
+|     324|    Hillsdale|8:24a|  4|
++--------+-------------+-----+---+
 ```
 
 
 `@script`
-Same goes for window functions.   This query adds a number to each stop on a train line.
+Same goes for window functions.   This query adds a number to each stop on a train line in a new column called id. Note how the id column starts over for train_id 324.
 
 
 ---

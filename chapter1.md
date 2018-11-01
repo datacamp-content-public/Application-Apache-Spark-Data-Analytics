@@ -290,7 +290,7 @@ assert station=='San Jose', "Wrong value for station"
 
 ---
 
-## Lesson 1.4 : Window function SQL
+## Lesson 1.2 : Window function SQL
 
 ```yaml
 type: VideoExercise
@@ -569,3 +569,16 @@ spark.sql(query2).show()
 ```{python}
 
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: VideoExercise
+key: da6ad01721
+xp: 50
+```
+
+`@projector_key`
+3556e62bc5ceb1e427a23c4bde60a5c3

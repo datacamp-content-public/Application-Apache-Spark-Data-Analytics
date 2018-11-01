@@ -264,6 +264,11 @@ df.withColumn("id", row_number()
   .show()
 ```
 
+- ROW_NUMBER in SQL :  pyspark.sql.functions.row_number 
+- The inside of the OVER clause : pyspark.sql.Window
+- PARTITION BY : partitionBy
+- ORDER BY : orderBy
+
 
 `@script`
 

@@ -111,23 +111,6 @@ You can also import this function {{2}}, which allows you to do this {{3}}.  Thi
 
 
 ---
-## Don’t do this!
-
-```yaml
-type: "FullSlide"
-key: "99484fa722"
-center_content: true
-```
-
-`@part1`
-df.select('**train_id**',  **df.**station,  **col**('time'))**
-
-
-`@script`
-Try not to use all three conventions at the same time.
-
-
----
 ## 2 ways to rename a column
 
 ```yaml
@@ -161,6 +144,61 @@ df.select(col('train_id').alias('train'), 'station')
 
 `@script`
 For example, to rename a column you can use the withColumnRenamed function.  But you could also use the col operator, like so {{1}}.  This is often handy.
+
+
+---
+## Don’t do this!
+
+```yaml
+type: "FullSlide"
+key: "99484fa722"
+center_content: true
+```
+
+`@part1`
+df.select('**train_id**',  **df.**station,  **col**('time'))**
+
+
+`@script`
+Try not to use all three conventions at the same time.
+
+
+---
+## SQL queries using dot notation
+
+```yaml
+type: "FullCodeSlide"
+key: "605f38f64b"
+```
+
+`@part1`
+```
+spark.sql('select train_id as train, station from df limit 5')
+     .show()
+```
+
+```
++-----+-------------+
+|train|      station|
++-----+-------------+
+|  324|San Francisco|
+|  324|  22nd Street|
+|  324|     Millbrae|
+|  324|    Hillsdale|
+|  324| Redwood City|
++-----+-------------+
+```
+
+```
+df.select(col('train_id').alias('train'), 'station')
+  .limit(5)
+  .show()
+```
+{{1}}
+
+
+`@script`
+Most Spark sql queries can be done in dot notation or sql notation.  Here’s an example.  Notice that the limit operation is done at query time instead of at show time.  We can do this exact same query using dot notation, like so {{1}}, giving the same result. Note how we used the col operator to select the train_id column, so that we could rename it in place.
 
 
 ---

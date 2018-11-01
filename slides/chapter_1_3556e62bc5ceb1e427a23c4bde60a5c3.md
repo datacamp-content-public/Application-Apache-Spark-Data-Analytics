@@ -202,7 +202,7 @@ Most Spark sql queries can be done in dot notation or sql notation.  Here’s an
 
 
 ---
-## Window function SQL using dot notation
+## Window function SQL
 
 ```yaml
 type: "FullCodeSlide"
@@ -244,7 +244,7 @@ Same goes for window functions.   This query adds a number to each stop on a tra
 
 
 ---
-## Insert title here...
+## Window function using dot notation
 
 ```yaml
 type: "FullSlide"

@@ -111,6 +111,42 @@ You can also import this function {{2}}, which allows you to do this {{3}}.  Thi
 
 
 ---
+## Insert title here...
+
+```yaml
+type: "FullCodeSlide"
+key: "7a4f94ad95"
+```
+
+`@part1`
+```
+df.select('train_id','station')
+  .withColumnRenamed('train_id','train')
+  .show(5)
+```
+
+```
++-----+-------------+
+|train|      station|
++-----+-------------+
+|  324|San Francisco|
+|  324|  22nd Street|
+|  324|     Millbrae|
+|  324|    Hillsdale|
+|  324| Redwood City|
++-----+-------------+
+```
+
+```
+df.select(col('train_id').alias('train'), 'station')
+```
+
+
+`@script`
+For example, to rename a column you can use the withColumnRenamed function.  But you could also use the col operator, like so {{1}}.  This is often handy.
+
+
+---
 ## Final Slide
 
 ```yaml

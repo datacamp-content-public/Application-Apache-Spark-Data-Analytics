@@ -21,7 +21,7 @@ Hello and welcome to this lesson about Spark SQL. In this lesson you will see ho
 
 
 ---
-## Insert title here...
+## Our table has 3 columns
 
 ```yaml
 type: "FullCodeSlide"
@@ -59,7 +59,7 @@ For example, suppose you have a dataframe containing three columns. and you want
 
 
 ---
-
+## We only need 2
 
 ```yaml
 type: "FullCodeSlide"
@@ -88,7 +88,7 @@ You could do this.
 
 
 ---
-## Select two columns
+## 3 ways to select 2 columns
 
 ```yaml
 type: "FullCodeSlide"
@@ -111,7 +111,7 @@ You can also import this function {{2}}, which allows you to do this {{3}}.  Thi
 
 
 ---
-## Insert title here...
+## 2 ways to rename a column
 
 ```yaml
 type: "FullCodeSlide"

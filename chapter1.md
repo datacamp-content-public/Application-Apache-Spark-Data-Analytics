@@ -572,7 +572,7 @@ spark.sql(query2).show()
 
 ---
 
-## Insert exercise title here
+## Lesson 1.3: Dot notation and SQL
 
 ```yaml
 type: VideoExercise

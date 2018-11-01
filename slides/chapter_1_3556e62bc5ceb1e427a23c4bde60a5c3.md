@@ -59,6 +59,35 @@ For example, suppose you have a dataframe containing three columns. and you want
 
 
 ---
+
+
+```yaml
+type: "FullCodeSlide"
+key: "2e5dd9344c"
+```
+
+`@part1`
+```
+df.select('train_id','station')
+  .show(5)
+
++--------+-------------+
+|train_id|      station|
++--------+-------------+
+|     324|San Francisco|
+|     324|  22nd Street|
+|     324|     Millbrae|
+|     324|    Hillsdale|
+|     324| Redwood City|
++--------+-------------+
+```
+
+
+`@script`
+You could do this.
+
+
+---
 ## Final Slide
 
 ```yaml

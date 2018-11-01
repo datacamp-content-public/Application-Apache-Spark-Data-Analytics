@@ -264,14 +264,14 @@ df.withColumn("id", row_number()
   .show()
 ```
 
-- ROW_NUMBER in SQL :  pyspark.sql.functions.row_number 
-- The inside of the OVER clause : pyspark.sql.Window
-- PARTITION BY : partitionBy
-- ORDER BY : orderBy
+- ROW_NUMBER in SQL :  pyspark.sql.functions.row_number {{1}} 
+- The inside of the OVER clause : pyspark.sql.Window {{2}}
+- PARTITION BY : partitionBy {{3}}
+- ORDER BY : orderBy {{4}}
 
 
 `@script`
-
+Here’s the same result using dot notation. There is typically a dot notation equivalent of every sql clause including window functions. {{1}} the row_number sql clause has an equivalent dot notation sql function. {{2}} the inside of an OVER clause is handled by a Window object. {{3}} a Window object provides methods for it to be partitioned {{4}} and ordered. Some people prefer the SQL version, other people prefer the dot notation.
 
 
 ---

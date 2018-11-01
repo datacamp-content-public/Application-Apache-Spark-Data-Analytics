@@ -303,7 +303,7 @@ xp: 50
 
 ---
 
-## Calculating the difference between values in adjacent rows.
+## Exercise: Calculating the difference between values in adjacent rows.
 
 ```yaml
 type: TabExercise
@@ -503,7 +503,7 @@ spark.sql(query).show()
 
 ---
 
-## Running sums using window function SQL
+## Exercise: Running sums using window function SQL
 
 ```yaml
 type: NormalExercise
@@ -582,3 +582,79 @@ xp: 50
 
 `@projector_key`
 3556e62bc5ceb1e427a23c4bde60a5c3
+
+---
+
+## Exercise: Window function vs self-join
+
+```yaml
+type: NormalExercise
+key: 922680539e
+xp: 100
+```
+
+
+
+`@instructions`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+
+```
+
+---
+
+## Exercise: Window function 
+
+```yaml
+type: NormalExercise
+key: 997f170d37
+xp: 100
+```
+
+
+
+`@instructions`
+
+
+`@hint`
+
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+
+```

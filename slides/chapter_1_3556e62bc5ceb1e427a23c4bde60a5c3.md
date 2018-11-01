@@ -88,6 +88,29 @@ You could do this.
 
 
 ---
+## Select two columns
+
+```yaml
+type: "FullCodeSlide"
+key: "f7546cbde8"
+```
+
+`@part1`
+- df.select('**train_id**','station')
+- df.select(**df.train_id**,df.station) {{1}}
+- from pyspark.sql.functions import **col** {{2}} 
+- df.select(**col**('train_id'), col('station')) {{3}}
+
+
+`@script`
+See that the column ‘train_id’ is a string given in quotes. 
+
+You can also do this {{1}}, using dot notation.  This time the column is given in dot notation, as df.train_id.
+
+You can also import this function {{2}}, which allows you to do this {{3}}.  This time, the name of the column is given as an argument to this new operator called col. Seems may seem more verbose in this case -- however, it is useful in other cases.
+
+
+---
 ## Final Slide
 
 ```yaml

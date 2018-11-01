@@ -253,9 +253,15 @@ key: "7aec9a66f7"
 
 `@part1`
 ```
-spark.sql('select *, 
-           row_number() over(partition by train_id order by time) as id from df')
-     .show()
+from pyspark.sql import Window, 
+from pyspark.sql.functions import row_number
+df.withColumn("id", row_number()
+                    .over(
+                           Window.partitionBy('train_id')
+                                 .orderBy('time')
+                         )
+  )
+  .show()
 ```
 
 

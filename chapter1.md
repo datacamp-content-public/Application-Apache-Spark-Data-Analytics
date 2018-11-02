@@ -623,7 +623,7 @@ xp: 100
 
 ---
 
-## Exercise: Window function 
+## Exercise: Window function
 
 ```yaml
 type: NormalExercise

@@ -663,7 +663,7 @@ Whether to use dot notation or SQL is a personal preference. However, there are 
 ```yaml
 type: NormalExercise
 key: e9cea6300a
-xp: 50
+xp: 35
 ```
 
 `@instructions`
@@ -698,7 +698,7 @@ df.groupBy('train_id').agg({'time':'min'}).show()
 ```yaml
 type: NormalExercise
 key: 2706f1ee63
-xp: 50
+xp: 35
 ```
 
 `@instructions`
@@ -725,6 +725,47 @@ spark.sql('select train_id, min(time) as start from df group by train_id').show(
 
 df.groupBy('train_id').agg({'time':'min'}).withColumnRenamed('min(time)','start').show()
 
+```
+
+`@sct`
+```{python}
+
+```
+
+***
+
+```yaml
+type: NormalExercise
+key: 4404476665
+xp: 30
+```
+
+`@instructions`
+Aggregating twice on the same column this way doesn’t work as expected. What is the 2nd column name?
+
+`@hint`
+Try the following in the shell: df.groupBy('train_id').agg({'time':'min','time':'max'}).columns
+
+`@sample_code`
+```{python}
+spark.sql('select train_id, min(time), max(time) from df group by train_id').show()
+
+# The following result is different from the one shown above. 
+# Fill in the blank with the value of col2_name. 
+col2 = df.groupBy('train_id').agg({'time':'min','time':'max'}).columns[1]
+my_answer = '____'
+assert my_answer==col2
+```
+
+`@solution`
+```{python}
+spark.sql('select train_id, min(time), max(time) from df group by train_id').show()
+
+# The following result is different from the one shown above. 
+# Fill in the blank with the value of col2_name. 
+col2 = df.groupBy('train_id').agg({'time':'min','time':'max'}).columns[1]
+my_answer = 'max(time)'
+assert my_answer==col2
 ```
 
 `@sct`

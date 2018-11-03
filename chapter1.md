@@ -582,3 +582,61 @@ xp: 50
 
 `@projector_key`
 3556e62bc5ceb1e427a23c4bde60a5c3
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: cfd2ee5ba4
+xp: 100
+```
+
+The following line of code uses sql to set the value of a dataframe called df1.
+df1 = spark.sql("select *, lead(time,1) over(partition by train_id order by time) as time_next from df")
+
+Here are the first 8 rows of df1:
+
+```
++--------+-------------+-----+---------+
+|train_id|      station| time|time_next|
++--------+-------------+-----+---------+
+|     217|       Gilroy|6:06a|    6:15a|
+|     217|   San Martin|6:15a|    6:21a|
+|     217|  Morgan Hill|6:21a|    6:36a|
+|     217| Blossom Hill|6:36a|    6:42a|
+|     217|      Capitol|6:42a|    6:50a|
+|     217|       Tamien|6:50a|    6:59a|
+|     217|     San Jose|6:59a|     null|
+|     324|San Francisco|7:59a|    8:03a|
++--------+-------------+-----+---------+
+```
+
+
+`@instructions`
+Create a dataframe called df2 that contains the identical result as df1, using dot notation instead of sql.
+
+`@hint`
+The LEAD clause has an equivalent function in pyspark.sql.functions. The PARTITION BY, and ORDER BY clauses each have an equivalent dot notation function that is called on the Window object.
+
+`@pre_exercise_code`
+```{python}
+from pyspark.sql import Window 
+from pyspark.sql.functions import lead  
+```
+
+`@sample_code`
+```{python}
+df2 = df.withColumn('time_next', ____('time',1).over(Window.____('train_id').____('time')))
+```
+
+`@solution`
+```{python}
+df2 = df.withColumn('time_next', lead('time',1).over(Window.partitionBy('train_id').orderBy('time')))
+```
+
+`@sct`
+```{python}
+
+```

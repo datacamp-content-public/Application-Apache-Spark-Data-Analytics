@@ -670,13 +670,13 @@ xp: 100
 Fill in the blanks to get the second command to display the identical result to the first command.
 
 `@hint`
-
+groupBy('train_id').  The agg operator wants the know what aggregation operator ('min') to apply, and to which column ('time').
 
 `@sample_code`
 ```{python}
 spark.sql('select train_id, min(time) from df group by train_id').show()
 
-df.groupBy('train_id').agg({'time':'min'}).show()
+df.groupBy('____').agg({'____':'____'}).show()
 
 ```
 

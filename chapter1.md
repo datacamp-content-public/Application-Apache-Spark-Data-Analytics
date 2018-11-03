@@ -663,7 +663,7 @@ Whether to use dot notation or SQL is a personal preference. However, there are 
 ```yaml
 type: NormalExercise
 key: e9cea6300a
-xp: 35
+xp: 25
 ```
 
 `@instructions`
@@ -698,7 +698,7 @@ df.groupBy('train_id').agg({'time':'min'}).show()
 ```yaml
 type: NormalExercise
 key: 2706f1ee63
-xp: 35
+xp: 25
 ```
 
 `@instructions`
@@ -737,7 +737,7 @@ df.groupBy('train_id').agg({'time':'min'}).withColumnRenamed('min(time)','start'
 ```yaml
 type: NormalExercise
 key: 4404476665
-xp: 30
+xp: 25
 ```
 
 `@instructions`
@@ -766,6 +766,55 @@ spark.sql('select train_id, min(time), max(time) from df group by train_id').sho
 col2 = df.groupBy('train_id').agg({'time':'min','time':'max'}).columns[1]
 my_answer = 'max(time)'
 assert my_answer==col2
+```
+
+`@sct`
+```{python}
+
+```
+
+***
+
+```yaml
+type: NormalExercise
+key: 78b05cc617
+xp: 25
+```
+
+`@instructions`
+Write a sql query that gives an identical result to the dot notation query.
+
+`@hint`
+select train_id, min(____) as ____, min(____) as ____ from df group by train_id
+
+`@sample_code`
+```{python}
+# This is the dot notation query
+from pyspark.sql.functions import min, max, col
+expr = [min(col("time")).alias('start'),max(col("time")).alias('end')]
+result1 = df.groupBy("train_id").agg(*expr)
+
+# Write a sql query giving result2 identical to result1
+query = "____"
+result2 = spark.sql(query)
+assert result1.columns==result2.columns
+assert result1.collect()==result2.collect()
+
+```
+
+`@solution`
+```{python}
+# This is the dot notation query
+from pyspark.sql.functions import min, max, col
+expr = [min(col("time")).alias('start'),max(col("time")).alias('end')]
+result1 = df.groupBy("train_id").agg(*expr)
+
+# Write a sql query giving result2 identical to result1
+query = "select train_id, min(time) as start, max(time) as end from df group by train_id"
+result2 = spark.sql(query)
+assert result1.columns==result2.columns
+assert result1.collect()==result2.collect()
+
 ```
 
 `@sct`

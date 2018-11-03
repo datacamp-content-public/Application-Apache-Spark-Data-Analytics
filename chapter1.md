@@ -663,7 +663,7 @@ Whether to use dot notation or SQL is a personal preference. However, there are 
 ```yaml
 type: NormalExercise
 key: e9cea6300a
-xp: 100
+xp: 50
 ```
 
 `@instructions`
@@ -685,6 +685,45 @@ df.groupBy('____').agg({'____':'____'}).show()
 spark.sql('select train_id, min(time) from df group by train_id').show()
 
 df.groupBy('train_id').agg({'time':'min'}).show()
+
+```
+
+`@sct`
+```{python}
+
+```
+
+***
+
+```yaml
+type: NormalExercise
+key: 2706f1ee63
+xp: 50
+```
+
+`@instructions`
+Fill in the blanks to obtain an identical result, this time renaming the aggregate column.
+
+`@hint`
+The second blank is the desired column name.  The first blank is the column name that was assigned by default to the aggregation column.  If you forgot, try doing the following in the shell: df.groupBy('train_id').agg({'time':'min'}).show()
+
+`@sample_code`
+```{python}
+# Fill in the blanks to achieve the identical result for both commands.
+
+spark.sql('select train_id, min(time) as start from df group by train_id').show()
+
+df.groupBy('train_id').agg({'time':'min'}).withColumnRenamed('____','____').show()
+
+```
+
+`@solution`
+```{python}
+# Fill in the blanks to achieve the identical result for both commands.
+
+spark.sql('select train_id, min(time) as start from df group by train_id').show()
+
+df.groupBy('train_id').agg({'time':'min'}).withColumnRenamed('min(time)','start').show()
 
 ```
 

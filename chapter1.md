@@ -657,3 +657,38 @@ Whether to use dot notation or SQL is a personal preference.  However, there are
 ```{python}
 
 ```
+
+***
+
+```yaml
+type: NormalExercise
+key: e9cea6300a
+xp: 100
+```
+
+`@instructions`
+Fill in the blanks to get the second command to display the identical result to the first command.
+
+`@hint`
+
+
+`@sample_code`
+```{python}
+spark.sql('select train_id, min(time) from df group by train_id').show()
+
+df.groupBy('train_id').agg({'time':'min'}).show()
+
+```
+
+`@solution`
+```{python}
+spark.sql('select train_id, min(time) from df group by train_id').show()
+
+df.groupBy('train_id').agg({'time':'min'}).show()
+
+```
+
+`@sct`
+```{python}
+
+```

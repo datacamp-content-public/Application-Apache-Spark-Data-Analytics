@@ -327,7 +327,7 @@ from df
 
 
 `@script`
-Previously we saw how to get a value from the next row and include it on the current row using a window function.  Could we do this with regular sql? ... The answer is, Yes, although it is a longer query. {{1}}  This query joins the table with itself using an inequality join.  Then, because we only want the very next value, we used the trick of using a GROUP BY, and then getting the MIN of the time column.  In this case, we can use that approach, because the time column is sorted.  What would we have done if the desired column were not sorted?  I leave that as an exercise for the interested learner : redo this without using an aggregation. ... Imagine if you wanted to get more than just the next value, say if instead, you wanted to work with the next 5 rows, how would you do that using JOINs?  … Compare this with using the window function version {{2}}.  I find that this version is easier to understand. On realistic datasets it would also tend to run faster.
+Previously we saw how to include the time from the next row on the current row using a window function.  Could we do this with regular sql? ... The answer is Yes. But it is a longer query. {{1}}  This query joins the table with itself using an inequality join.  Then, because we only want the very next value, we used the trick of using a GROUP BY, and then getting the MIN of the time column.  We can use that approach here because the time column is sorted.  What if the desired column were not sorted? ... Compare this with using the window function version {{2}}.  I find that this version is easier to understand. On realistic datasets it would also tend to run faster.
 
 
 ---

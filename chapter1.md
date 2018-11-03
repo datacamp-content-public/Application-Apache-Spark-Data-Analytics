@@ -640,3 +640,20 @@ df2 = df.withColumn('time_next', lead('time',1).over(Window.partitionBy('train_i
 ```{python}
 
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: BulletExercise
+key: 1cf40a2c86
+xp: 100
+```
+
+Whether to use dot notation or SQL is a personal preference.  However, there are cases where dot notation becomes cumbersome whereas SQL is arguably easier to understand. The following exercises calculate the departure time for the first train for each train line. 
+
+`@pre_exercise_code`
+```{python}
+
+```

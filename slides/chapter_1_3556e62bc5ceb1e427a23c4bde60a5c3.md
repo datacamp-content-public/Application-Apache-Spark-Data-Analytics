@@ -17,7 +17,7 @@ title: Algorithmic Econometrician
 
 
 `@script`
-Hello and welcome to this lesson about Spark SQL. In this lesson you will see how you can perform SQL operations using either SQL queries or using standard dataframe dot notation.
+Hello and welcome to this lesson about Spark SQL. You will learn how to query using either SQL queries or using dataframe dot notation.
 
 
 ---
@@ -55,7 +55,7 @@ DataFrame[train_id: string, station: string, time: string]
 
 
 `@script`
-For example, suppose you have a dataframe containing three columns. and you want to select two columns...
+For example, suppose you have a dataframe containing three columns. and you want to select only two columns...
 
 
 ---
@@ -103,7 +103,7 @@ key: "f7546cbde8"
 
 
 `@script`
-Here's the way we selected the first two columns in the previous slide. See that the column ‘train_id’ is a string given in quotes. ... You can also do this {{1}}, using dot notation.  This time the column is given as df.train_id. ...  You can also import this function {{2}}, which allows you to do the following {{3}}.  This time, the name of the column is given as an argument to this new operator called col. Seems that it may seem more verbose in this case -- however, it is useful in other cases. One of which I'll show you now.
+Here's how we did that. See that the column ‘train_id’ is a string given in quotes. ... You can also do the following {{1}}, using dot notation.  This time the column is given as df.train_id. ...  You can also import this function {{2}}, which allows you to do the following {{3}}.  This time, the name of the column is given as an argument to this new operator. It may seem more verbose in this case. However, it is useful in other cases. Such as in the following. ...
 
 
 ---
@@ -140,7 +140,7 @@ df.select(col('train_id').alias('train'), 'station')
 
 
 `@script`
-For example, to rename a column you can use the withColumnRenamed function.  But you could also use the col operator, like so {{1}}.  This is often handy in other cases.
+To rename a column you can use the withColumnRenamed function.  But you could also use the column operator, like so {{1}}.
 
 
 ---
@@ -157,7 +157,7 @@ df.select('**train_id**',  **df.**station,  **col**('time'))**
 
 
 `@script`
-Just Try not to use all three conventions at the same time.
+Pro tip: try not to use all three conventions at the same time without good reason.
 
 
 ---
@@ -195,7 +195,7 @@ df.select(col('train_id').alias('train'), 'station')
 
 
 `@script`
-Most Spark sql queries can be done in dot notation or sql notation.  Here’s an example.  Notice that the limit operation is done at query time instead of at show time.  We can do this exact same query using dot notation, like so {{1}}, giving the same result. Note how we used the col operator to select the train_id column, so that we could rename it in place.
+Most Spark sql queries can be done in either dot notation or sql notation.  Here’s an example.  Notice that the limit operation is done at query time instead of at show time. ... We can get the same result using dot notation, like so {{1}}. Note how we used the column operator to select the train_id column, and renamed it in place.
 
 
 ---
@@ -237,7 +237,7 @@ spark.sql(query)
 
 
 `@script`
-Same goes for window functions.   This query adds a number to each stop on a train line ... in a new column called id. Note how the id column starts over for train_id 324.
+Window functions can also be done in either sql or dot notation.  This query adds a number to each stop on a train line ... in a new column called id. Note how the id column starts over for train_id 324.
 
 
 ---
@@ -271,6 +271,63 @@ df.withColumn("id", row_number()
 Here’s the same result using dot notation. There is typically a dot notation equivalent of every sql clause including window functions. {{1}} the row_number sql clause has an equivalent dot notation sql function. ... {{2}} the inside of an OVER clause is handled by a Window object. ... {{3}} a Window object provides methods for it to be partitioned {{4}} ... and ordered. ... Some people prefer the SQL version, other people prefer the dot notation. 
 
 (4:21)
+
+
+---
+## Window versus self-join
+
+```yaml
+type: "TwoColumns"
+key: "ca56ea28e5"
+```
+
+`@part1`
+Getting time of next stop 
+
+```
++--------+-------------+-----+-----+
+|train_id|      station| time| next|
++--------+-------------+-----+-----+
+|     217|       Gilroy|6:06a|6:15a|
+|     217|   San Martin|6:15a|6:21a|
+|     217|  Morgan Hill|6:21a|6:36a|
+|     217| Blossom Hill|6:36a|6:42a|
+|     217|      Capitol|6:42a|6:50a|
+|     217|       Tamien|6:50a|6:59a|
+|     217|     San Jose|6:59a| null|
+|     324|San Francisco|7:59a|8:03a|
+|     324|  22nd Street|8:03a|8:16a|
+|     324|     Millbrae|8:16a|8:24a|
+|     324|    Hillsdale|8:24a|8:31a|
+|     324| Redwood City|8:31a|8:37a|
+|     324|    Palo Alto|8:37a|9:05a|
+|     324|     San Jose|9:05a| null|
++--------+-------------+-----+-----+
+```
+
+
+`@part2`
+Using self-join:
+```
+select a.*, min(b.time) as next 
+from df as a join df as b 
+on a.train_id=b.train_id 
+   and a.time < b.time 
+group by a.train_id, a.station, a.time 
+order by train_id, time
+```
+
+Window function equivalent:
+```
+select *, lead(time,1) 
+  over (partition by train_id 
+        order by time) as next 
+from df
+```
+
+
+`@script`
+Previously we saw how to get a value from the next row and include it on the current row using a window function.  Could we do this with regular sql? ... The answer is, Yes, although it is a longer query. {{1}}  This query joins the table with itself using an inequality join.  Then, because we only want the very next value, we used the trick of using a GROUP BY, and then getting the MIN of the time column.  In this case, we can use that approach, because the time column is sorted.  What would we have done if the desired column were not sorted?  I leave that as an exercise for the interested learner : redo this without using an aggregation. ... Imagine if you wanted to get more than just the next value, say if instead, you wanted to work with the next 5 rows, how would you do that using JOINs?  … Compare this with using the window function version {{2}}.  I find that this version is easier to understand. On realistic datasets it would also tend to run faster.
 
 
 ---

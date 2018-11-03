@@ -585,7 +585,7 @@ xp: 50
 
 ---
 
-## Insert exercise title here
+## Iterations on Aggregation
 
 ```yaml
 type: NormalExercise

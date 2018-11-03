@@ -821,3 +821,75 @@ assert result1.collect()==result2.collect()
 ```{python}
 
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: bd150714e6
+xp: 100
+```
+
+
+
+`@instructions`
+
+
+`@hint`
+The remaining blanks are Window function clauses we covered in the lesson. 
+query = "select *, (unix_timestamp(____(time,1) over (____ by train_id ____ by time),'H:m') - unix_timestamp(time,'H:m'))/60 as diff_min from df"
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+# Here is the query using dot notation. 
+df1 = df.withColumn('diff_min', 
+                    (unix_timestamp(lead('time',1).over(Window.partitionBy('train_id').orderBy('time')),'H:m') 
+                     - unix_timestamp('time','H:m'))/60)
+
+# Fill in the blanks of this sql query to obtain an identical result to the above. 
+query = """
+select *, (unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') - unix_timestamp(time,'H:m'))/60 as diff_min from df 
+"""
+
+# df2 should contain data that is identical to df1
+df2 = spark.sql(query)
+
+assert df1.columns==df2.columns
+assert df1.first()==df2.first()
+assert df1.collect()==df2.collect()
+
+
+```
+
+`@solution`
+```{python}
+# Here is the query using dot notation. 
+df1 = df.withColumn('diff_min', 
+                    (unix_timestamp(lead('time',1).over(Window.partitionBy('train_id').orderBy('time')),'H:m') 
+                     - unix_timestamp('time','H:m'))/60)
+
+# Fill in the blanks of this sql query to obtain an identical result to the above. 
+query = """
+select *, (unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') - unix_timestamp(time,'H:m'))/60 as diff_min from df 
+"""
+
+# df2 should contain data that is identical to df1
+df2 = spark.sql(query)
+
+assert df1.columns==df2.columns
+assert df1.first()==df2.first()
+assert df1.collect()==df2.collect()
+
+```
+
+`@sct`
+```{python}
+
+```

@@ -13,9 +13,10 @@ xp: 100
 
 The lesson demonstrated how caching helps (or not) when a second dataframe depends on another dataframe. This exercise practices caching two dataframes, one of which depends on the other. 
 
-A dataframe `df1` is loaded from a csv file. Several processing steps are performed on this dataframe. `df1` has 1,352,686 rows. On a typical default Spark installation, this dataframe is recalculated every time. If `df1` is to be used repeatedly it is a candidate for caching. 
+A dataframe `df1` is loaded from a csv file. Several processing steps are performed on this dataframe. `df1` has 606,568 rows. If `df1` is to be used repeatedly then it is a candidate for caching. 
 
-A second dataframe `df2` is created by copying `df1`, then performing two additional compute-intensive steps. It has 1,105,177 rows.  It is also a candidate for caching.  However, because `df2` depends on `df1` the question arises: should we cache `df1`, or cache `df2`, or cache both?  Keep in mind that caching incurs a cost. 
+A second dataframe `df2` is created by copying `df1`, then performing two additional compute-intensive steps. It has 499,691 rows.  It is also a candidate for caching.  However, because `df2` depends on `df1` the question arises: should we cache `df1`, or cache `df2`, or cache both?  Keep in mind that caching incurs a cost. Caching costs run time as well as memory. 
+
 
 `@instructions`
 Four operations are performed.  Each one is timed. These four operations are captioned:
@@ -25,12 +26,12 @@ Four operations are performed.  Each one is timed. These four operations are cap
 3. df2_1st
 4. df2_2nd
 
-There are two cache statements that initially commented out. These are called "Caching df1" and "Caching df2". 
+There are two cache statements. Initially the second one is commented out. These statements are called "Caching df1" and "Caching df2". 
 
 Below the four timed operations are True or False questions.  Set the corresponding variable below the question if you believe the answer is True.  Otherwise set it to False.
 
 `@hint`
-
+Try enabling or disabling the commented out caching statements and running (without submitting). Try all four combinations.
 
 `@pre_exercise_code`
 ```{python}
@@ -57,7 +58,7 @@ df2 = df1.select(lower(col('word')).alias('word'))\
 
 `@sample_code`
 ```{python}
-#df1.cache() # Caching df1
+df1.cache() # Caching df1
 #df2.cache() # Caching df2
 
 begin=time.time() 
@@ -87,24 +88,25 @@ print("Overall elapsed : %.1f" % (time.time() - begin))
 ######   ANSWER SECTION   #####
 
 # True or False?
-# Caching df1 reduces df1_1st
+# Caching df1 and not Caching df2 substantially reduces df1_1st
 a1 = ____
 
-# Caching df1 reduces df2_1st
+# Caching df1 and not Caching df2 substantially reduces df2_1st
 a2 = ____
 
-# Caching df2 and not Caching df1 reduces df2_1st
+# Not Caching df1 and Caching df2 substantially reduces df2_1st
 a3 = ____
 
 # Caching both df1 and df2 gives the best overall run time. 
 a4 = ____
+
 
 ```
 
 `@solution`
 ```{python}
 df1.cache() # Caching df1
-df2.cache() # Caching df2
+#df2.cache() # Caching df2
 
 begin=time.time() 
 start=time.time() 
@@ -133,13 +135,13 @@ print("Overall elapsed : %.1f" % (time.time() - begin))
 ######   ANSWER SECTION   #####
 
 # True or False?
-# Caching df1 and not Caching df2 reduces df1_1st
+# Caching df1 and not Caching df2 substantially reduces df1_1st
 a1 = False
 
-# Caching df1 and not Caching df2 reduces df2_1st
+# Caching df1 and not Caching df2 substantially reduces df2_1st
 a2 = True
 
-# Not Caching df1 and Caching df2 reduces df2_1st
+# Not Caching df1 and Caching df2 substantially reduces df2_1st
 a3 = False
 
 # Caching both df1 and df2 gives the best overall run time. 

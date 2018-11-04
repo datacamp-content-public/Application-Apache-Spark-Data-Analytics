@@ -38,6 +38,7 @@ import time
 from pyspark.sql.functions import split, explode, col, desc, lower, length, monotonically_increasing_id, regexp_replace, collect_list, concat_ws,trim 
 punctuation = "_|.\?\!\",\'()"
 df1 = spark.read.text('sherlock.txt') \
+    .limit(50000)\
     .select(regexp_replace('value', 'Mr\.', 'Mr').alias('v'))\
     .select(regexp_replace('v', 'Mrs\.', 'Mrs').alias('v'))\
     .select(regexp_replace('v', 'Dr\.', 'Dr').alias('v'))\
@@ -56,8 +57,8 @@ df2 = df1.select(lower(col('word')).alias('word'))\
 
 `@sample_code`
 ```{python}
-df1.cache() # Caching df1
-df2.cache() # Caching df2
+#df1.cache() # Caching df1
+#df2.cache() # Caching df2
 
 begin=time.time() 
 start=time.time() 
@@ -87,16 +88,16 @@ print("Overall elapsed : %.1f" % (time.time() - begin))
 
 # True or False?
 # Caching df1 reduces df1_1st
-a1 = False
+a1 = ____
 
 # Caching df1 reduces df2_1st
-a2 = True
+a2 = ____
 
 # Caching df2 and not Caching df1 reduces df2_1st
-a3 = False
+a3 = ____
 
 # Caching both df1 and df2 gives the best overall run time. 
-a4 = False
+a4 = ____
 
 ```
 
@@ -132,18 +133,17 @@ print("Overall elapsed : %.1f" % (time.time() - begin))
 ######   ANSWER SECTION   #####
 
 # True or False?
-# Caching df1 reduces df1_1st
+# Caching df1 and not Caching df2 reduces df1_1st
 a1 = False
 
-# Caching df1 reduces df2_1st
+# Caching df1 and not Caching df2 reduces df2_1st
 a2 = True
 
-# Caching df2 and not Caching df1 reduces df2_1st
+# Not Caching df1 and Caching df2 reduces df2_1st
 a3 = False
 
 # Caching both df1 and df2 gives the best overall run time. 
 a4 = False
-
 
 ```
 

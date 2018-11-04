@@ -3,7 +3,7 @@ title: 'Using window function sql for natural language processing'
 description: ""
 ---
 
-## Capstone: 
+## (Capstone) Most common word sequences
 
 ```yaml
 type: NormalExercise
@@ -14,24 +14,13 @@ xp: 100
 Previously we saw how to create a query that finds word sequences of length three ("3-tuples").
 We used that query as a subquery in a traditional sql query 
 to find the most common 3-tuples in the text document. 
-Now you'll perform the similar task to find the most common 4-tuples. 
-The following sql query finds all sequences of length four: 
+Now you'll perform the similar task to find the most common 5-tuples. 
 
-```
-sql_4tuples = """
-select
-word as w1,
-lead(word,1) over(order by id) as w2,
-lead(word,2) over(order by id) as w3,
-lead(word,3) over(order by id) as w4
-from df
-"""
-```
-There is a dataframe called `df` having two columns: `word` and `id`. The id column is a integer such that a word that comes later in the document has a larger id. The dataframe `df` is also registered as temporary table called `df`.  
- 
+Dataframe `df` has columns: `word`, `id`, `part`, `title`. The `id` column is a integer such that a word that comes later in the document has a larger id than a word that comes before it. The `part` column separates the data into chapters. The dataframe `df` is also registered as temporary table called `df`.
+
 
 `@instructions`
-Create a query that finds the **15** most common 4-tuples in the dataset. 
+Create a query that finds the **10** most common 5-tuples in the dataset. 
 Have it use sql_4tuples as a subquery. Call the result df_a. It must have five columns named `w1`, `w2`, `w3`, `w4`, and `count`. (`w1`, `w2`, `w3`, `w4`) corresponds to a 4-tuple, and `count` indicates how many times it occurred in the dataset.
 
 `@hint`
@@ -42,33 +31,31 @@ You can peek at the answer by running the following command in the shell: df_ans
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 sqlContext = SQLContext.getOrCreate(spark.sparkContext)
-df = sqlContext.read.load('sherlock.parquet')
+df = sqlContext.read.load('sherlock_parts.parquet')
 df.createOrReplaceTempView('df')
 spark.catalog.cacheTable('df')
-
-#   Generates moving 4-tuple windows
-sql_4tuples = """
-select
-word as w1,
-lead(word,1) over(order by id) as w2,
-lead(word,2) over(order by id) as w3,
-lead(word,3) over(order by id) as w4
-from df
-"""
-#   Tallies most frequent 4-tuples
-sql_4tuple_counts = """
-select w1,w2,w3,w4,count(*) as count
+#   Tallies most frequent 5-tuples
+sql_top_5tuples = """
+select w1,w2,w3,w4,w5,count(*) as count
 from
 (
-%s
+   select
+   word as w1,
+   lead(word,1) over(partition by part order by id ) as w2,
+   lead(word,2) over(partition by part order by id ) as w3,
+   lead(word,3) over(partition by part order by id ) as w4,
+   lead(word,4) over(partition by part order by id ) as w5
+   from df
 )
-group by w1,w2,w3,w4
+group by w1,w2,w3,w4,w5
 order by count desc
-limit 15
-""" % sql_4tuples
+limit 10
+"""
 
-df_correct = spark.sql(sql_4tuple_counts)
-df_answer = spark.sql(sql_4tuple_counts)
+
+df_correct = spark.sql(sql_top_5tuples)
+df_answer = spark.sql(sql_top_5tuples)
+
 ```
 
 `@sample_code`
@@ -92,17 +79,25 @@ df_a = spark.sql(query)
 ```{python}
 # Fill in the blanks
 query = """
-select w1,w2,w3,w4,count(*) as count
+select w1,w2,w3,w4,w5,count(*) as count
 from
 (
-%s
+   select
+   word as w1,
+   lead(word,1) over(partition by part order by id ) as w2,
+   lead(word,2) over(partition by part order by id ) as w3,
+   lead(word,3) over(partition by part order by id ) as w4,
+   lead(word,4) over(partition by part order by id ) as w5
+   from df
 )
-group by w1,w2,w3,w4
+group by w1,w2,w3,w4,w5
 order by count desc
-limit 15
-""" % sql_4tuples
+limit 10
+""" 
+
 
 df_a = spark.sql(query)
+
 
 
 ```

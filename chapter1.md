@@ -843,12 +843,12 @@ key: bd150714e6
 xp: 100
 ```
 
-In Spark SQL, the `over` function corresponds to a OVER clause in SQL.  The class `pyspark.sql.window.Window` represents the inside of an OVER clause. A `WindowSpec` can be defined using the `Window` class, and then used subsequently as an argument to the `over` function in a window function query, like so:
+In Spark SQL, the `over` function corresponds to a OVER clause in SQL.  The class `pyspark.sql.window.Window` represents the inside of an OVER clause. A `WindowSpec` can be defined using the `Window` class, and then used subsequently as an argument to the `over` function in a window function query. Here is an example:
 
 window = Window.partitionBy('train_id').orderBy('time')
 dfx = df.withColumn('next', lead('time',1).over(window))
 
-
+We are going to add a row to a train schedule so that each row contains the number of minutes for the train to reach its next stop. 
 
 `@instructions`
 We have a dataframe df such that df.columns == ['train_id', 'station', 'time'].  The dataframe df is registered as a SQL table by the name 'df'. 

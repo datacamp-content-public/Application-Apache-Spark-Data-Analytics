@@ -832,13 +832,21 @@ key: bd150714e6
 xp: 100
 ```
 
+In Spark SQL, the `over` function corresponds to a OVER clause in SQL.  The class `pyspark.sql.window.Window` represents the inside of an OVER clause. A `WindowSpec` can be defined using the `Window` class, and then used subsequently as an argument to the `over` function in a window function query, like so:
+
+window = Window.partitionBy('train_id').orderBy('time')
+dfx = df.withColumn('next', lead('time',1).over(window))
+
 
 
 `@instructions`
+We have a dataframe df such that df.columns == ['train_id', 'station', 'time'].  The dataframe df is registered as a SQL table by the name 'df'. 
 
+A window function query is provided in dot notation. Its result is contained in the variable df1. Create an equivalent SQL query. This query will be used to create a second dataframe called df2. The two dataframes df1 and df2 should contain identical data and metadata.
 
 `@hint`
-The remaining blanks are Window function clauses we covered in the lesson. 
+The remaining blanks correspond to Window function clauses covered in the lesson and map directly onto sql functions appearing in the dot notation query. 
+  
 query = "select *, (unix_timestamp(____(time,1) over (____ by train_id ____ by time),'H:m') - unix_timestamp(time,'H:m'))/60 as diff_min from df"
 
 `@pre_exercise_code`
@@ -848,14 +856,19 @@ query = "select *, (unix_timestamp(____(time,1) over (____ by train_id ____ by t
 
 `@sample_code`
 ```{python}
-# Here is the query using dot notation. 
+# Here is a query using dot notation. 
+window = Window.partitionBy('train_id').orderBy('time')
 df1 = df.withColumn('diff_min', 
-                    (unix_timestamp(lead('time',1).over(Window.partitionBy('train_id').orderBy('time')),'H:m') 
+                    (unix_timestamp(lead('time',1).over(window),'H:m') 
                      - unix_timestamp('time','H:m'))/60)
 
 # Fill in the blanks of this sql query to obtain an identical result to the above. 
 query = """
-select *, (unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') - unix_timestamp(time,'H:m'))/60 as diff_min from df 
+select 
+*, 
+(____(____(time,1) ____ (____ by train_id ____ by time),'H:m') 
+ - ____(time,'H:m'))/60 as diff_min 
+from df 
 """
 
 # df2 should contain data that is identical to df1
@@ -865,19 +878,22 @@ assert df1.columns==df2.columns
 assert df1.first()==df2.first()
 assert df1.collect()==df2.collect()
 
-
 ```
 
 `@solution`
 ```{python}
-# Here is the query using dot notation. 
+# Here is a query using dot notation. 
 df1 = df.withColumn('diff_min', 
                     (unix_timestamp(lead('time',1).over(Window.partitionBy('train_id').orderBy('time')),'H:m') 
                      - unix_timestamp('time','H:m'))/60)
 
 # Fill in the blanks of this sql query to obtain an identical result to the above. 
 query = """
-select *, (unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') - unix_timestamp(time,'H:m'))/60 as diff_min from df 
+select 
+*, 
+(unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') 
+ - unix_timestamp(time,'H:m'))/60 as diff_min 
+from df 
 """
 
 # df2 should contain data that is identical to df1

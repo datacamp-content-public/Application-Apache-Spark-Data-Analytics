@@ -31,8 +31,7 @@ to find the most common 4-tuples.
 
 
 `@instructions`
-There is a dataframe called `df` having two columns: `word` and `id`. The id column is a monotonically increasing integer such that a word that comes later in the document has a larger id. The dataframe `df` is also registered as 
-temporary table called `df`.  Find the 15 most common 4-tuples in the dataset. Call the result df_a. It must have five columns named `w1`, `w2`, `w3`, `w4`, and `count`. (`w1`, `w2`, `w3`, `w4`) is a 4-tuple, and `count` indicates how many times it occurred in the dataset.
+There is a dataframe called `df` having two columns: `word` and `id`. The id column is a integer such that a word that comes later in the document has a larger id. The dataframe `df` is also registered as temporary table called `df`.  Find the **15** most common 4-tuples in the dataset. Call the result df_a. It must have five columns named `w1`, `w2`, `w3`, `w4`, and `count`. (`w1`, `w2`, `w3`, `w4`) corresponds to a 4-tuple, and `count` indicates how many times it occurred in the dataset.
 
 `@hint`
 
@@ -78,6 +77,19 @@ df_correct = spark.sql(sql_4tuples)
 
 `@solution`
 ```{python}
+
+query = """
+select w1,w2,w3,w4,count(*) as count
+from
+(
+%s
+)
+group by w1,w2,w3,w4
+order by count desc
+limit 15
+""" % sql_4tuples
+
+spark.sql(query)
 
 ```
 

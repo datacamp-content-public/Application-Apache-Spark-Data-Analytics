@@ -35,7 +35,7 @@ Create a query that finds the **15** most common 4-tuples in the dataset.
 Have it use sql_4tuples as a subquery. Call the result df_a. It must have five columns named `w1`, `w2`, `w3`, `w4`, and `count`. (`w1`, `w2`, `w3`, `w4`) corresponds to a 4-tuple, and `count` indicates how many times it occurred in the dataset.
 
 `@hint`
-You can peek at the answer by running the following in the shell: df_answer.show()
+You can peek at the answer by running the following command in the shell: df_answer.show()
 
 `@pre_exercise_code`
 ```{python}
@@ -109,8 +109,8 @@ df_a = spark.sql(query)
 
 `@sct`
 ```{python}
-df_a.cache()
 assert type(df_correct)==type(df_a), "Answer is wrong type"
+df_a.cache()
 assert df_a.columns==df_correct.columns, "Wrong columns"
 assert df_a.count()==df_correct.count(), "Wrong number of data"
 assert df_a.collect()==df_correct.collect(), "Wrong data"

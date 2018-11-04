@@ -835,7 +835,7 @@ assert result1.collect()==result2.collect()
 
 ---
 
-## Convert Window function query from dot notation to SQL
+## Capstone: Convert Window function query from dot notation to SQL
 
 ```yaml
 type: NormalExercise

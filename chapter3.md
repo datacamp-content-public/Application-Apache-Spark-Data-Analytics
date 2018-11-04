@@ -102,6 +102,48 @@ a4 = False
 
 `@solution`
 ```{python}
+df1.cache() # Caching df1
+df2.cache() # Caching df2
+
+begin=time.time() 
+start=time.time() 
+df1.count()
+print("df1_1st :  %.1f" % (time.time()-start))
+
+start=time.time() 
+df1.count()
+print("df1_2nd :  %.1f" % (time.time()-start))
+
+start=time.time() 
+df2.count()
+print("df2_1st : %.1f" % (time.time()-start))
+
+start=time.time() 
+df2.count()
+print("df2_2nd : %.1f" % (time.time()-start))
+
+# Ensures consistent answers when rerun 
+df1.unpersist()
+df2.unpersist()
+
+print("Overall elapsed : %.1f" % (time.time() - begin))
+
+
+######   ANSWER SECTION   #####
+
+# True or False?
+# Caching df1 reduces df1_1st
+a1 = False
+
+# Caching df1 reduces df2_1st
+a2 = True
+
+# Caching df2 and not Caching df1 reduces df2_1st
+a3 = False
+
+# Caching both df1 and df2 gives the best overall run time. 
+a4 = False
+
 
 ```
 

@@ -655,6 +655,12 @@ Whether to use dot notation or SQL is a personal preference. However, there are 
 
 `@pre_exercise_code`
 ```{python}
+from pyspark.sql import Window 
+from pyspark.sql.functions import lead  
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+df=spark.read.csv("trainsched.txt",header=True)
+df.createOrReplaceTempView("df")
 
 ```
 

@@ -15,7 +15,7 @@ The lesson demonstrated how caching helps (or not) when a second dataframe depen
 
 A dataframe `df1` is loaded from a csv file. Several processing steps are performed on this dataframe. `df1` has 1,352,686 rows. On a typical default Spark installation, this dataframe is recalculated every time. If `df1` is to be used repeatedly it is a candidate for caching. 
 
-A second dataframe `df2` is created by copying `df1`, then performing two additional compute-intensive steps. It has 1,105,177 rows.  It is also a candidate for caching.  However, because `df2` depends on `df1` the question arises: should we cache `df1`, or cache `df2`, or cache both?
+A second dataframe `df2` is created by copying `df1`, then performing two additional compute-intensive steps. It has 1,105,177 rows.  It is also a candidate for caching.  However, because `df2` depends on `df1` the question arises: should we cache `df1`, or cache `df2`, or cache both?  Keep in mind that caching incurs a cost. 
 
 `@instructions`
 Four operations are performed.  Each one is timed. These four operations are captioned:
@@ -56,11 +56,12 @@ df2 = df1.select(lower(col('word')).alias('word'))\
 
 `@sample_code`
 ```{python}
-#df1.cache() # Caching df1
+df1.cache() # Caching df1
 df2.cache() # Caching df2
 
+begin=time.time() 
 start=time.time() 
-print(df1.count())
+df1.count()
 print("df1_1st :  %.1f" % (time.time()-start))
 
 start=time.time() 
@@ -75,6 +76,15 @@ start=time.time()
 df2.count()
 print("df2_2nd : %.1f" % (time.time()-start))
 
+# Ensures consistent answers when rerun 
+df1.unpersist()
+df2.unpersist()
+
+print("Overall elapsed : %.1f" % (time.time() - begin))
+
+
+######   ANSWER SECTION   #####
+
 # True or False?
 # Caching df1 reduces df1_1st
 a1 = False
@@ -83,14 +93,10 @@ a1 = False
 a2 = True
 
 # Caching df2 and not Caching df1 reduces df2_1st
-a2 = False
+a3 = False
 
-
-
-
-# Ensures consistent answers when rerun 
-df1.unpersist()
-df2.unpersist()
+# Caching both df1 and df2 gives the best overall run time. 
+a4 = False
 
 ```
 
@@ -101,6 +107,14 @@ df2.unpersist()
 
 `@sct`
 ```{python}
-assert a1==False
-assert a2
+# Overall run times: 
+# both off: 3.6
+# df1: 1.6
+# df2: 3.2
+# df1 and df2: 2.0
+
+assert a1 == False
+assert a2 == True
+assert a3 == False
+assert a4 == False
 ```

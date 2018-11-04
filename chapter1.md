@@ -853,7 +853,8 @@ dfx = df.withColumn('next', lead('time',1).over(window))
 `@instructions`
 We have a dataframe df such that df.columns == ['train_id', 'station', 'time'].  The dataframe df is registered as a SQL table by the name 'df'. 
 
-A window function query is provided in dot notation. Its result is contained in the variable df1. Create an equivalent SQL query. This query will be used to create a second dataframe called df2. The two dataframes df1 and df2 should contain identical data and metadata.
+A window function query is provided below. It is in dot notation. 
+Its result is contained in the variable df1. Create an equivalent SQL query. This query will be used to create a second dataframe called df2. The two dataframes df1 and df2 should contain identical data and metadata.
 
 `@hint`
 The remaining blanks correspond to Window function clauses covered in the lesson and map directly onto sql functions appearing in the dot notation query. 
@@ -868,7 +869,9 @@ from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 df=spark.read.csv("trainsched.txt",header=True)
 df.createOrReplaceTempView("df")
-
+dfx = df1 = df.withColumn('diff_min', 
+                    (unix_timestamp(lead('time',1).over(window),'H:m') 
+                     - unix_timestamp('time','H:m'))/60)
 ```
 
 `@sample_code`
@@ -916,13 +919,17 @@ from df
 # df2 should contain data that is identical to df1
 df2 = spark.sql(query)
 
-assert df1.columns==df2.columns
-assert df1.first()==df2.first()
-assert df1.collect()==df2.collect()
+assert df1.columns==df2.columns, "Wrong columns"
+assert df1.first()==df2.first(), "Wrong data"
+assert df1.collect()==df2.collect(), "Wrong data"
 
 ```
 
 `@sct`
 ```{python}
+assert type(dfx)==type(df2)
+assert dfx.columns==df2.columns
+assert dfx.first()==df2.first()
+assert dfx.collect()==df2.collect()
 
 ```

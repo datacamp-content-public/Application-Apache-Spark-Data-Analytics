@@ -109,7 +109,10 @@ df_a = spark.sql(query)
 
 `@sct`
 ```{python}
+df_a.cache()
+assert type(df_correct)==type(df_a), "Answer is wrong type"
 assert df_a.columns==df_correct.columns, "Wrong columns"
+assert df_a.count()==df_correct.count(), "Wrong number of data"
 assert df_a.collect()==df_correct.collect(), "Wrong data"
 
 

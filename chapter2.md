@@ -62,15 +62,21 @@ df_answer = spark.sql(sql_top_5tuples)
 ```{python}
 # Fill in the blanks
 query = """
-select ____,____,____,____,____(____) as ____
+select ____, ____, ____, ____, ____, ____(____) as ____
 from
 (
-%s
+   select
+   word as w1,
+   lead(word,1) over(partition by part order by id ) as w2,
+   lead(word,2) over(partition by part order by id ) as w3,
+   lead(word,3) over(partition by part order by id ) as w4,
+   lead(word,4) over(partition by part order by id ) as w5
+   from df
 )
-group by ____,____,____,____
+group by ____, ____, ____, ____, ____
 order by ____ desc
-limit 15
-""" % sql_4tuples
+limit __
+"""
 
 df_a = spark.sql(query)
 ```
@@ -95,11 +101,7 @@ order by count desc
 limit 10
 """ 
 
-
 df_a = spark.sql(query)
-
-
-
 ```
 
 `@sct`

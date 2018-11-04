@@ -60,7 +60,7 @@ df_answer = spark.sql(sql_top_5tuples)
 
 `@sample_code`
 ```{python}
-# Fill in the blanks
+# Fill in the blanks to find the top 10 sequences of five words
 query = """
 select ____, ____, ____, ____, ____, ____(____) as ____
 from
@@ -83,7 +83,7 @@ df_a = spark.sql(query)
 
 `@solution`
 ```{python}
-# Fill in the blanks
+# Fill in the blanks to find the top 10 sequences of five words
 query = """
 select w1,w2,w3,w4,w5,count(*) as count
 from

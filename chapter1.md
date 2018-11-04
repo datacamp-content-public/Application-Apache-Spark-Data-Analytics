@@ -864,7 +864,7 @@ query = "select *, (unix_timestamp(____(time,1) over (____ by train_id ____ by t
 `@pre_exercise_code`
 ```{python}
 from pyspark.sql import Window 
-from pyspark.sql.functions import lead  
+from pyspark.sql.functions import lead, unix_timestamp 
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 df=spark.read.csv("trainsched.txt",header=True)

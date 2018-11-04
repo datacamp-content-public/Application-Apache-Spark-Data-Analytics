@@ -624,6 +624,11 @@ The LEAD clause has an equivalent function in pyspark.sql.functions. The PARTITI
 ```{python}
 from pyspark.sql import Window 
 from pyspark.sql.functions import lead  
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+df=spark.read.csv("trainsched.txt",header=True)
+df.createOrReplaceTempView("df")
+
 ```
 
 `@sample_code`

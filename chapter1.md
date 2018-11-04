@@ -824,7 +824,7 @@ assert result1.collect()==result2.collect()
 
 ---
 
-## Insert exercise title here
+## Converting a dot notation window query to SQL
 
 ```yaml
 type: NormalExercise

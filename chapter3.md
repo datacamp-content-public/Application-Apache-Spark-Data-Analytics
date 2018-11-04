@@ -56,8 +56,8 @@ df2 = df1.select(lower(col('word')).alias('word'))\
 
 `@sample_code`
 ```{python}
-df1.cache() # Caching df1
-# df2.cache() # Caching df2
+#df1.cache() # Caching df1
+df2.cache() # Caching df2
 
 start=time.time() 
 print(df1.count())
@@ -79,8 +79,13 @@ print("df2_2nd : %.1f" % (time.time()-start))
 # Caching df1 reduces df1_1st
 a1 = False
 
-# Caching df1 reduces df1_2nd
+# Caching df1 reduces df2_1st
 a2 = True
+
+# Caching df2 and not Caching df1 reduces df2_1st
+a2 = False
+
+
 
 
 # Ensures consistent answers when rerun 

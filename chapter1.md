@@ -613,7 +613,6 @@ Here are the first 8 rows of df1:
 +--------+-------------+-----+---------+
 ```
 
-
 `@instructions`
 Create a dataframe called df2 that contains the identical result as df1, using dot notation instead of sql.
 
@@ -656,7 +655,7 @@ key: 1cf40a2c86
 xp: 100
 ```
 
-Whether to use dot notation or SQL is a personal preference. However, there are cases where dot notation can be more cumbersome. The following exercises calculate the departure time for the first train for each train line. 
+Whether to use dot notation or SQL is a personal preference. However, there are cases where dot notation can be more cumbersome. The following exercises calculate the departure time for the first train for each train line.
 
 `@pre_exercise_code`
 ```{python}
@@ -848,7 +847,7 @@ In Spark SQL, the `over` function corresponds to a OVER clause in SQL.  The clas
 window = Window.partitionBy('train_id').orderBy('time')
 dfx = df.withColumn('next', lead('time',1).over(window))
 
-We are going to add a row to a train schedule so that each row contains the number of minutes for the train to reach its next stop. 
+We are going to add a row to a train schedule so that each row contains the number of minutes for the train to reach its next stop.
 
 `@instructions`
 We have a dataframe df such that df.columns == ['train_id', 'station', 'time'].  The dataframe df is registered as a SQL table by the name 'df'. 

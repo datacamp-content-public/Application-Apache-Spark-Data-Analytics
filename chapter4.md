@@ -19,7 +19,6 @@ A CountVectorizer model has been created using the following two lines of code:
 `cv = CountVectorizer(inputCol='words', outputCol='vec')`
 `model = cv.fit(df.select(col('sentence').alias('words')))`
 
-
 `@instructions`
 1. Create a dataframe called `result` by using `model` to transform `df`. 
   - `result` has the columns `sentence`, `in`, `out`, and  `invec`. 

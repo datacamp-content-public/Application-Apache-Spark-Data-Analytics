@@ -18,7 +18,6 @@ Now you'll perform the similar task to find the most common 5-tuples.
 
 Dataframe `df` has columns: `word`, `id`, `part`, `title`. The `id` column is a integer such that a word that comes later in the document has a larger id than a word that comes before it. The `part` column separates the data into chapters. The dataframe `df` is also registered as temporary table called `df`.
 
-
 `@instructions`
 Create a query that finds the **10** most common 5-tuples in the dataset. 
 Have it use sql_4tuples as a subquery. Call the result df_a. It must have five columns named `w1`, `w2`, `w3`, `w4`, and `count`. (`w1`, `w2`, `w3`, `w4`) corresponds to a 4-tuple, and `count` indicates how many times it occurred in the dataset.

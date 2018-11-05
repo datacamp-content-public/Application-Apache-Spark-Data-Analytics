@@ -3,7 +3,7 @@ title: 'Using window function sql for natural language processing'
 description: ""
 ---
 
-## (Capstone) Most common word sequences
+## (Capstone) Most common word sequences using window function
 
 ```yaml
 type: NormalExercise

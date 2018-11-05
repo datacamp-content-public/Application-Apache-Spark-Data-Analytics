@@ -3,7 +3,7 @@ title: 'Caching, logging, and query plans in Spark SQL'
 description: ""
 ---
 
-## Capstone
+## (Capstone) Practicing caching
 
 ```yaml
 type: NormalExercise

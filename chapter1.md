@@ -881,48 +881,33 @@ window = Window.partitionBy('train_id').orderBy('time')
 df1 = df.withColumn('diff_min', 
                     (unix_timestamp(lead('time',1).over(window),'H:m') 
                      - unix_timestamp('time','H:m'))/60)
-
-# Fill in the blanks of this sql query to obtain an identical result to the above. 
+# Create a sql query to obtain an identical result to the above. 
 query = """
-select 
-*, 
+select *, 
 (____(____(time,1) ____ (____ by train_id ____ by time),'H:m') 
  - ____(time,'H:m'))/60 as diff_min 
 from df 
 """
-
 # df2 should contain data that is identical to df1
 df2 = spark.sql(query)
-
-assert df1.columns==df2.columns
-assert df1.first()==df2.first()
-assert df1.collect()==df2.collect()
-
 ```
 
 `@solution`
 ```{python}
 # Here is a query using dot notation. 
+window = Window.partitionBy('train_id').orderBy('time')
 df1 = df.withColumn('diff_min', 
                     (unix_timestamp(lead('time',1).over(Window.partitionBy('train_id').orderBy('time')),'H:m') 
                      - unix_timestamp('time','H:m'))/60)
-
-# Fill in the blanks of this sql query to obtain an identical result to the above. 
+# Create a sql query to obtain an identical result to the above. 
 query = """
-select 
-*, 
+select *, 
 (unix_timestamp(lead(time,1) over (partition by train_id order by time),'H:m') 
  - unix_timestamp(time,'H:m'))/60 as diff_min 
 from df 
 """
-
 # df2 should contain data that is identical to df1
 df2 = spark.sql(query)
-
-assert df1.columns==df2.columns, "Wrong columns"
-assert df1.first()==df2.first(), "Wrong data"
-assert df1.collect()==df2.collect(), "Wrong data"
-
 ```
 
 `@sct`

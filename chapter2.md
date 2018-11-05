@@ -51,11 +51,8 @@ group by w1,w2,w3,w4,w5
 order by count desc
 limit 10
 """
-
-
 df_correct = spark.sql(sql_top_5tuples)
 df_answer = spark.sql(sql_top_5tuples)
-
 ```
 
 `@sample_code`

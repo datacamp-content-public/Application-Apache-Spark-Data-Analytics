@@ -62,22 +62,18 @@ df_answer = spark.sql(sql_top_5tuples)
 ```{python}
 # Fill in the blanks to find the top 10 sequences of five words
 query = """
-select ____, ____, ____, ____, ____, ____(____) as ____
-from
-(
-   select
-   word as w1,
+select ____, ____, ____, ____, ____, ____(____) as ____ 
+from (  
+   select word as w1,
    lead(word,1) over(partition by part order by id ) as w2,
    lead(word,2) over(partition by part order by id ) as w3,
    lead(word,3) over(partition by part order by id ) as w4,
    lead(word,4) over(partition by part order by id ) as w5
-   from df
+   from df 
 )
 group by ____, ____, ____, ____, ____
 order by ____ desc
-limit __
-"""
-
+limit __ """
 df_a = spark.sql(query)
 ```
 
@@ -85,11 +81,9 @@ df_a = spark.sql(query)
 ```{python}
 # Fill in the blanks to find the top 10 sequences of five words
 query = """
-select w1,w2,w3,w4,w5,count(*) as count
-from
-(
-   select
-   word as w1,
+select w1,w2,w3,w4,w5,count(*) as count 
+from (
+   select word as w1,
    lead(word,1) over(partition by part order by id ) as w2,
    lead(word,2) over(partition by part order by id ) as w3,
    lead(word,3) over(partition by part order by id ) as w4,
@@ -98,9 +92,7 @@ from
 )
 group by w1,w2,w3,w4,w5
 order by count desc
-limit 10
-""" 
-
+limit 10 """ 
 df_a = spark.sql(query)
 ```
 

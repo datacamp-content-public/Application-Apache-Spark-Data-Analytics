@@ -54,99 +54,61 @@ df1 = spark.read.text('sherlock.txt') \
 df2 = df1.select(lower(col('word')).alias('word'))\
     .where(length('word') > 0)
 
+begin=time.time()
+
+def run(df, name, elapsed=False):
+  start=time.time()
+  df.count()
+  print("%s : %.1fs" % (name, (time.time()-start)))
+  if elapsed:
+    elapsed()
+
+def prep(df1, df2):
+  df1.unpersist()
+  df2.unpersist()
+  begin = time.time()
+
+def elapsed():
+  print("Overall elapsed : %.1f" % (time.time() - begin))
+
 ```
 
 `@sample_code`
 ```{python}
+prep(df1, df2)
 df1.cache() # Caching df1
 #df2.cache() # Caching df2
-
-begin=time.time() 
-start=time.time() 
-df1.count()
-print("df1_1st :  %.1f" % (time.time()-start))
-
-start=time.time() 
-df1.count()
-print("df1_2nd :  %.1f" % (time.time()-start))
-
-start=time.time() 
-df2.count()
-print("df2_1st : %.1f" % (time.time()-start))
-
-start=time.time() 
-df2.count()
-print("df2_2nd : %.1f" % (time.time()-start))
-
-# Ensures consistent answers when rerun 
-df1.unpersist()
-df2.unpersist()
-
-print("Overall elapsed : %.1f" % (time.time() - begin))
-
-
-######   ANSWER SECTION   #####
-
-# True or False?
-# Caching df1 and not Caching df2 substantially reduces df1_1st
+run(df1, "df1_1st")
+run(df1, "df1_2nd")
+run(df2, "df2_1st")
+run(df2, "df2_2nd", elapsed=True)
+# True or False: Caching df1 only (and not Caching df2) reduces df1_1st
 a1 = ____
-
-# Caching df1 and not Caching df2 substantially reduces df2_1st
+# Caching df1 and NOT Caching df2 reduces df2_1st
 a2 = ____
-
-# Not Caching df1 and Caching df2 substantially reduces df2_1st
+# NOT Caching df1 and Caching df2 reduces df2_1st
 a3 = ____
-
 # Caching both df1 and df2 gives the best overall run time. 
 a4 = ____
-
-
 ```
 
 `@solution`
 ```{python}
+prep(df1, df2)
 df1.cache() # Caching df1
 #df2.cache() # Caching df2
-
-begin=time.time() 
-start=time.time() 
-df1.count()
-print("df1_1st :  %.1f" % (time.time()-start))
-
-start=time.time() 
-df1.count()
-print("df1_2nd :  %.1f" % (time.time()-start))
-
-start=time.time() 
-df2.count()
-print("df2_1st : %.1f" % (time.time()-start))
-
-start=time.time() 
-df2.count()
-print("df2_2nd : %.1f" % (time.time()-start))
-
-# Ensures consistent answers when rerun 
-df1.unpersist()
-df2.unpersist()
-
-print("Overall elapsed : %.1f" % (time.time() - begin))
-
-
-######   ANSWER SECTION   #####
-
-# True or False?
-# Caching df1 and not Caching df2 substantially reduces df1_1st
+run(df1, "df1_1st")
+run(df1, "df1_2nd")
+run(df2, "df2_1st")
+run(df2, "df2_2nd", elapsed=True)
+# True or False: Caching df1 only (and not Caching df2) reduces df1_1st
 a1 = False
-
-# Caching df1 and not Caching df2 substantially reduces df2_1st
+# Caching df1 and NOT Caching df2 reduces df2_1st
 a2 = True
-
-# Not Caching df1 and Caching df2 substantially reduces df2_1st
+# NOT Caching df1 and Caching df2 reduces df2_1st
 a3 = False
-
 # Caching both df1 and df2 gives the best overall run time. 
 a4 = False
-
 ```
 
 `@sct`

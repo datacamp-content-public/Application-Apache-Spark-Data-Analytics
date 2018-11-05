@@ -33,20 +33,14 @@
     {
       "timing": 0,
       "state": {
-        "indexh": 2
-      }
-    },
-    {
-      "timing": 0,
-      "state": {
-        "indexh": 1,
+        "indexh": 0,
         "indexf": -1
       }
     },
     {
-      "timing": 0,
+      "timing": 0.9791466346153846,
       "state": {
-        "indexh": 0,
+        "indexh": 1,
         "indexf": -1
       }
     }
@@ -124,5 +118,6 @@
     }
   ],
   "slides/chapter_1_a6d506301281503cf39123d5e97475b0.md": [],
-  "slides/chapter_1_3556e62bc5ceb1e427a23c4bde60a5c3.md": []
+  "slides/chapter_1_3556e62bc5ceb1e427a23c4bde60a5c3.md": [],
+  "slides/chapter_1_3c3ec6dec8f48898b3b494b8e5e8720e.md": []
 }

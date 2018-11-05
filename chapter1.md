@@ -3,19 +3,6 @@ title: 'Chapter 1: Pyspark SQL'
 description: ""
 ---
 
-## Lesson 1.1 : Creating and querying a SQL table in Spark
-
-```yaml
-type: VideoExercise
-key: e9da550220
-xp: 50
-```
-
-`@projector_key`
-50a513bf7e15bc7ea8559ce3382bd96c
-
----
-
 ## Exercise: Load dataframe with csv data
 
 ```yaml
@@ -917,3 +904,16 @@ assert dfx.first()==df2.first()
 assert dfx.collect()==df2.collect()
 
 ```
+
+---
+
+## Lesson 1.1 : Creating and querying a SQL table in Spark
+
+```yaml
+type: VideoExercise
+key: 0479d23060
+xp: 50
+```
+
+`@projector_key`
+3c3ec6dec8f48898b3b494b8e5e8720e

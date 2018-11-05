@@ -3,7 +3,7 @@ title: 'Transforming words to vector form'
 description: ""
 ---
 
-## Capstone
+## (Capstone) Transforming words into vectors.
 
 ```yaml
 type: NormalExercise
@@ -38,7 +38,6 @@ from pyspark.ml.feature import CountVectorizer
 sqlContext = SQLContext.getOrCreate(spark.sparkContext)
 df = sqlContext.read.load('sherlock_sentences.parquet')
 df = df.where(" id>100 and id<120 ")
-
 
 #   Splits clauses on the end word
 in_udf = udf(lambda x: x[0:len(x)-1] if x and len(x) > 1 else [], ArrayType(StringType())) # rm end word

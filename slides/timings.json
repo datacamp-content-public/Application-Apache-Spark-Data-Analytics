@@ -119,5 +119,20 @@
   ],
   "slides/chapter_1_a6d506301281503cf39123d5e97475b0.md": [],
   "slides/chapter_1_3556e62bc5ceb1e427a23c4bde60a5c3.md": [],
-  "slides/chapter_1_3c3ec6dec8f48898b3b494b8e5e8720e.md": []
+  "slides/chapter_1_3c3ec6dec8f48898b3b494b8e5e8720e.md": [
+    {
+      "timing": 0,
+      "state": {
+        "indexh": 0,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.033648450088609776,
+      "state": {
+        "indexh": 0,
+        "indexf": 0
+      }
+    }
+  ]
 }

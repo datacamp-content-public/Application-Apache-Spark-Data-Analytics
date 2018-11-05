@@ -28,7 +28,7 @@ A CountVectorizer model has been created using the following two lines of code:
   - `result` now has the columns `sentence`, `in`, `out`, `invec`, and `outvec`.
 
 `@hint`
-
+First, use `model` to transform `df` after renaming `in` to `words`.  Then, perform the similar operation on the `out` column, but applying the transform to the `result` dataframe in order to preserve the result of the first operation.
 
 `@pre_exercise_code`
 ```{python}

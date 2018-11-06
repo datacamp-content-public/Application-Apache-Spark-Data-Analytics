@@ -424,7 +424,8 @@
     {
       "timing": 0.9944844253693906,
       "state": {
-        "indexh": 41
+        "indexh": 41,
+        "indexf": -1
       }
     }
   ]

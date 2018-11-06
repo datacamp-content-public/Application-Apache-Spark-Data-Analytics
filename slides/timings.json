@@ -119,5 +119,313 @@
   ],
   "slides/chapter_1_a6d506301281503cf39123d5e97475b0.md": [],
   "slides/chapter_1_3556e62bc5ceb1e427a23c4bde60a5c3.md": [],
-  "slides/chapter_1_3c3ec6dec8f48898b3b494b8e5e8720e.md": []
+  "slides/chapter_1_3c3ec6dec8f48898b3b494b8e5e8720e.md": [
+    {
+      "timing": 0,
+      "state": {
+        "indexh": 0,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.01798460549937844,
+      "state": {
+        "indexh": 0,
+        "indexf": 0
+      }
+    },
+    {
+      "timing": 0.038894565714330503,
+      "state": {
+        "indexh": 1,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.05067895778724314,
+      "state": {
+        "indexh": 2,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.05851653782157956,
+      "state": {
+        "indexh": 2,
+        "indexf": 0
+      }
+    },
+    {
+      "timing": 0.06767531511793179,
+      "state": {
+        "indexh": 3,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.07450590114540942,
+      "state": {
+        "indexh": 4,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.1408591091614812,
+      "state": {
+        "indexh": 5,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.19708125051253658,
+      "state": {
+        "indexh": 6,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.20361415158409732,
+      "state": {
+        "indexh": 7,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.2114577763015365,
+      "state": {
+        "indexh": 8,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.21932438754745293,
+      "state": {
+        "indexh": 9,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.30426670597593114,
+      "state": {
+        "indexh": 10,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.32328757722612095,
+      "state": {
+        "indexh": 11,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.33955951902707543,
+      "state": {
+        "indexh": 12,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.3526431728554156,
+      "state": {
+        "indexh": 13,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.36570076552408093,
+      "state": {
+        "indexh": 14,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.37346318964990877,
+      "state": {
+        "indexh": 15,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.39970937100894377,
+      "state": {
+        "indexh": 16,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.4101476864061702,
+      "state": {
+        "indexh": 17,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.42322821331366656,
+      "state": {
+        "indexh": 18,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.44938476499012,
+      "state": {
+        "indexh": 19,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.45984655843849814,
+      "state": {
+        "indexh": 20,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.5434991370561251,
+      "state": {
+        "indexh": 21,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.5487304390250723,
+      "state": {
+        "indexh": 22,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.5526495375511532,
+      "state": {
+        "indexh": 23,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.5578817545889093,
+      "state": {
+        "indexh": 24,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.5617895271776194,
+      "state": {
+        "indexh": 25,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.5670349944117271,
+      "state": {
+        "indexh": 26,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.572249338848406,
+      "state": {
+        "indexh": 27,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.7121336382802753,
+      "state": {
+        "indexh": 28,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.7378637678918241,
+      "state": {
+        "indexh": 29,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.7918617273092964,
+      "state": {
+        "indexh": 30,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.8650688477640234,
+      "state": {
+        "indexh": 31,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.9176325753912511,
+      "state": {
+        "indexh": 32,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.9500374992583368,
+      "state": {
+        "indexh": 33,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.961803647473684,
+      "state": {
+        "indexh": 34,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.9657268507369932,
+      "state": {
+        "indexh": 35,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.9696467126919087,
+      "state": {
+        "indexh": 39,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.9696467126919087,
+      "state": {
+        "indexh": 38,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.9696467126919087,
+      "state": {
+        "indexh": 37,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.9696467126919087,
+      "state": {
+        "indexh": 36,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.989273160792874,
+      "state": {
+        "indexh": 40,
+        "indexf": -1
+      }
+    },
+    {
+      "timing": 0.9944844253693906,
+      "state": {
+        "indexh": 41
+      }
+    }
+  ]
 }

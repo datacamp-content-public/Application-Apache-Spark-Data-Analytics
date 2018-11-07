@@ -62,6 +62,8 @@ assert df.select("train_id").distinct().count()==2, "There should be two train_i
 assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()])[0]=='217',"Missing train 217"
 assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()])[1]=='324',"Missing train 324"
 
+
+success_msg("Loading simple comma-separated text data into a dataframe is a breeze.")
 ```
 
 ---

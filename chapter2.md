@@ -100,6 +100,7 @@ assert df_a.columns==df_correct.columns, "Wrong columns"
 assert df_a.count()==df_correct.count(), "Wrong number of data"
 assert df_a.collect()==df_correct.collect(), "Wrong data"
 
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
 
 ```
 

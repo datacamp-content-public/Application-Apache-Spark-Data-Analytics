@@ -28,6 +28,10 @@ First, use `model` to transform `df` after renaming `in` to `words`.  Then, perf
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql.types import StringType, ArrayType, BooleanType
 from pyspark.sql.functions import split, explode, col, desc, lower, length, monotonically_increasing_id, regexp_replace, collect_list, concat_ws,trim, udf, size
 from pyspark.ml.feature import CountVectorizer

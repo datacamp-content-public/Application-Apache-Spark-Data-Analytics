@@ -39,6 +39,10 @@ A synonym for "load" is "read".  Don't forget to specify the format.
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 ```
@@ -93,6 +97,10 @@ Use the command _createOrReplaceTempView_.  Remember to provide it with the tabl
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 df=spark.read.csv("lesson1.txt",header=True)
@@ -182,6 +190,10 @@ There should be three columns.
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 df=spark.read.csv("lesson1.txt",header=True)
@@ -236,6 +248,10 @@ Try an aggregate -- grouping on station column, and finding the station having m
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 df=spark.read.csv("lesson1.txt",header=True)
@@ -300,6 +316,10 @@ Once we have the time column converted to seconds, it will be straightforward to
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 df=spark.read.csv("lesson1.txt",header=True)
 df.createOrReplaceTempView("sched")
 ```
@@ -507,6 +527,10 @@ The first blank is an aggregation function over the diff_min field.  We want the
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 df=spark.read.csv("lesson1.txt",header=True)
 df.createOrReplaceTempView("sched")
 query="""select train_id,station, time,
@@ -595,6 +619,10 @@ The LEAD clause has an equivalent function in pyspark.sql.functions. The PARTITI
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql import Window 
 from pyspark.sql.functions import lead  
 from pyspark.sql import SparkSession
@@ -633,6 +661,10 @@ Whether to use dot notation or SQL is a personal preference. However, there are 
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql import Window 
 from pyspark.sql.functions import lead  
 from pyspark.sql import SparkSession
@@ -836,6 +868,10 @@ query = "select *, (unix_timestamp(____(time,1) over (____ by train_id ____ by t
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql import Window 
 from pyspark.sql.functions import lead, unix_timestamp 
 from pyspark.sql import SparkSession

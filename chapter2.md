@@ -27,6 +27,10 @@ You can peek at the answer by running the following command in the shell: df_ans
 
 `@pre_exercise_code`
 ```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 sqlContext = SQLContext.getOrCreate(spark.sparkContext)

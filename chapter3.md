@@ -1,5 +1,5 @@
 ---
-title: 'Caching, logging, and query plans in Spark SQL'
+title: 'Chapter 3: Caching, logging, and query plans in Spark SQL'
 description: ""
 ---
 

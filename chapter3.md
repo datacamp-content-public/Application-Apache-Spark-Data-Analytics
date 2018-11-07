@@ -11,27 +11,18 @@ key: 6b93918e78
 xp: 100
 ```
 
-The lesson demonstrated how caching helps (or not) when a second dataframe depends on another dataframe. This exercise practices caching two dataframes, one of which depends on the other.
+This exercise practices caching two dataframes, one of which depends on the other. A dataframe `df1` is loaded from a csv file. Several processing steps are performed on this dataframe. `df1` has 606,568 rows. As `df1` is to be used more than once it is a candidate for caching.
 
-A dataframe `df1` is loaded from a csv file. Several processing steps are performed on this dataframe. `df1` has 606,568 rows. As `df1` is to be used more than once it is a candidate for caching.
+A second dataframe `df2` is created by copying `df1`, then performing additional compute-intensive steps. It has 499,691 rows.  It is also a candidate for caching.  However, because `df2` depends on `df1` the question arises: should we cache `df1`, or cache `df2`, or cache both?  Note that caching incurs a cost. Caching costs run time as well as memory.
 
-A second dataframe `df2` is created by copying `df1`, then performing two additional compute-intensive steps. It has 499,691 rows.  It is also a candidate for caching.  However, because `df2` depends on `df1` the question arises: should we cache `df1`, or cache `df2`, or cache both?  Note that caching incurs a cost. Caching costs run time as well as memory.
+The two dataframes are created, Then, four operations are performed on the two dataframes, two on `df1` and two on `df2`.  Each operation is timed.
+
 
 `@instructions`
-Four operations are performed on the two dataframes.  Each one is timed. These four operations are captioned as follows:
-
-1. df1_1st
-2. df1_2nd
-3. df2_1st
-4. df2_2nd
-
-* There are two cache statements. 
-* Initially the second one is commented out. 
-* These statements are called "Caching df1" and "Caching df2". 
-
+* There are two cache statements called "Caching df1" and "Caching df2".  Initially the second one is commented out. 
+* There are four timed operations captioned `df1_1st`, `df1_2nd`, `df2_1st`, and `df2_2nd`.
 * Below the four timed operations are True or False questions.  
-* Set the corresponding variable below the question if you believe the answer is True.  
-* Otherwise set it to False.
+* Set the corresponding variable below the question to True if you believe the answer is True.  Otherwise set it to False.
 
 `@hint`
 Try enabling or disabling the commented out caching statements and running (without submitting). Try all four combinations.
@@ -116,14 +107,11 @@ a4 = False
 
 `@sct`
 ```{python}
-# Overall run times: 
-# both off: 3.6
-# df1: 1.6
-# df2: 3.2
-# df1 and df2: 2.0
-
 assert a1 == False
 assert a2 == True
 assert a3 == False
 assert a4 == False
+
+success_msg("Good! Caching is useful but should not be overused.")
+
 ```

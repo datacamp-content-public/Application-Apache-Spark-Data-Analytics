@@ -102,3 +102,16 @@ assert df_a.collect()==df_correct.collect(), "Wrong data"
 
 
 ```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: VideoExercise
+key: 997e2b3606
+xp: 50
+```
+
+`@projector_key`
+e72c252ca4c17d2b93c04290c7d29702

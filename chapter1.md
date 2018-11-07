@@ -587,72 +587,6 @@ xp: 50
 ## Iterations on Aggregation
 
 ```yaml
-type: NormalExercise
-key: cfd2ee5ba4
-xp: 100
-```
-
-The following line of code uses sql to set the value of a dataframe called df1.
-df1 = spark.sql("select *, lead(time,1) over(partition by train_id order by time) as time_next from df")
-
-Here are the first 8 rows of df1:
-
-```
-+--------+-------------+-----+---------+
-|train_id|      station| time|time_next|
-+--------+-------------+-----+---------+
-|     217|       Gilroy|6:06a|    6:15a|
-|     217|   San Martin|6:15a|    6:21a|
-|     217|  Morgan Hill|6:21a|    6:36a|
-|     217| Blossom Hill|6:36a|    6:42a|
-|     217|      Capitol|6:42a|    6:50a|
-|     217|       Tamien|6:50a|    6:59a|
-|     217|     San Jose|6:59a|     null|
-|     324|San Francisco|7:59a|    8:03a|
-+--------+-------------+-----+---------+
-```
-
-`@instructions`
-Create a dataframe called df2 that contains the identical result as df1, using dot notation instead of sql.
-
-`@hint`
-The LEAD clause has an equivalent function in pyspark.sql.functions. The PARTITION BY, and ORDER BY clauses each have an equivalent dot notation function that is called on the Window object.
-
-`@pre_exercise_code`
-```{python}
-_init_spark = '/home/repl/.init-spark.py' 
-with open(_init_spark) as f:
-    code = compile(f.read(), _init_spark, 'exec')
-    exec(code)
-from pyspark.sql import Window 
-from pyspark.sql.functions import lead  
-from pyspark.sql import SparkSession
-spark = SparkSession.builder.getOrCreate()
-df=spark.read.csv("trainsched.txt",header=True)
-df.createOrReplaceTempView("df")
-
-```
-
-`@sample_code`
-```{python}
-df2 = df.withColumn('time_next', ____('time',1).over(Window.____('train_id').____('time')))
-```
-
-`@solution`
-```{python}
-df2 = df.withColumn('time_next', lead('time',1).over(Window.partitionBy('train_id').orderBy('time')))
-```
-
-`@sct`
-```{python}
-
-```
-
----
-
-## Aggregate Dot SQL
-
-```yaml
 type: BulletExercise
 key: 1cf40a2c86
 xp: 100
@@ -833,6 +767,72 @@ result2 = spark.sql(query)
 assert result1.columns==result2.columns
 assert result1.collect()==result2.collect()
 
+```
+
+`@sct`
+```{python}
+
+```
+
+---
+
+## Aggregate Dot SQL
+
+```yaml
+type: NormalExercise
+key: cfd2ee5ba4
+xp: 100
+```
+
+The following line of code uses sql to set the value of a dataframe called df1.
+df1 = spark.sql("select *, lead(time,1) over(partition by train_id order by time) as time_next from df")
+
+Here are the first 8 rows of df1:
+
+```
++--------+-------------+-----+---------+
+|train_id|      station| time|time_next|
++--------+-------------+-----+---------+
+|     217|       Gilroy|6:06a|    6:15a|
+|     217|   San Martin|6:15a|    6:21a|
+|     217|  Morgan Hill|6:21a|    6:36a|
+|     217| Blossom Hill|6:36a|    6:42a|
+|     217|      Capitol|6:42a|    6:50a|
+|     217|       Tamien|6:50a|    6:59a|
+|     217|     San Jose|6:59a|     null|
+|     324|San Francisco|7:59a|    8:03a|
++--------+-------------+-----+---------+
+```
+
+`@instructions`
+Create a dataframe called df2 that contains the identical result as df1, using dot notation instead of sql.
+
+`@hint`
+The LEAD clause has an equivalent function in pyspark.sql.functions. The PARTITION BY, and ORDER BY clauses each have an equivalent dot notation function that is called on the Window object.
+
+`@pre_exercise_code`
+```{python}
+_init_spark = '/home/repl/.init-spark.py' 
+with open(_init_spark) as f:
+    code = compile(f.read(), _init_spark, 'exec')
+    exec(code)
+from pyspark.sql import Window 
+from pyspark.sql.functions import lead  
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+df=spark.read.csv("trainsched.txt",header=True)
+df.createOrReplaceTempView("df")
+
+```
+
+`@sample_code`
+```{python}
+df2 = df.withColumn('time_next', ____('time',1).over(Window.____('train_id').____('time')))
+```
+
+`@solution`
+```{python}
+df2 = df.withColumn('time_next', lead('time',1).over(Window.partitionBy('train_id').orderBy('time')))
 ```
 
 `@sct`

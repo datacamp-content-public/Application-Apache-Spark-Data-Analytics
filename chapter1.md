@@ -236,6 +236,8 @@ assert type(columns) is list, "Expected type(columns) to be a list"
 assert len(columns)==3, "There should be three columns"
 assert 'station' in columns and 'time' in columns and 'train_id' in columns, "A column is missing from your list"
 
+success_msg("Now you can inspect a table that is already in the Spark catalog.")
+
 ```
 
 ---

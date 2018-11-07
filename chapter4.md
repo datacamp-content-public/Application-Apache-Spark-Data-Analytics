@@ -1,9 +1,9 @@
 ---
-title: 'Transforming words to vector form'
+title: 'Chapter 4: Transforming text into vector format'
 description: ""
 ---
 
-## (Capstone) Transforming words into vectors.
+## (Capstone) Transforming text into vector format.
 
 ```yaml
 type: NormalExercise
@@ -20,11 +20,8 @@ A CountVectorizer model has been created using the following two lines of code:
 `model = cv.fit(df.select(col('sentence').alias('words')))`
 
 `@instructions`
-1. Create a dataframe called `result` by using `model` to transform `df`. 
-  - `result` has the columns `sentence`, `in`, `out`, and  `invec`. 
-  - `invec` is the vector transform of the `in` column.
-2. Add a column to `result` called `outvec`.
-  - `result` now has the columns `sentence`, `in`, `out`, `invec`, and `outvec`.
+1. Create a dataframe called `result` by using `model` to transform `df`. `result` has the columns `sentence`, `in`, `out`, and  `invec`. `invec` is the vector transform of the `in` column.
+2. Add a column to `result` called `outvec`. `result` now has the columns `sentence`, `in`, `out`, `invec`, and `outvec`.
 
 `@hint`
 First, use `model` to transform `df` after renaming `in` to `words`.  Then, perform the similar operation on the `out` column, but applying the transform to the `result` dataframe in order to preserve the result of the first operation.

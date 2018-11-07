@@ -114,6 +114,7 @@ assert len([x for x in spark.catalog.listTables() if x.name=='table'])==1,"Table
 assert [x for x in spark.catalog.listTables() if x.name=='table'][0].isTemporary,"Expected table to be temporary, but it is not."
 assert [x for x in spark.catalog.listTables() if x.name=='table'][0].tableType=='TEMPORARY',"Expected table type to be TEMPORARY, but it is not."
 
+success_msg("Now you know how to create a temporary table from a dataframe.")
 ```
 
 ---

@@ -301,18 +301,18 @@ key: c94919f4fa
 xp: 100
 ```
 
-In our dataset the 'time' column is easy to read, but in a nonstandard format that is not the best for performing operations such as subtraction.  Fortunately Spark has the means to convert this data into a format it can more easily manipulate. 
+Table 'sched' has a 'time' column, which is in a format that is not suitable for subtraction.  Spark has the means to convert this data into a more useable format. 
 
-The **to_timestamp** function takes two arguments: 
+**to_timestamp** function takes two arguments: 
 
-1. the name of the column, in our example, _‘time’_ 
-2. a format string telling it how to extract the hours and minutes from the time column.
+1. name of the column, (_‘time’_)
+2. format string telling how to extract the hours and minutes 
 
-"**Unix time**" is the number of seconds (minus leap seconds) that have elapsed since 00:00:00 Coordinated Universal Time (UTC), which corresponds to Thursday, 1 January 1970. 
+"**Unix time**" is the number of seconds elapsed since 1970-01-01 00:00:00 (UTC timezone)
 
-The "unix_timestamp" function converts the time data into unix time. This is given in seconds. It is called in a manner similar to the to_timestamp function, with the first argument giving the column name, and the second argument giving the format string.
+The "unix_timestamp" function converts the `time` into unix time. This is given in seconds. It is called in a manner similar to the to_timestamp function. Its first argument is the column name, and its second argument is the format string.
 
-Once we have the time column converted to seconds, it will be straightforward to calculate the difference between two different timestamps.
+Once the time column is converted to seconds, it is straightforward to calculate the difference between two timestamps.
 
 `@pre_exercise_code`
 ```{python}
@@ -320,6 +320,7 @@ _init_spark = '/home/repl/.init-spark.py'
 with open(_init_spark) as f:
     code = compile(f.read(), _init_spark, 'exec')
     exec(code)
+    
 df=spark.read.csv("lesson1.txt",header=True)
 df.createOrReplaceTempView("sched")
 ```
@@ -372,7 +373,7 @@ xp: 25
 ```
 
 `@instructions`
-The previous step confirmed that we can properly extract a timestamp from the time column. 
+The previous step extracted a timestamp from the time column. 
 Let's convert the time column into a unix timestamp. We won't worry about the time zone, 
 because the train lines in this dataset are all within the same time zone.
 

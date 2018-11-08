@@ -17,7 +17,6 @@ A second dataframe `df2` is created by copying `df1`, then performing additional
 
 The two dataframes are created, Then, four operations are performed on the two dataframes, two on `df1` and two on `df2`.  Each operation is timed.
 
-
 `@instructions`
 * There are two cache statements called "Caching df1" and "Caching df2".  Initially the second one is commented out. 
 * There are four timed operations captioned `df1_1st`, `df1_2nd`, `df2_1st`, and `df2_2nd`.

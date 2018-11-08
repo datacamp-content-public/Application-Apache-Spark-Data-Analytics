@@ -180,7 +180,6 @@ A query returns a dataframe, which can be inspected like so:
 >>> spark.sql("select * from table limit 0").columns
 ```
 
-
 `@instructions`
 - Try the commands given above in the shell, then try your hand at the following exercise. 
 - A table called 'df' exists.  Create a variable called 'columns' that contains a list of strings giving the names of the columns in the table 'df', sorted in ascending order. Print the value of the columns variable.

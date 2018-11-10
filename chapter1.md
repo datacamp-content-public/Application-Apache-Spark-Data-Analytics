@@ -3,7 +3,7 @@ title: 'Chapter 1: Pyspark SQL'
 description: ""
 ---
 
-## Lesson 1.1 : Creating and querying a SQL table in Spark
+## Creating and querying a SQL table in Spark
 
 ```yaml
 type: VideoExercise
@@ -841,7 +841,7 @@ df2 = df.withColumn('time_next', lead('time',1).over(Window.partitionBy('train_i
 
 ---
 
-## (Capstone) Convert Window function query from dot notation to SQL
+## Convert Window function query from dot notation to SQL
 
 ```yaml
 type: NormalExercise

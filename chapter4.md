@@ -1,5 +1,5 @@
 ---
-title: 'Chapter 4: Transforming text into vector format'
+title: 'Transforming text into vector format'
 description: ""
 ---
 

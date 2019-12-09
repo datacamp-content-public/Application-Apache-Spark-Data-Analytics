@@ -831,7 +831,7 @@ df2 = df.withColumn('time_next', lead('time',1).over(Window.partitionBy('train_i
 
 `@sct`
 ```{python}
-
+success_msg("Good job. Now you can perform aggregation query in Spark SQL")
 ```
 
 ---

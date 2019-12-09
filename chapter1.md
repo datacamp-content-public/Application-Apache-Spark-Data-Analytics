@@ -16,7 +16,7 @@ xp: 50
 
 ---
 
-## Exercise: Load dataframe with csv data
+## Duck and Rabbit exercise 1
 
 ```yaml
 type: NormalExercise
@@ -54,12 +54,12 @@ df = spark.read.csv("trainsched.txt",header=True)
 
 `@sct`
 ```{python}
-assert len(df.columns)==3, "Wrong number of columns -- did you use the right separator?"
-assert df.columns == ['train_id', 'station', 'time'], "Incorrect column names"
-assert df.count()==14, "The number of rows is incorrect"
-assert df.select("train_id").distinct().count()==2, "There should be two train_id's."
-assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()])[0]=='217',"Missing train 217"
-assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()])[1]=='324',"Missing train 324"
+#assert len(df.columns)==3, "Wrong number of columns -- did you use the right separator?"
+#assert df.columns == ['train_id', 'station', 'time'], "Incorrect column names"
+#assert df.count()==14, "The number of rows is incorrect"
+#assert df.select("train_id").distinct().count()==2, "There should be two train_id's."
+#assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()])[0]=='217',"Missing train 217"
+#assert sorted([x["train_id"] for x in df.select("train_id").distinct().collect()])[1]=='324',"Missing train 324"
 
 
 success_msg("Loading simple comma-separated text data into a dataframe is a breeze.")

@@ -24,12 +24,7 @@ key: 782514209a
 xp: 100
 ```
 
-Spark has a command that reads delimited text data into a dataframe from a file. 
-One of its options is to have it use the first row to define the names of the columns. 
-It automatically splits each row into columns using the delimiter, which by default is 
-a comma "," but which can be changed. It is called using an instance of a SparkSession object.
-Some implementations of Spark, such as Pyspark Shell, and some Spark Notebook, automatically provide 
-an instance of a SparkSession, which by convention is stored in a variable named 'spark'.
+aaa
 
 `@instructions`
 Load csv data from the file "trainsched.txt" into a dataframe stored in a variable named 'df'.

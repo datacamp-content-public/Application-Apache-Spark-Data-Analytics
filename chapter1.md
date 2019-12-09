@@ -1,6 +1,6 @@
 ---
-title: 'Chapter 1: Pyspark SQL'
-description: ""
+title: 'Chapter 1: Spark.ML'
+description: 'Loading a CSV file'
 ---
 
 ## Creating and querying a SQL table in Spark

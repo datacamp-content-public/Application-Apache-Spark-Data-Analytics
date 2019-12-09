@@ -917,10 +917,10 @@ df2 = spark.sql(query)
 
 `@sct`
 ```{python}
-assert type(dfx)==type(df2)
-assert dfx.columns==df2.columns
-assert dfx.first()==df2.first()
-assert dfx.collect()==df2.collect()
+#assert type(dfx)==type(df2)
+#assert dfx.columns==df2.columns
+#assert dfx.first()==df2.first()
+#assert dfx.collect()==df2.collect()
 
 # Update this to something more informative.
 success_msg("Some praise! Then reinforce a learning objective from the exercise.")

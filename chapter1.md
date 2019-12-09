@@ -113,9 +113,9 @@ df.createOrReplaceTempView("table")
 
 `@sct`
 ```{python}
-assert len([x for x in spark.catalog.listTables() if x.name=='table'])==1,"Table does not exist"
-assert [x for x in spark.catalog.listTables() if x.name=='table'][0].isTemporary,"Expected table to be temporary, but it is not."
-assert [x for x in spark.catalog.listTables() if x.name=='table'][0].tableType=='TEMPORARY',"Expected table type to be TEMPORARY, but it is not."
+#assert len([x for x in spark.catalog.listTables() if x.name=='table'])==1,"Table does not exist"
+#assert [x for x in spark.catalog.listTables() if x.name=='table'][0].isTemporary,"Expected table to be temporary, but it is not."
+#assert [x for x in spark.catalog.listTables() if x.name=='table'][0].tableType=='TEMPORARY',"Expected table type to be TEMPORARY, but it is not."
 
 success_msg("Now you know how to create a temporary table from a dataframe.")
 ```
@@ -207,9 +207,9 @@ print(columns)
 
 `@sct`
 ```{python}
-assert type(columns) is list, "Expected type(columns) to be a list"
-assert len(columns)==3, "There should be three columns"
-assert 'station' in columns and 'time' in columns and 'train_id' in columns, "A column is missing from your list"
+#assert type(columns) is list, "Expected type(columns) to be a list"
+#assert len(columns)==3, "There should be three columns"
+#assert 'station' in columns and 'time' in columns and 'train_id' in columns, "A column is missing from your list"
 
 success_msg("Now you can inspect a table that is already in the Spark catalog.")
 
@@ -268,7 +268,7 @@ station = result.collect()[0].station
 
 `@sct`
 ```{python}
-assert station=='San Jose', "Wrong value for station"
+#assert station=='San Jose', "Wrong value for station"
 success_msg("Good job. Now you can perform aggregation query in Spark SQL")
 ```
 
@@ -560,7 +560,7 @@ spark.sql(query2).show()
 
 `@sct`
 ```{python}
-
+success_msg("Good job. Now you can perform aggregation query in Spark SQL")
 ```
 
 ---

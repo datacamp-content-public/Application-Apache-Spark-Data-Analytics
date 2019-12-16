@@ -1,4 +1,4 @@
-# **Course Title**<br/>by **Course Author**
+# **Demographic classification using Python and Spark**<br/>by **Mark Plutowski**
 
 README and sample lesson deadline: YYYY-MM-DD 
 

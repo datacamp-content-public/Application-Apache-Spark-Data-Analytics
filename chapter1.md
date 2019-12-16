@@ -1,6 +1,6 @@
 ---
-title: 'Transforming user log data'
-description: 'Loading a CSV file, transforming transactional user log data into tabular format, analyzing data for suitability for training a classification model, what is the power law concept and how to apply it to a candidate classification dataset.'
+title: 'The dataset'
+description: 'Why is classification so useful.  The dataset.  Loading a CSV file. Transactional log data vs vectorized feature data. Transforming transactional user log data into tabular format. Analyzing data for suitability for training a classification model.  What is the power law concept and how to apply it to a candidate classification dataset.'
 ---
 
 ## Creating and querying a SQL table in Spark

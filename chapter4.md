@@ -1,6 +1,6 @@
 ---
-title: 'Transforming text into vector format'
-description: ""
+title: 'Tuning the model'
+description: 'What is tuning?  What are pipelines?  What is cross-validation?  What is automated tuning?  What is grid search?  Data selection.  How choice of data affects training.   Analyzing the sensitivity of accuracy to the number of likes. Comparing and contrasting to approaches to tuning.  How can we use sensitivity analysis to assess the goodness of a trained model.  The concepts of “coverage”, “accuracy threshold”, and “small sample performance”.'
 ---
 
 ## (Capstone) Transforming text into vector format.

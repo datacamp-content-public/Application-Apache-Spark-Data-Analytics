@@ -1,9 +1,9 @@
 ---
-title: 'The dataset'
+title: 'Transforming the dataset into feature data'
 description: 'Why is classification so useful.  The dataset.  Loading a CSV file. Transactional log data vs vectorized feature data. Transforming transactional user log data into tabular format. Analyzing data for suitability for training a classification model.  What is the power law concept and how to apply it to a candidate classification dataset.'
 ---
 
-## Creating and querying a SQL table in Spark
+## The dataset
 
 ```yaml
 type: VideoExercise
@@ -16,7 +16,7 @@ xp: 50
 
 ---
 
-## Duck and Rabbit exercise 1
+## Loading the data
 
 ```yaml
 type: NormalExercise
@@ -67,7 +67,7 @@ success_msg("Loading simple comma-separated text data into a dataframe is a bree
 
 ---
 
-## Exercise: create a SQL table from a dataframe.
+## How many different articles were liked?
 
 ```yaml
 type: NormalExercise
@@ -122,7 +122,7 @@ success_msg("Now you know how to create a temporary table from a dataframe.")
 
 ---
 
-## Exercise: determine the column names of a table.
+## How many different articles were liked?
 
 ```yaml
 type: NormalExercise
@@ -217,7 +217,7 @@ success_msg("Now you can inspect a table that is already in the Spark catalog.")
 
 ---
 
-## Exercise: run an aggregate query on a table.
+## Analyze the distribution
 
 ```yaml
 type: NormalExercise
@@ -287,7 +287,7 @@ xp: 50
 
 ---
 
-## Exercise: Calculating the difference between values in adjacent rows.
+## What does the data look like when bucketed by the number of likes?
 
 ```yaml
 type: TabExercise

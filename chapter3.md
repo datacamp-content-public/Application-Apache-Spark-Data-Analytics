@@ -1,6 +1,6 @@
 ---
-title: 'Caching, logging, and query plans in Spark SQL'
-description: ""
+title: 'Training a logistic regression model'
+description: "What is classification? What is logistic regression? Why is it used for classification? What are hyperparameters?  Using a training summary object. Evaluating a fitted model on a test dataset. How to calculate the estimated prediction accuracy of the fitted model. \n"
 ---
 
 ## (Capstone) Practicing caching

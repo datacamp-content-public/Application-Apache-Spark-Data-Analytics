@@ -1,6 +1,6 @@
 ---
-title: 'Using window function sql for natural language processing'
-description: ""
+title: 'Creating the feature data'
+description: 'What is Extract, Transform, and Select (ETS).  What is the CountVectorizer model.  Fitting the CountVectorizer model.  Analyzing a vectorizer''s vocabulary.  Dataset subset selection.'
 ---
 
 ## (Capstone) Finding common word sequences using window function

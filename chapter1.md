@@ -1,6 +1,6 @@
 ---
-title: 'Chapter 1: Spark.ML'
-description: 'Loading a CSV file'
+title: 'Transforming user log data'
+description: 'Loading a CSV file, transforming transactional user log data into tabular format, analyzing data for suitability for training a classification model, what is the power law concept and how to apply it to a candidate classification dataset.'
 ---
 
 ## Creating and querying a SQL table in Spark

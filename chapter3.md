@@ -136,7 +136,7 @@ An instance of a LogisticRegression object is provided in the `logistic` variabl
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- Use the `fit` function.
+- Use the `fit` function to train the model.
 
 `@pre_exercise_code`
 ```{python}

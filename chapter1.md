@@ -497,13 +497,11 @@ You will use the SQL function `udf` to create `null_array_udf`.
 
 `@instructions`
 <!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
+- Create a user defined function that replaces each null value with an empty array of string.
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
+- Use the SQL function `udf` to create the UDF.  The `else` clause should return the desired value for all values that are not a nonempty array.  The return type should be an array of strings.  Don't forget the ().
 
 `@pre_exercise_code`
 ```{python}

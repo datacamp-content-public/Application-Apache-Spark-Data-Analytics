@@ -30,9 +30,6 @@ A dataframe `df` is provided; it contains data that needs to be transformed into
 
 `@instructions`
 - Transform the data in `df` using the CountVectorizer model `cv_model`
-- From the result of the previous step, select the columns `uid`, `rabbit`, `likesvec`, and `numlikes`
-- Rename the `likesvec` column to `features`
-- Rename the `rabbit` column to `label`
 
 `@hint`
 - Use the `transform` function on `cv_model`

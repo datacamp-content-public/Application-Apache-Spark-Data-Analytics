@@ -202,7 +202,7 @@ success_msg("Yes. Once the model and training data are configured, training the 
 
 ---
 
-## Insert exercise title here
+## Evaluate a trained model on test data.
 
 ```yaml
 type: NormalExercise
@@ -210,12 +210,10 @@ key: d5aa9a9f24
 xp: 100
 ```
 
-<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+A trained model is provided in `df_fitted`.  A dataframe containing test data is provided in `df_testset`.  
 
 `@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
+- Evaluate the area under curve for the fitted model
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
@@ -225,22 +223,64 @@ xp: 100
 `@pre_exercise_code`
 ```{python}
 
+####
+
+from pyspark.ml.feature import CountVectorizer
+from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
+from pyspark.ml.classification import LogisticRegression
+import pyspark.sql.functions as fun
+from pyspark import SQLContext
+
+sqlContext = SQLContext.getOrCreate(spark.sparkContext)
+
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+null_array_udf = fun.udf(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else [],
+                ArrayType(StringType()))
+
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+           .withColumn('likes', fun.split('likes', ','))\
+           .withColumn('numlikes', fun.when(fun.col('likes').isNull(),0).otherwise(fun.size('likes')))\
+           .withColumn('likes', null_array_udf('likes'))
+
+
+cv = CountVectorizer(inputCol='likes', outputCol='likesvec')
+model = cv.fit(df)
+dfx = model.transform(df)\
+           .select('uid','rabbit','likesvec','numlikes')\
+           .withColumnRenamed('rabbit','label')\
+           .withColumnRenamed('likesvec','features')
+df_trainset, df_testset = dfx.randomSplit((0.80,0.20), 42)
+logistic = LogisticRegression(maxIter=1000, regParam=0.4, elasticNetParam=0)
+df_fitted = logistic.fit(df_trainset)
+
+####
+
+# Can eliminate most of the code above by loading df_fitted and df_testset from file
 ```
 
 `@sample_code`
 ```{python}
+# Evaluate the area under ROC curve on the test data
+print("Test AUC: " + str(df_fitted.____(df_testset).____))
 
 ```
 
 `@solution`
 ```{python}
+# Evaluate the area under ROC curve on the test data
+print("Test AUC: " + str(df_fitted.evaluate(df_testset).areaUnderROC))
 
 ```
 
 `@sct`
 ```{python}
-# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+# SCT : pattern match on desired result (approximately 0.6454443704677009)
+success_msg("Perfect. This model correctly classifies over 64% of the test data.")
 
 ```
 

@@ -321,7 +321,7 @@ xp: 50
 
 ---
 
-## Practice using `when/otherwise`
+## Practice using `when/otherwise` to handle null entries
 
 ```yaml
 type: NormalExercise
@@ -329,7 +329,7 @@ key: ed8e9509f8
 xp: 100
 ```
 
-We are provided with a dataframe `df`, which contains a column `likes` that contains an array of strings.  However, sometimes the value of the `likes` column can be empty. We want to count the number of elements in the `likes` column, setting it to zero whenever it is empty. The SQL function `size` is suitable for counting the size of an array field. However, it requires that the field not be null. The SQL function `when` is suitable for handling the case where this field has a null value. The SQL functions are imported as follows: 
+We are provided with a dataframe `df`, which contains a column `likes` that contains an array of strings.  However, sometimes the value of the `likes` column can be empty. We want to count the number of elements in the `likes` column, setting it to zero whenever it is empty. The SQL function `size` is suitable for counting the size of an array field. However, it requires that the field not be null. The SQL function `when` is suitable for handling the case where the `likes` field has a null value. The SQL functions are imported as follows: 
 
 ```
 import pyspark.sql.functions as fun
@@ -397,6 +397,7 @@ df_result = \
 
 `@sct`
 ```{python}
+success_msg("Perfect. The SQL function `when` .")
 # Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
 ```
 

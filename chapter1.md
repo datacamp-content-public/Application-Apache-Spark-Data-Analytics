@@ -397,7 +397,77 @@ df_result = \
 
 `@sct`
 ```{python}
-success_msg("Perfect. The SQL function `when` .")
+success_msg("Perfect. The SQL function `when` is useful for handling edge cases.")
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 670f09864b
+xp: 100
+```
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+We are provided with a dataframe `df`. The dataframe has a column `likes`, which is an array of strings. However, the `likes` column has some null values. We have a UDF called `null_array_udf` that converts the null values to an empty array `[]`.  
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Add a column to the dataframe that converts all null values in `likes` to an empty array
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+from pyspark.ml.feature import CountVectorizer
+from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
+from pyspark.ml.classification import LogisticRegression
+import pyspark.sql.functions as fun
+
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+null_array_udf = fun.udf(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else [],
+                ArrayType(StringType()))
+
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+           .withColumn('likes', fun.split('likes', ','))
+
+# Can remove much of the above code by loading in a saved version of df
+```
+
+`@sample_code`
+```{python}
+df.show(5)
+
+# Convert null values in likes to [] using null_array_udf
+df_result = df.withColumn('likes', ____('____'))
+
+df_result.show(5)
+```
+
+`@solution`
+```{python}
+df.show(5)
+
+# Convert null values in likes to [] using null_array_udf
+df_result = df.withColumn('likes', null_array_udf('likes'))
+
+df_result.show(5)
+```
+
+`@sct`
+```{python}
+success_msg("Well done. User defined functions are used in much the same way as SQL functions.")
 # Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
 ```
 

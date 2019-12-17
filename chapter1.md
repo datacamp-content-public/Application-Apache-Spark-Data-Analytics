@@ -167,7 +167,82 @@ schema = StructType([StructField("uid", StringType()),
 
 ---
 
-## Loading the data (OLD)
+## Loading comma delimited data
+
+```yaml
+type: VideoExercise
+key: cf831c5999
+xp: 50
+```
+
+`@projector_key`
+4eff04f99cdf88f9d0903e9f917bd459
+
+---
+
+## Practice loading comma delimited data
+
+```yaml
+type: NormalExercise
+key: 2b30554386
+xp: 100
+```
+
+A variable `schema` is provided, specifying three fields:
+
+```
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+```
+
+We're going to use this schema to load a log file having three columns. The log file is in CSV format.
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Load the CSV file using the schema provided
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+# We might want to have the learner load a smaller version of rabbitduck.csv to avoid session timeout
+
+
+```
+
+`@sample_code`
+```{python}
+# Load the CSV file using the provided schema
+df = spark.read.____('data/rabbitduck/rabbitduck.csv', header=True, schema=____)\
+
+```
+
+`@solution`
+```{python}
+# Load the CSV file using the provided schema
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+success_msg("That is correct.  This schema tells Spark to expect three columns, what to call them, and what type they should be.")
+```
+
+---
+
+## Loading the data (OLD SPARE)
 
 ```yaml
 type: NormalExercise

@@ -3,6 +3,58 @@ title: 'Vectorizing the feature data'
 description: 'What is Extract, Transform, and Select (ETS).  What is the CountVectorizer model.  Fitting the CountVectorizer model.  Analyzing a vectorizer''s vocabulary.  Dataset subset selection.'
 ---
 
+## Configuring a `CountVectorizer` object
+
+```yaml
+type: NormalExercise
+key: 129afc16fd
+xp: 100
+```
+
+To properly configure an instance of a `CountVectorizer` object, we need to tell it where to expect its input data to be, and where to put the data that it will generate.
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Import the `CountVectorizer` module
+- Create an instance of `CountVectorizer` expecting its input to be in column called `likes`, and putting its output into a column called `likesvec`
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+# Import the CountVectorizer module
+from pyspark.ml.feature import ____
+
+# Get the input from likes and put the output into likesvec
+cv = CountVectorizer(____='likes', ____='likesvec')
+
+```
+
+`@solution`
+```{python}
+# Import the CountVectorizer module
+from pyspark.ml.feature import CountVectorizer
+
+# Get the input from likes and put the output into likesvec
+cv = CountVectorizer(inputCol='likes', outputCol='likesvec')
+
+```
+
+`@sct`
+```{python}
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+```
+
+---
+
 ## Fitting a CountVectorizer model
 
 ```yaml
@@ -251,48 +303,6 @@ df_labeled = df_f.withColumnRenamed('rabbit', 'label')
 # 2. inspect df_f.columns, and datatype of df.features column
 # 3. inspect df_labeled columns, and datatype of all columns
 success_msg("Good job. The machine learning model expects the input data and label data to be in columns that it recognizes.")
-```
-
----
-
-## Insert exercise title here
-
-```yaml
-type: NormalExercise
-key: 129afc16fd
-xp: 100
-```
-
-<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-
-`@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
-
-`@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
-
-`@pre_exercise_code`
-```{python}
-
-```
-
-`@sample_code`
-```{python}
-
-```
-
-`@solution`
-```{python}
-
-```
-
-`@sct`
-```{python}
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
 ```
 
 ---

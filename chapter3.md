@@ -135,7 +135,6 @@ An instance of a LogisticRegression object is provided in the `logistic` variabl
 - Fit the logistic regression model provided by `logistic` on the training data provided in `df_trainset`
 
 `@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
 - Use the `fit` function to train the model.
 
 `@pre_exercise_code`
@@ -160,7 +159,6 @@ df_fitted = logistic.fit(df_trainset)
 
 `@sct`
 ```{python}
-# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
 success_msg("Yes. Once the model and training data are configured, training the model can be done in one line of code.")
 ```
 

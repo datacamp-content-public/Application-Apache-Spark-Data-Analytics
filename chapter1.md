@@ -201,12 +201,11 @@ We're going to use this schema to load a log file having three columns. The log 
 
 `@instructions`
 <!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Load the CSV file using the schema provided
+- Load the CSV file using the provided schema
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
+- use the `csv` function to read the file, and set the `schema` argument to the name of the provided schema.
 
 `@pre_exercise_code`
 ```{python}

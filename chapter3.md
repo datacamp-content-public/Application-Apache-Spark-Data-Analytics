@@ -64,7 +64,6 @@ df_trainset, df_testset = dfx.randomSplit(split, 42)
 ```{python}
 # Here let's use smart SCT rather than pattern matching to allow learners to use a broader array of solutions with less templating. 
 # The solution should be either a tuple or a list T, with at least two elements, such that T[0]/(sum(T))=0.8, and T[1]/(sum(T))=0.2
-# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
 success_msg("This works. The first argument can be either a list or tuple.  The elements can be integer or floats.  Weights are normalized if they don’t sum up to 1.0.")
 ```
 

@@ -201,12 +201,10 @@ xp: 100
 Import the logistic regression module and instantiate a logistic regression model. 
 
 `@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
 - Import the logistic regression module
 - Set the maximum iterations to 1000, the regularization parameter to 0.4, and the elastic net parameter to 0.
 
 `@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
 - Use the following arguments: maxIter, regParam, and elasticNetParam
 
 `@pre_exercise_code`
@@ -216,7 +214,10 @@ Import the logistic regression module and instantiate a logistic regression mode
 
 `@sample_code`
 ```{python}
+# Import the logistic regression module
 from pyspark.ml.classification import ____
+
+# Set max iters=1000, regularization=0.4, elastic net to 0
 logistic = LogisticRegression(____, ____, ____)
 ```
 

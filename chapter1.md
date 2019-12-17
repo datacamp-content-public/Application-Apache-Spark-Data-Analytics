@@ -320,7 +320,7 @@ xp: 50
 
 ---
 
-## Practice using a UDF to handle null entries
+## Practice using `when/otherwise`
 
 ```yaml
 type: NormalExercise
@@ -328,12 +328,13 @@ key: ed8e9509f8
 xp: 100
 ```
 
+We are provided with a dataframe `df`, which contains a column `likes` that contains an array of strings.  However, sometimes the value of the `likes` column can be empty. We want to count the number of elements in the `likes` column, setting it to zero whenever it is empty. The SQL function `size` is suitable for counting the size of an array field. However, it requires that the field not be null. The `when`/`otherwise` clause is suitable for handling the case where this field has a null value.
+
 <!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
 
 `@instructions`
 <!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
+- Use `when`/`otherwise` to add a column that counts the number of likes contained in the column `likes`, setting it to zero when the value of `likes` is null or an empty array.
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
@@ -359,25 +360,32 @@ null_array_udf = fun.udf(lambda x:
                 else [],
                 ArrayType(StringType()))
 
-df_has_nulls = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
-           .withColumn('likes', fun.split('likes', ','))
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+          .withColumn('likes', fun.split('likes', ','))
 
-#  Can remove much of the above by loading a precalculated version of df_has_nulls
-
-           .withColumn('numlikes', fun.when(fun.col('likes').isNull(),0).otherwise(fun.size('likes')))\
-           .withColumn('likes', null_array_udf('likes'))
+#  Can remove much of the above by loading a precalculated version of df
 
 
 ```
 
 `@sample_code`
 ```{python}
-
+# Add a column that counts the number of likes
+df_result = \
+    df.withColumn(\
+  		'numlikes',\
+        fun.____(fun.col('likes').isNull(), 0)\
+           .____(fun.size('likes')))
 ```
 
 `@solution`
 ```{python}
-
+# Add a column that counts the number of likes
+df_result = \
+    df.withColumn(\
+  		'numlikes',\
+        fun.when(fun.col('likes').isNull(), 0)\
+           .otherwise(fun.size('likes')))
 ```
 
 `@sct`

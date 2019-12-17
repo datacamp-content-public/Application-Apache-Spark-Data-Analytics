@@ -403,7 +403,7 @@ success_msg("Perfect. The SQL function `when` is useful for handling edge cases.
 
 ---
 
-## Insert exercise title here
+## Using a UDF
 
 ```yaml
 type: NormalExercise
@@ -482,6 +482,16 @@ xp: 100
 
 In the previous exercise we used a UDF called `null_array_udf` to convert null values to an empty array.  You will now create this UDF.
 
+A dataframe `df` is provided.  It has a column `likes`, which contains values that are arrays of strings.  This column has some null values. 
+
+The SQL functions are imported as follows: 
+
+```
+import pyspark.sql.functions as fun
+
+```
+
+You will use the SQL function `udf` to create `null_array_udf`. 
 
 <!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
 
@@ -514,16 +524,35 @@ df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema
 
 `@sample_code`
 ```{python}
+df.show(5)
 
+# Create UDF replacing nulls with empty array of strings
+null_array_udf = fun.____(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else ____,
+                ArrayType(____))
+
+df_result = df.withColumn('likes', null_array_udf('likes'))
+df_result.show(5)
 ```
 
 `@solution`
 ```{python}
+df.show(5)
 
+# Create UDF replacing nulls with empty array of strings
+null_array_udf = fun.udf(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else [],
+                ArrayType(StringType()))
+
+df_result = df.withColumn('likes', null_array_udf('likes'))
+df_result.show(5)
 ```
 
 `@sct`
 ```{python}
+success_msg("Well done. We used a lambda expression rather than a named function because this is more efficient.")
 # Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
 ```
 

@@ -249,17 +249,18 @@ key: b5dc86e1a5
 xp: 100
 ```
 
-A dataframe `df` is provided. It has a column `likes` that contains comma delimited data. SQL functions have been imported as follows: 
+SQL functions have been imported as follows: 
 
 ```
 import pyspark.sql.functions as fun
 
 ```
 
+A dataframe `df` is provided. It has a column `likes` that contains comma delimited data. 
 
 `@instructions`
 <!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Convert the column `likes` to an array of strings
+- Convert the `likes` column to an array of strings
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->

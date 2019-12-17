@@ -32,7 +32,7 @@ xp: 100
 
 `@sample_code`
 ```{python}
-# Transform the data in df using cv_model
+# Use cv_model to transform the data in df
 df_t = ____.____(df)
 
 # Select uid, rabbit, likesvec, and numlikes columns
@@ -48,7 +48,7 @@ df_labeled = df_f.____('____','____')
 
 `@solution`
 ```{python}
-# Transform the data in df using cv_model
+# Use cv_model to transform the data in df
 df_t = cv_model.transform(df)
 
 # Select uid, rabbit, likesvec, and numlikes columns

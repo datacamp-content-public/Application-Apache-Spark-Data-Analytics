@@ -44,6 +44,7 @@ dfx = model.transform(df)\
            .withColumnRenamed('rabbit','label')\
            .withColumnRenamed('likesvec','features')
 
+# Can reduce the amount of calculation done here by having dfx loaded from precalculated dataframe.
 ```
 
 `@sample_code`

@@ -210,17 +210,18 @@ Instantiate a logistic regression model. maxIter=1000, regParam=0.4, elasticNetP
 
 `@pre_exercise_code`
 ```{python}
-from pyspark.ml.classification import LogisticRegression
 
 ```
 
 `@sample_code`
 ```{python}
+from pyspark.ml.classification import LogisticRegression
 logistic = LogisticRegression(____, ____, ____)
 ```
 
 `@solution`
 ```{python}
+from pyspark.ml.classification import LogisticRegression
 logistic = LogisticRegression(maxIter=1000, regParam=0.4, elasticNetParam=0)
 ```
 

@@ -15,7 +15,7 @@ An instance of a `CountVectorizer` object is provided in the variable `cv`.  It 
 
 
 `@instructions`
-- Create a fitted `CountVectorizer` model by fitting an instance of a `CountVectorizer` object on data provided in the dataframe `df`
+- Create a fitted `CountVectorizer` model by fitting an instance of a `CountVectorizer` object upon the data provided in the dataframe `df`
 
 `@hint`
 - Apply the `fit` function to the `cv` object. Provide the name of the data dataframe as the argument.

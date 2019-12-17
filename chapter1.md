@@ -163,6 +163,7 @@ schema = StructType([StructField("uid", StringType()),
 `@sct`
 ```{python}
 # Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+success_msg("Perfect. You can specify additional columns by adding `StructType` elements to the `StructType` array.")
 ```
 
 ---
@@ -328,7 +329,13 @@ key: ed8e9509f8
 xp: 100
 ```
 
-We are provided with a dataframe `df`, which contains a column `likes` that contains an array of strings.  However, sometimes the value of the `likes` column can be empty. We want to count the number of elements in the `likes` column, setting it to zero whenever it is empty. The SQL function `size` is suitable for counting the size of an array field. However, it requires that the field not be null. The `when`/`otherwise` clause is suitable for handling the case where this field has a null value.
+We are provided with a dataframe `df`, which contains a column `likes` that contains an array of strings.  However, sometimes the value of the `likes` column can be empty. We want to count the number of elements in the `likes` column, setting it to zero whenever it is empty. The SQL function `size` is suitable for counting the size of an array field. However, it requires that the field not be null. The SQL function `when` is suitable for handling the case where this field has a null value. The SQL functions are imported as follows: 
+
+```
+import pyspark.sql.functions as fun
+
+```
+
 
 <!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
 

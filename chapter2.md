@@ -86,6 +86,19 @@ success_msg("Good. You have vectorized the feature data and renamed its columns 
 
 ---
 
+## Labeling feature data
+
+```yaml
+type: VideoExercise
+key: 65d0822c3d
+xp: 50
+```
+
+`@projector_key`
+35563699a1babe3c3fd3e4a2b9b0c0ac
+
+---
+
 ## Practice labeling feature data
 
 ```yaml
@@ -94,7 +107,7 @@ key: 7fded5cc0d
 xp: 100
 ```
 
-Previously we used a `CountVectorizer` model to transform data to a vectorized format that can be provided as the input vector to a machine learning model. We also need to rename a couple of the key columns using the names that are expected by the machine learning model.
+Previously we used a `CountVectorizer` model to transform data to a vectorized format that can be provided as the input vector to a machine learning model. Although the data is now in a suitable format, we also need to rename two of its columns to the column names that are expected by the machine learning model.
 
 A dataframe `df_t` is provided that contains data that has been transformed using a CountVectorizer model.
 

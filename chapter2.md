@@ -18,7 +18,6 @@ An instance of a `CountVectorizer` object is provided in the variable `cv`.  It 
 - Create a fitted `CountVectorizer` model by fitting an instance of a `CountVectorizer` object on data provided in the dataframe `df`
 
 `@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
 - Apply the `fit` function to the `cv` object. Provide the name of the data dataframe as the argument.
 
 `@pre_exercise_code`

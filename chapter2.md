@@ -1,126 +1,6 @@
 ---
-title: 'Creating the feature data'
+title: 'Vectorizing the feature data'
 description: 'What is Extract, Transform, and Select (ETS).  What is the CountVectorizer model.  Fitting the CountVectorizer model.  Analyzing a vectorizer''s vocabulary.  Dataset subset selection.'
----
-
-## (Capstone) Finding common word sequences using window function
-
-```yaml
-type: NormalExercise
-key: a70a4bc009
-xp: 100
-```
-
-Previously we saw how to create a query that finds word sequences of length three ("3-tuples").
-We used that query as a subquery in a traditional sql query 
-to find the most common 3-tuples in the text document. 
-Now you'll perform the similar task to find the most common 5-tuples. 
-
-Dataframe `df` has columns: `word`, `id`, `part`, `title`. The `id` column is a integer such that a word that comes later in the document has a larger id than a word that comes before it. The `part` column separates the data into chapters. The dataframe `df` is also registered as temporary table called `df`.
-
-`@instructions`
-Create a query that finds the **10** most common 5-tuples in the dataset. 
-Have it use sql_4tuples as a subquery. Call the result df_a. It must have five columns named `w1`, `w2`, `w3`, `w4`, and `count`. (`w1`, `w2`, `w3`, `w4`) corresponds to a 4-tuple, and `count` indicates how many times it occurred in the dataset.
-
-`@hint`
-You can peek at the answer by running the following command in the shell: df_answer.show()
-
-`@pre_exercise_code`
-```{python}
-_init_spark = '/home/repl/.init-spark.py' 
-with open(_init_spark) as f:
-    code = compile(f.read(), _init_spark, 'exec')
-    exec(code)
-from pyspark.sql import SparkSession
-spark = SparkSession.builder.getOrCreate()
-sqlContext = SQLContext.getOrCreate(spark.sparkContext)
-df = sqlContext.read.load('sherlock_parts.parquet')
-df.createOrReplaceTempView('df')
-spark.catalog.cacheTable('df')
-#   Tallies most frequent 5-tuples
-sql_top_5tuples = """
-select w1,w2,w3,w4,w5,count(*) as count
-from
-(
-   select
-   word as w1,
-   lead(word,1) over(partition by part order by id ) as w2,
-   lead(word,2) over(partition by part order by id ) as w3,
-   lead(word,3) over(partition by part order by id ) as w4,
-   lead(word,4) over(partition by part order by id ) as w5
-   from df
-)
-group by w1,w2,w3,w4,w5
-order by count desc
-limit 10
-"""
-df_correct = spark.sql(sql_top_5tuples)
-df_answer = spark.sql(sql_top_5tuples)
-```
-
-`@sample_code`
-```{python}
-# Fill in the blanks to find the top 10 sequences of five words
-query = """
-select ____, ____, ____, ____, ____, ____(____) as ____ 
-from (  
-   select word as w1,
-   lead(word,1) over(partition by part order by id ) as w2,
-   lead(word,2) over(partition by part order by id ) as w3,
-   lead(word,3) over(partition by part order by id ) as w4,
-   lead(word,4) over(partition by part order by id ) as w5
-   from df 
-)
-group by ____, ____, ____, ____, ____
-order by ____ desc
-limit __ """
-df_a = spark.sql(query)
-```
-
-`@solution`
-```{python}
-# Fill in the blanks to find the top 10 sequences of five words
-query = """
-select w1,w2,w3,w4,w5,count(*) as count 
-from (
-   select word as w1,
-   lead(word,1) over(partition by part order by id ) as w2,
-   lead(word,2) over(partition by part order by id ) as w3,
-   lead(word,3) over(partition by part order by id ) as w4,
-   lead(word,4) over(partition by part order by id ) as w5
-   from df
-)
-group by w1,w2,w3,w4,w5
-order by count desc
-limit 10 """ 
-df_a = spark.sql(query)
-```
-
-`@sct`
-```{python}
-assert type(df_correct)==type(df_a), "Answer is wrong type"
-df_a.cache()
-assert df_a.columns==df_correct.columns, "Wrong columns"
-assert df_a.count()==df_correct.count(), "Wrong number of data"
-assert df_a.collect()==df_correct.collect(), "Wrong data"
-
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
-
-```
-
----
-
-## Insert exercise title here
-
-```yaml
-type: VideoExercise
-key: 997e2b3606
-xp: 50
-```
-
-`@projector_key`
-e72c252ca4c17d2b93c04290c7d29702
-
 ---
 
 ## Insert exercise title here
@@ -140,8 +20,10 @@ xp: 100
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
+- Use the transform function on cv_model.
+- Use the select function.
+- Provide the base column as the first argument and the new name as the second argument.
+- Use the `withColumnRenamed` function to rename a column.
 
 `@pre_exercise_code`
 ```{python}
@@ -150,17 +32,39 @@ xp: 100
 
 `@sample_code`
 ```{python}
+# Transform the data in df using cv_model
+df_t = ____.____(df)
+
+# Select uid, rabbit, likesvec, and numlikes columns
+df_s = df_t.____('uid', 'rabbit', 'likesvec', 'numlikes')
+
+# Rename the likesvec column to features
+df_f = df_s.withColumnRenamed('____', '____')
+
+# Rename the rabbit column to label
+df_labeled = df_f.____('____','____')
 
 ```
 
 `@solution`
 ```{python}
+# Transform the data in df using cv_model
+df_t = cv_model.transform(df)
+
+# Select uid, rabbit, likesvec, and numlikes columns
+df_s = df_t.select('uid', 'rabbit', 'likesvec', 'numlikes')
+
+# Rename the likesvec column to features
+df_f = df_s.withColumnRenamed('likesvec', 'features')
+
+# Rename the rabbit column to label
+df_labeled = df_f.withColumnRenamed('rabbit','label')
 
 ```
 
 `@sct`
 ```{python}
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+success_msg("Good. You have transformed the data and renamed its columns to what is needed for the next step.")
 ```
 
 ---

@@ -139,9 +139,12 @@ An instance of a LogisticRegression object is provided in the `logistic` variabl
 
 `@pre_exercise_code`
 ```{python}
+from pyspark.ml.classification import LogisticRegression
+
+####
+
 from pyspark.ml.feature import CountVectorizer
 from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
-from pyspark.ml.classification import LogisticRegression
 import pyspark.sql.functions as fun
 from pyspark import SQLContext
 
@@ -168,9 +171,14 @@ dfx = model.transform(df)\
            .withColumnRenamed('rabbit','label')\
            .withColumnRenamed('likesvec','features')
 df_trainset, df_testset = dfx.randomSplit((0.80,0.20), 42)
+
+####
+
+# Can remove most of the above by loading df_trainset from precomputed df saved to file
+
 logistic = LogisticRegression(maxIter=1000, regParam=0.4, elasticNetParam=0)
 
-# Can remove most of this by loading df_trainset from precomputed df saved to file
+
 ```
 
 `@sample_code`

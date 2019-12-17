@@ -189,7 +189,7 @@ success_msg("This works. The first argument can be either a list or tuple.  The 
 
 ---
 
-## Insert exercise title here
+## Instantiating a logistic regression model
 
 ```yaml
 type: NormalExercise
@@ -198,36 +198,37 @@ xp: 100
 ```
 
 <!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+Instantiate a logistic regression model. maxIter=1000, regParam=0.4, elasticNetParam=0
 
 `@instructions`
 <!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
+- Set the maximum iterations to 1000, the regularization parameter to 0.4, and the elastic net parameter to 0.
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
+- Use the following arguments: maxIter, regParam, and elasticNetParam
 
 `@pre_exercise_code`
 ```{python}
+from pyspark.ml.classification import LogisticRegression
 
 ```
 
 `@sample_code`
 ```{python}
-
+logistic = LogisticRegression(____, ____, ____)
 ```
 
 `@solution`
 ```{python}
-
+logistic = LogisticRegression(maxIter=1000, regParam=0.4, elasticNetParam=0)
 ```
 
 `@sct`
 ```{python}
-# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+# Either use smart pattern matching, allowing spaces, arguments out of order,
+# or, inspect the logistic variable.
+success_msg("Good job. Hyperparameter argument names are often just abbreviated versions of the long name .")
 
 ```
 

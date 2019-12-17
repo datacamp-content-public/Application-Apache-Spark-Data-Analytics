@@ -121,7 +121,7 @@ success_msg("Good job. Hyperparameter argument names are often just abbreviated 
 
 ---
 
-## Insert exercise title here
+## Fit a logistic regression model on the training data
 
 ```yaml
 type: NormalExercise

@@ -35,8 +35,76 @@ A dataframe `df` is provided; it contains data that needs to be transformed into
 - Rename the `rabbit` column to `label`
 
 `@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- Use the `select` function.
+- Use the `transform` function on `cv_model`
+
+`@pre_exercise_code`
+```{python}
+from pyspark.ml.feature import CountVectorizer
+from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
+from pyspark.ml.classification import LogisticRegression
+import pyspark.sql.functions as fun
+from pyspark import SQLContext
+
+sqlContext = SQLContext.getOrCreate(spark.sparkContext)
+
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+null_array_udf = fun.udf(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else [],
+                ArrayType(StringType()))
+
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+           .withColumn('likes', fun.split('likes', ','))\
+           .withColumn('numlikes', fun.when(fun.col('likes').isNull(),0).otherwise(fun.size('likes')))\
+           .withColumn('likes', null_array_udf('likes'))
+
+# Can remove much of the above by loading df from file
+
+cv = CountVectorizer(inputCol='likes', outputCol='likesvec')
+cv_model = cv.fit(df)
+```
+
+`@sample_code`
+```{python}
+# Use cv_model to transform the data in df
+df_t = ____.____(df)
+```
+
+`@solution`
+```{python}
+# Use cv_model to transform the data in df
+df_t = cv_model.transform(df)
+```
+
+`@sct`
+```{python}
+success_msg("Good. You have vectorized the feature data and renamed its columns to what is needed for the training step.")
+```
+
+---
+
+## Practice labeling feature data
+
+```yaml
+type: NormalExercise
+key: 7fded5cc0d
+xp: 100
+```
+
+Previously we used a `CountVectorizer` model to transform data to a vectorized format that can be provided as the input vector to a machine learning model. We also need to rename a couple of the key columns using the names that are expected by the machine learning model.
+
+A dataframe `df_t` is provided that contains data that has been transformed using a CountVectorizer model.
+
+`@instructions`
+- From `df_t` select the columns `uid`, `rabbit`, `likesvec`, and `numlikes`
+- Rename the `likesvec` column to `features`
+- Rename the `rabbit` column to `label`
+
+`@hint`
+- Use the `select` function to select columns.
 - Use the `withColumnRenamed` function to rename a column.
 - Provide the previous column name as the first argument and the new name as the second argument.
 
@@ -74,107 +142,11 @@ df_t = cv_model.transform(df)
 
 `@sample_code`
 ```{python}
-# Use cv_model to transform the data in df
-df_t = ____.____(df)
-
-# Select uid, rabbit, likesvec, and numlikes columns
-df_s = df_t.____('uid', 'rabbit', 'likesvec', 'numlikes')
-
-# Rename the likesvec column to features
-df_f = df_s.withColumnRenamed('____', '____')
-
-# Rename the rabbit column to label
-df_labeled = df_f.____('____','____')
 
 ```
 
 `@solution`
 ```{python}
-# Use cv_model to transform the data in df
-df_t = cv_model.transform(df)
-
-# Select uid, rabbit, likesvec, and numlikes columns
-df_s = df_t.select('uid', 'rabbit', 'likesvec', 'numlikes')
-
-# Rename the likesvec column to features
-df_f = df_s.withColumnRenamed('likesvec', 'features')
-
-# Rename the rabbit column to label
-df_labeled = df_f.withColumnRenamed('rabbit','label')
-
-```
-
-`@sct`
-```{python}
-success_msg("Good. You have vectorized the feature data and renamed its columns to what is needed for the training step.")
-```
-
----
-
-## Practice labeling feature data
-
-```yaml
-type: NormalExercise
-key: 7fded5cc0d
-xp: 100
-```
-
-Previously we used a `CountVectorizer` model to transform data to a vectorized format that can be provided as the input vector to a machine learning model. We also need to rename a couple of the key columns using the names that are expected by the machine learning model.
-
-A dataframe `df_t` is provided that contains data that has been transformed using a CountVectorizer model.
-
-`@instructions`
-- From `df_t` select the columns `uid`, `rabbit`, `likesvec`, and `numlikes`
-- Rename the `likesvec` column to `features`
-- Rename the `rabbit` column to `label`
-
-`@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
-
-`@pre_exercise_code`
-```{python}
-from pyspark.ml.feature import CountVectorizer
-from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
-from pyspark.ml.classification import LogisticRegression
-import pyspark.sql.functions as fun
-from pyspark import SQLContext
-
-sqlContext = SQLContext.getOrCreate(spark.sparkContext)
-
-schema = StructType([StructField("uid", StringType()),
-                     StructField("rabbit", IntegerType()),
-                     StructField("likes", StringType())])
-
-null_array_udf = fun.udf(lambda x:
-                x if (x and type(x) is list and len(x)>0 )
-                else [],
-                ArrayType(StringType()))
-
-df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
-           .withColumn('likes', fun.split('likes', ','))\
-           .withColumn('numlikes', fun.when(fun.col('likes').isNull(),0).otherwise(fun.size('likes')))\
-           .withColumn('likes', null_array_udf('likes'))
-
-# Can remove much of the above by loading df from file
-
-cv = CountVectorizer(inputCol='likes', outputCol='likesvec')
-cv_model = cv.fit(df)
-df_t = cv_model.transform(df)
-
-```
-
-`@sample_code`
-```{python}
-
-```
-
-`@solution`
-```{python}
-# Use cv_model to transform the data in df
-df_t = cv_model.transform(df)
-
 # Select uid, rabbit, likesvec, and numlikes columns
 df_s = df_t.select('uid', 'rabbit', 'likesvec', 'numlikes')
 

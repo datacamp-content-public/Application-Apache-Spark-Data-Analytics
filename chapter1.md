@@ -241,7 +241,151 @@ success_msg("That is correct.  This schema tells Spark to expect three columns, 
 
 ---
 
-## Loading the data (OLD SPARE)
+## Practice splitting comma delimited data
+
+```yaml
+type: NormalExercise
+key: b5dc86e1a5
+xp: 100
+```
+
+A dataframe `df` is provided. It has a column `likes` that contains comma delimited data. SQL functions have been imported as follows: 
+
+```
+import pyspark.sql.functions as fun
+
+```
+
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Convert the column `likes` to an array of strings
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- Use `fun.split()` to convert the string to an array of strings.
+
+`@pre_exercise_code`
+```{python}
+from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
+import pyspark.sql.functions as fun
+
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+null_array_udf = fun.udf(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else [],
+                ArrayType(StringType()))
+
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)
+
+# can minimize the code above by loading a precalculated version of df
+
+
+```
+
+`@sample_code`
+```{python}
+# Convert the likes column to an array of strings
+df_result = df.withColumn('likes', fun.____('likes', ','))
+```
+
+`@solution`
+```{python}
+# Convert the likes column to an array of strings
+df_result = df.withColumn('likes', fun.split('likes', ','))
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+```
+
+---
+
+## Handling null entries
+
+```yaml
+type: VideoExercise
+key: 366e37089b
+xp: 50
+```
+
+`@projector_key`
+37e898d3be8a730bd6610a6d15828596
+
+---
+
+## Practice using a UDF to handle null entries
+
+```yaml
+type: NormalExercise
+key: ed8e9509f8
+xp: 100
+```
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Instruction 1
+- Instruction 2
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+from pyspark.ml.feature import CountVectorizer
+from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
+from pyspark.ml.classification import LogisticRegression
+import pyspark.sql.functions as fun
+from pyspark import SQLContext
+
+sqlContext = SQLContext.getOrCreate(spark.sparkContext)
+
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+null_array_udf = fun.udf(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else [],
+                ArrayType(StringType()))
+
+df_has_nulls = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+           .withColumn('likes', fun.split('likes', ','))
+
+#  Can remove much of the above by loading a precalculated version of df_has_nulls
+
+           .withColumn('numlikes', fun.when(fun.col('likes').isNull(),0).otherwise(fun.size('likes')))\
+           .withColumn('likes', null_array_udf('likes'))
+
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+```
+
+---
+
+##  (OLD SPARE)
 
 ```yaml
 type: NormalExercise

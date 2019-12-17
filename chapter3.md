@@ -168,13 +168,15 @@ dfx = model.transform(df)\
 `@sample_code`
 ```{python}
 # Split the dataset into 80% training, 20% test
-df_trainset, df_testset = dfx.randomSplit(____, 42)
+split = ____
+df_trainset, df_testset = dfx.randomSplit(split, 42)
 ```
 
 `@solution`
 ```{python}
 # Split the dataset into 80% training, 20% test
-df_trainset, df_testset = dfx.randomSplit((0.80,0.20), 42)
+split = (0.80,0.20)
+df_trainset, df_testset = dfx.randomSplit(split, 42)
 ```
 
 `@sct`

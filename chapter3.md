@@ -110,11 +110,254 @@ a4 = False
 
 `@sct`
 ```{python}
-assert a1 == False
-assert a2 == True
-assert a3 == False
-assert a4 == False
+#assert a1 == False
+#assert a2 == True
+#assert a3 == False
+#assert a4 == False
 
 success_msg("Good! Caching is useful but should not be overused.")
+
+```
+
+---
+
+## Splitting the train data
+
+```yaml
+type: NormalExercise
+key: 2f5ebc22a7
+xp: 100
+```
+
+Split the training data into two subsets, one for training, and one held out for evaluating the trained model. We'll use a seed of 42 so that the result is the same each time.
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Split the dataset into 80% training, 20% test.  Use
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+null_array_udf = fun.udf(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else [],
+                ArrayType(StringType()))
+
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+           .withColumn('likes', fun.split('likes', ','))\
+           .withColumn('numlikes', fun.when(fun.col('likes').isNull(),0).otherwise(fun.size('likes')))\
+           .withColumn('likes', null_array_udf('likes'))
+cv = CountVectorizer(inputCol='likes', outputCol='likesvec')
+model = cv.fit(df)
+dfx = model.transform(df)\
+           .select('uid','rabbit','likesvec','numlikes')\
+           .withColumnRenamed('rabbit','label')\
+           .withColumnRenamed('likesvec','features')
+
+```
+
+`@sample_code`
+```{python}
+# Split the dataset into 80% training, 20% test
+df_trainset, df_testset = dfx.randomSplit(____, 42)
+```
+
+`@solution`
+```{python}
+# Split the dataset into 80% training, 20% test
+df_trainset, df_testset = dfx.randomSplit((0.80,0.20), 42)
+```
+
+`@sct`
+```{python}
+# Here let's use smart SCT rather than pattern matching to allow learners to use a broader array of solutions with less templating. 
+# The solution should be either a tuple or a list T, with at least two elements, such that T[0]/(sum(T))=0.8, and T[1]/(sum(T))=0.2
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+
+```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 11c3448e3f
+xp: 100
+```
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Instruction 1
+- Instruction 2
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+
+```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 78a79135bd
+xp: 100
+```
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Instruction 1
+- Instruction 2
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+
+```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: d5aa9a9f24
+xp: 100
+```
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Instruction 1
+- Instruction 2
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+
+```
+
+---
+
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: ae948da413
+xp: 100
+```
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Instruction 1
+- Instruction 2
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
 
 ```

@@ -11,12 +11,15 @@ key: 7e929385b9
 xp: 100
 ```
 
-<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+The `CountVectorizer` model transforms data to a vectorized format that can be provided as the input vector to a machine learning model. We also need to rename a couple of the key columns using the names that are expected by the machine learning model.
+
+A dataframe `df` is provided; it contains data that needs to be transformed into a form suitable for training.  A fitted CountVectorizer model `cv_model` is provided.
 
 `@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
+- Transform the data in `df` using the CountVectorizer model `cv_model`
+- From the result of the previous step, select the columns `uid`, `rabbit`, `likesvec`, and `numlikes`
+- Rename the `likesvec` column to `features`
+- Rename the `rabbit` column to `label`
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->

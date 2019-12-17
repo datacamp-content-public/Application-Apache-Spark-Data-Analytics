@@ -155,6 +155,14 @@ df_t = cv_model.transform(df)
 
 `@sample_code`
 ```{python}
+# Select uid, rabbit, likesvec, and numlikes columns
+df_s = df_t.____(____, ____, ____, ____)
+
+# Rename the likesvec column to features
+df_f = df_s.____(____, ____)
+
+# Rename the rabbit column to label
+df_labeled = df_f.____(____, ____)
 
 ```
 
@@ -167,12 +175,16 @@ df_s = df_t.select('uid', 'rabbit', 'likesvec', 'numlikes')
 df_f = df_s.withColumnRenamed('likesvec', 'features')
 
 # Rename the rabbit column to label
-df_labeled = df_f.withColumnRenamed('rabbit','label')
+df_labeled = df_f.withColumnRenamed('rabbit', 'label')
 
 ```
 
 `@sct`
 ```{python}
+# SCT : 
+# 1. inspect df_s.columns
+# 2. inspect df_f.columns, and datatype of df.features column
+# 3. inspect df_labeled columns, and datatype of all columns
 success_msg("Good job. The machine learning model expects the input data and label data to be in columns that it recognizes.")
 ```
 

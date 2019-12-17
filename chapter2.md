@@ -25,7 +25,29 @@ To properly configure an instance of a `CountVectorizer` object, we need to tell
 
 `@pre_exercise_code`
 ```{python}
+from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
+from pyspark.ml.classification import LogisticRegression
+import pyspark.sql.functions as fun
+from pyspark import SQLContext
 
+sqlContext = SQLContext.getOrCreate(spark.sparkContext)
+
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+null_array_udf = fun.udf(lambda x:
+                x if (x and type(x) is list and len(x)>0 )
+                else [],
+                ArrayType(StringType()))
+
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+           .withColumn('likes', fun.split('likes', ','))\
+           .withColumn('numlikes', fun.when(fun.col('likes').isNull(),0).otherwise(fun.size('likes')))\
+           .withColumn('likes', null_array_udf('likes'))
+
+
+# Much of the above can be removed by loading df from saved file
 ```
 
 `@sample_code`
@@ -50,7 +72,7 @@ cv = CountVectorizer(inputCol='likes', outputCol='likesvec')
 
 `@sct`
 ```{python}
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+success_msg("Perfect. The CountVectorizer now knows where to find its input data, and where to put its output result.")
 ```
 
 ---

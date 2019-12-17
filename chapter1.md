@@ -472,6 +472,63 @@ success_msg("Well done. User defined functions are used in much the same way as 
 
 ---
 
+## Creating a UDF
+
+```yaml
+type: NormalExercise
+key: 2d9d1aeadc
+xp: 100
+```
+
+In the previous exercise we used a UDF called `null_array_udf` to convert null values to an empty array.  You will now create this UDF.
+
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Instruction 1
+- Instruction 2
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+from pyspark.ml.feature import CountVectorizer
+from pyspark.sql.types import ArrayType, StringType, IntegerType, StructType, StructField
+from pyspark.ml.classification import LogisticRegression
+import pyspark.sql.functions as fun
+
+schema = StructType([StructField("uid", StringType()),
+                     StructField("rabbit", IntegerType()),
+                     StructField("likes", StringType())])
+
+df = spark.read.csv('data/rabbitduck/rabbitduck.csv', header=True, schema=schema)\
+           .withColumn('likes', fun.split('likes', ','))
+
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+```
+
+---
+
 ##  (OLD SPARE)
 
 ```yaml

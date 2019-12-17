@@ -420,8 +420,7 @@ We are provided with a dataframe `df`. The dataframe has a column `likes`, which
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
+- The name of the function to use is `null_array_udf`.  Its argument is the name of the column on which it acts.
 
 `@pre_exercise_code`
 ```{python}

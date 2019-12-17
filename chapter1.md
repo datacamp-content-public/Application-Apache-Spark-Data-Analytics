@@ -301,6 +301,7 @@ df_result = df.withColumn('likes', fun.split('likes', ','))
 `@sct`
 ```{python}
 # Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+success_msg("Correct. The SQL functions module contains many useful functions.")
 ```
 
 ---

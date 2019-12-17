@@ -20,10 +20,10 @@ xp: 100
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- Use the transform function on cv_model.
-- Use the select function.
-- Provide the base column as the first argument and the new name as the second argument.
+- Use the transform function on `cv_model`.
+- Use the `select` function.
 - Use the `withColumnRenamed` function to rename a column.
+- Provide the previous column name as the first argument and the new name as the second argument.
 
 `@pre_exercise_code`
 ```{python}

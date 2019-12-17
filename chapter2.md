@@ -3,7 +3,20 @@ title: 'Vectorizing the feature data'
 description: 'What is Extract, Transform, and Select (ETS).  What is the CountVectorizer model.  Fitting the CountVectorizer model.  Analyzing a vectorizer''s vocabulary.  Dataset subset selection.'
 ---
 
-## Insert exercise title here
+## Transforming data
+
+```yaml
+type: VideoExercise
+key: 523fdd1ddf
+xp: 50
+```
+
+`@projector_key`
+6799b93e2a7f4aa5d388a3370af77f2f
+
+---
+
+## Practice transforming data
 
 ```yaml
 type: NormalExercise

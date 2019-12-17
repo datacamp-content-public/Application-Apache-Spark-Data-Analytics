@@ -126,13 +126,10 @@ xp: 100
 In the previous exercise we created a schema containing a single column.  Now we will create a schema having multiple columns.
 
 `@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Create a schema having two fields.  The first field is called `uid` and is a string.  The second field is called `gender` and is an integer.
+- Create a schema having two fields, where the first field is called `uid` and is a string, and the second field is called `gender` and is an integer
 
 `@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
+- The schema is a `StructType`.  Use `IntegerType()` to specify an integer type.
 
 `@pre_exercise_code`
 ```{python}

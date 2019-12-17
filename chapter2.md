@@ -19,9 +19,7 @@ To properly configure an instance of a `CountVectorizer` object, we need to tell
 - Create an instance of `CountVectorizer` expecting its input to be in column called `likes`, and putting its output into a column called `likesvec`
 
 `@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
+- The relevant arguments here are `inputCol` and `outputCol`.
 
 `@pre_exercise_code`
 ```{python}

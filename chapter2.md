@@ -173,7 +173,7 @@ df_labeled = df_f.withColumnRenamed('rabbit','label')
 
 `@sct`
 ```{python}
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+success_msg("Good job. The machine learning model expects the input data and label data to be in columns that it recognizes.")
 ```
 
 ---

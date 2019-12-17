@@ -3,7 +3,20 @@ title: 'Training a logistic regression model'
 description: "What is classification? What is logistic regression? Why is it used for classification? What are hyperparameters?  Using a training summary object. Evaluating a fitted model on a test dataset. How to calculate the estimated prediction accuracy of the fitted model. \n"
 ---
 
-## Splitting the train data
+## Splitting training data
+
+```yaml
+type: VideoExercise
+key: fec319acfc
+xp: 50
+```
+
+`@projector_key`
+4431e9cf244429e6528873fcc513f9c8
+
+---
+
+## Practice splitting the training data
 
 ```yaml
 type: NormalExercise
@@ -73,6 +86,19 @@ success_msg("This works. The first argument can be either a list or tuple.  The 
 ## Instantiating a logistic regression model
 
 ```yaml
+type: VideoExercise
+key: f449609098
+xp: 50
+```
+
+`@projector_key`
+a8ec4fd5af8dd4601917a62506b4a93e
+
+---
+
+## Practice instantiating a logistic regression model
+
+```yaml
 type: NormalExercise
 key: 11c3448e3f
 xp: 100
@@ -121,7 +147,20 @@ success_msg("Good job. Hyperparameter argument names are often just abbreviated 
 
 ---
 
-## Fit a logistic regression model on the training data
+## Fitting a logistic regression model on training data
+
+```yaml
+type: VideoExercise
+key: f4e525ec4a
+xp: 50
+```
+
+`@projector_key`
+52490a7b002b562eb0311debaa38d13e
+
+---
+
+## Practice fitting a logistic regression model
 
 ```yaml
 type: NormalExercise
@@ -202,7 +241,20 @@ success_msg("Yes. Once the model and training data are configured, training the 
 
 ---
 
-## Evaluate a trained model on test data.
+## Evaluating a trained model on test data
+
+```yaml
+type: VideoExercise
+key: 30919b23d5
+xp: 50
+```
+
+`@projector_key`
+464703834defe4caf41ad03582682533
+
+---
+
+## Practice evaluating a trained model on test data
 
 ```yaml
 type: NormalExercise
@@ -281,49 +333,5 @@ print("Test AUC: " + str(df_fitted.evaluate(df_testset).areaUnderROC))
 ```{python}
 # SCT : pattern match on desired result (approximately 0.6454443704677009)
 success_msg("Perfect. This model correctly classifies over 64% of the test data.")
-
-```
-
----
-
-## Insert exercise title here
-
-```yaml
-type: NormalExercise
-key: ae948da413
-xp: 100
-```
-
-<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-
-`@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
-
-`@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
-
-`@pre_exercise_code`
-```{python}
-
-```
-
-`@sample_code`
-```{python}
-
-```
-
-`@solution`
-```{python}
-
-```
-
-`@sct`
-```{python}
-# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
 
 ```

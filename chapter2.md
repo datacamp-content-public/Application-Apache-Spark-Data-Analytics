@@ -3,6 +3,47 @@ title: 'Vectorizing the feature data'
 description: 'What is Extract, Transform, and Select (ETS).  What is the CountVectorizer model.  Fitting the CountVectorizer model.  Analyzing a vectorizer''s vocabulary.  Dataset subset selection.'
 ---
 
+## Fitting a CountVectorizer model
+
+```yaml
+type: NormalExercise
+key: 46f8917ace
+xp: 100
+```
+
+
+
+`@instructions`
+- Create a fitted `CountVectorizer` model by fitting an instance of a `CountVectorizer` object on data provided in the dataframe `df`
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+# Fit cv to df
+cv_model = cv.fit(df)
+```
+
+`@sct`
+```{python}
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+```
+
+---
+
 ## Transforming data
 
 ```yaml
@@ -183,48 +224,6 @@ df_labeled = df_f.withColumnRenamed('rabbit', 'label')
 # 2. inspect df_f.columns, and datatype of df.features column
 # 3. inspect df_labeled columns, and datatype of all columns
 success_msg("Good job. The machine learning model expects the input data and label data to be in columns that it recognizes.")
-```
-
----
-
-## Insert exercise title here
-
-```yaml
-type: NormalExercise
-key: 46f8917ace
-xp: 100
-```
-
-<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-
-`@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
-
-`@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
-
-`@pre_exercise_code`
-```{python}
-
-```
-
-`@sample_code`
-```{python}
-
-```
-
-`@solution`
-```{python}
-
-```
-
-`@sct`
-```{python}
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
 ```
 
 ---

@@ -129,12 +129,10 @@ key: 78a79135bd
 xp: 100
 ```
 
-<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+An instance of a LogisticRegression object is provided in the `logistic` variable. A dataframe containing training data is provided in the `df_trainset` variable. Fit `logistic` on the training data.
 
 `@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
+- Fit the logistic regression model provided by `logistic` on the training data provided in `df_trainset`
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
@@ -143,24 +141,28 @@ xp: 100
 
 `@pre_exercise_code`
 ```{python}
+from pyspark.ml.classification import LogisticRegression
 
 ```
 
 `@sample_code`
 ```{python}
+# Fit logistic on df_trainset
+df_fitted = logistic.____(df_trainset)
 
 ```
 
 `@solution`
 ```{python}
+# Fit logistic on df_trainset
+df_fitted = logistic.fit(df_trainset)
 
 ```
 
 `@sct`
 ```{python}
 # Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
-
+success_msg("Yes. Once the model and training data are configured, training the model can be done in one line of code.")
 ```
 
 ---

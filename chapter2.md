@@ -11,6 +11,7 @@ key: 46f8917ace
 xp: 100
 ```
 
+An instance of a `CountVectorizer` object is provided in the variable `cv`.  It expects the input column to be provided by a column `likes` and will put its output in a column called `likesvec`.
 
 
 `@instructions`
@@ -18,8 +19,7 @@ xp: 100
 
 `@hint`
 <!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
+- Apply the `fit` function to the `cv` object. Provide the name of the data dataframe as the argument.
 
 `@pre_exercise_code`
 ```{python}
@@ -28,7 +28,8 @@ xp: 100
 
 `@sample_code`
 ```{python}
-
+# Fit cv to df
+cv_model = ____.____(____)
 ```
 
 `@solution`

@@ -90,7 +90,7 @@ df_labeled = df_f.withColumnRenamed('rabbit','label')
 
 `@sct`
 ```{python}
-success_msg("Good. You have transformed the data and renamed its columns to what is needed for the next step.")
+success_msg("Good. You have vectorized the feature data and renamed its columns to what is needed for the training step.")
 ```
 
 ---

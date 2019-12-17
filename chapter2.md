@@ -3,6 +3,61 @@ title: 'Vectorizing the feature data'
 description: 'What is Extract, Transform, and Select (ETS).  What is the CountVectorizer model.  Fitting the CountVectorizer model.  Analyzing a vectorizer''s vocabulary.  Dataset subset selection.'
 ---
 
+## Insert exercise title here
+
+```yaml
+type: NormalExercise
+key: 0e300faa39
+xp: 100
+```
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Instruction 1
+- Instruction 2
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
+```
+
+---
+
+## Fitting a CountVectorizer model
+
+```yaml
+type: VideoExercise
+key: f3e9601738
+xp: 50
+```
+
+`@projector_key`
+178850f353d7b2947d458bc3fe6eedb2
+
+---
+
 ## Configuring a `CountVectorizer` object
 
 ```yaml
@@ -75,7 +130,7 @@ success_msg("Perfect. The CountVectorizer now knows where to find its input data
 
 ---
 
-## Fitting a CountVectorizer model
+## Practice fitting a CountVectorizer model
 
 ```yaml
 type: NormalExercise
@@ -323,46 +378,4 @@ df_labeled = df_f.withColumnRenamed('rabbit', 'label')
 # 2. inspect df_f.columns, and datatype of df.features column
 # 3. inspect df_labeled columns, and datatype of all columns
 success_msg("Good job. The machine learning model expects the input data and label data to be in columns that it recognizes.")
-```
-
----
-
-## Insert exercise title here
-
-```yaml
-type: NormalExercise
-key: 0e300faa39
-xp: 100
-```
-
-<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-
-`@instructions`
-<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-- Instruction 1
-- Instruction 2
-
-`@hint`
-<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
-- This is an example hint.
-- This is an example hint.
-
-`@pre_exercise_code`
-```{python}
-
-```
-
-`@sample_code`
-```{python}
-
-```
-
-`@solution`
-```{python}
-
-```
-
-`@sct`
-```{python}
-success_msg("Well done! Window function sql can be used in a subquery just like a regular sql query.")
 ```

@@ -564,7 +564,7 @@ key: 782514209a
 xp: 100
 ```
 
-Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello
+This is a legacy exercise held over for reference.
 
 `@instructions`
 Load csv data from the file "trainsched.txt" into a dataframe stored in a variable named 'df'.
@@ -574,10 +574,37 @@ A synonym for "load" is "read".  Don't forget to specify the format.
 
 `@pre_exercise_code`
 ```{python}
-_init_spark = '/home/repl/.init-spark.py' 
-with open(_init_spark) as f:
-    code = compile(f.read(), _init_spark, 'exec')
+#_init_spark = '/home/repl/.init-spark.py' 
+#with open(_init_spark) as f:
+#    code = compile(f.read(), _init_spark, 'exec')
+#    exec(code)
+
+init_spark = """
+import os
+import sys
+
+_spark_home = os.environ.get('SPARK_HOME', None)
+if not _spark_home:
+  raise ValueError('SPARK_HOME environment variable is not set')
+
+# Make pyspark available
+sys.path.insert(0, os.path.join(_spark_home, 'python'))
+# Make py4j available
+sys.path.insert(0, os.path.join(_spark_home, 'python/lib/py4j-0.10.7-src.zip'))
+# Start spark
+_boot_spark =  os.path.join(_spark_home, 'python/pyspark/shell.py')
+with open(_boot_spark) as f:
+    code = compile(f.read(), _boot_spark, 'exec')
     exec(code)
+
+# Remove lock on metastore
+_lock_file = 'metastore_db/dbex.lck'
+if os.path.isfile(_lock_file):
+    os.remove(_lock_file)
+
+"""
+
+
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
 ```

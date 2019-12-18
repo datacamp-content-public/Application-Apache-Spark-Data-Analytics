@@ -603,7 +603,11 @@ if os.path.isfile(_lock_file):
     os.remove(_lock_file)
 
 """
-
+print('compiling')
+code = compile(init_spark, _init_spark, 'exec')
+print('executing')
+exec(code)
+print('done executing')
 
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()

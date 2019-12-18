@@ -1,5 +1,5 @@
 ---
-title: 'Transforming the dataset into feature data'
+title: 'Predicting demographic class membership'
 description: 'Why is classification so useful.  The dataset.  Loading a CSV file. Transactional log data vs vectorized feature data. Transforming transactional user log data into tabular format. Analyzing data for suitability for training a classification model.  What is the power law concept and how to apply it to a candidate classification dataset.'
 ---
 
@@ -634,3 +634,16 @@ df = spark.read.csv("trainsched.txt",header=True)
 
 success_msg("Loading simple comma-separated text data into a dataframe is a breeze.")
 ```
+
+---
+
+## Overview of what you will accomplish
+
+```yaml
+type: VideoExercise
+key: ec0023a988
+xp: 50
+```
+
+`@projector_key`
+39c3e438f5dcc18add28b1e59c18414d

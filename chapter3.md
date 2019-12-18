@@ -190,7 +190,7 @@ xp: 100
 ```
 
 <!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-Import the logistic regression module and instantiate a logistic regression model. 
+Import the logistic regression module and instantiate a logistic regression model.
 
 `@instructions`
 - Import the logistic regression module
@@ -347,7 +347,7 @@ key: d5aa9a9f24
 xp: 100
 ```
 
-A trained model is provided in `df_fitted`.  A dataframe containing test data is provided in `df_testset`.  
+A trained model is provided in `df_fitted`.  A dataframe containing test data is provided in `df_testset`.
 
 `@instructions`
 - Evaluate the area under curve for the fitted model

@@ -183,7 +183,6 @@ xp: 100
 
 An instance of a `CountVectorizer` object is provided in the variable `cv`.  It expects the input column to be provided by a column `likes` and will put its output in a column called `likesvec`.
 
-
 `@instructions`
 - Create a fitted `CountVectorizer` model by fitting an instance of a `CountVectorizer` object upon the data provided in the dataframe `df`
 

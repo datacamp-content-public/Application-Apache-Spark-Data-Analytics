@@ -257,7 +257,7 @@ import pyspark.sql.functions as fun
 
 ```
 
-A dataframe `df` is provided. It has a column `likes` that contains comma delimited data. 
+A dataframe `df` is provided. It has a column `likes` that contains comma delimited data.
 
 `@instructions`
 <!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
@@ -412,7 +412,7 @@ xp: 100
 ```
 
 <!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
-We are provided with a dataframe `df`. The dataframe has a column `likes`, which is an array of strings. However, the `likes` column has some null values. We have a UDF called `null_array_udf` that converts the null values to an empty array `[]`.  
+We are provided with a dataframe `df`. The dataframe has a column `likes`, which is an array of strings. However, the `likes` column has some null values. We have a UDF called `null_array_udf` that converts the null values to an empty array `[]`.
 
 `@instructions`
 <!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
@@ -556,7 +556,7 @@ success_msg("Well done. We used a lambda expression rather than a named function
 
 ---
 
-##  (OLD SPARE)
+## (OLD SPARE)
 
 ```yaml
 type: NormalExercise

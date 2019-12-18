@@ -579,7 +579,8 @@ A synonym for "load" is "read".  Don't forget to specify the format.
 #    code = compile(f.read(), _init_spark, 'exec')
 #    exec(code)
 
-init_spark = """
+# IMPORT PYSPARK  
+# contents of _init_spark:
 import os
 import sys
 
@@ -602,7 +603,8 @@ _lock_file = 'metastore_db/dbex.lck'
 if os.path.isfile(_lock_file):
     os.remove(_lock_file)
 
-"""
+# DONE IMPORT PYSPARK
+
 print('compiling')
 code = compile(init_spark, _init_spark, 'exec')
 print('executing')

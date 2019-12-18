@@ -88,6 +88,61 @@ isOrdered: false # Should the items in the zones be ordered as in the solution c
 
 ---
 
+## Tuning a hyperparameter
+
+```yaml
+type: VideoExercise
+key: 48b6bc6690
+xp: 50
+```
+
+`@projector_key`
+de4c973a4184a72f5f2cca4e4e4a9c8b
+
+---
+
+## Tuning the elastic net hyperparameter
+
+```yaml
+type: NormalExercise
+key: fc5287f071
+xp: 100
+```
+
+<!-- Guidelines for contexts: https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+
+`@instructions`
+<!-- Guidelines for instructions https://instructor-support.datacamp.com/en/articles/2375526-course-coding-exercises. -->
+- Instruction 1
+- Instruction 2
+
+`@hint`
+<!-- Examples of good hints: https://instructor-support.datacamp.com/en/articles/2379164-hints-best-practices. -->
+- This is an example hint.
+- This is an example hint.
+
+`@pre_exercise_code`
+```{python}
+
+```
+
+`@sample_code`
+```{python}
+
+```
+
+`@solution`
+```{python}
+
+```
+
+`@sct`
+```{python}
+# Examples of good success messages: https://instructor-support.datacamp.com/en/articles/2299773-exercise-success-messages.
+```
+
+---
+
 ## Analyzing model performance by number of likes
 
 ```yaml

@@ -1,6 +1,6 @@
 ---
 title: 'Predicting demographic class membership'
-description: 'Why is classification so useful.  The dataset.  Loading a CSV file. Transactional log data vs vectorized feature data. Transforming transactional user log data into tabular format. Analyzing data for suitability for training a classification model.  What is the power law concept and how to apply it to a candidate classification dataset.'
+description: 'Why is classification so useful.  Overview of exercises.  The dataset.  Loading a CSV file. Transactional log data vs vectorized feature data. Transforming transactional user log data into tabular format. Analyzing data for suitability for training a classification model.  What is the power law concept and how to apply it to a candidate classification dataset.'
 ---
 
 ## The dataset

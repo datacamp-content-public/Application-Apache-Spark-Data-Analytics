@@ -579,7 +579,10 @@ A synonym for "load" is "read".  Don't forget to specify the format.
 #    code = compile(f.read(), _init_spark, 'exec')
 #    exec(code)
 
-# IMPORT PYSPARK  
+#
+# UNABLE TO INITIALIZE SPARK
+# /home/repl/.init-spark.py does not exist
+#
 # contents of _init_spark:
 init_spark = """
 import os

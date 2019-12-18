@@ -581,6 +581,7 @@ A synonym for "load" is "read".  Don't forget to specify the format.
 
 # IMPORT PYSPARK  
 # contents of _init_spark:
+init_spark = """
 import os
 import sys
 
@@ -602,14 +603,7 @@ with open(_boot_spark) as f:
 _lock_file = 'metastore_db/dbex.lck'
 if os.path.isfile(_lock_file):
     os.remove(_lock_file)
-
-# DONE IMPORT PYSPARK
-
-print('compiling')
-code = compile(init_spark, _init_spark, 'exec')
-print('executing')
-exec(code)
-print('done executing')
+"""
 
 from pyspark.sql import SparkSession
 spark = SparkSession.builder.getOrCreate()
